@@ -13,7 +13,7 @@ title                    : "Yu-Han Wu"
 title_separator          : "-"
 name                     : &name "Yu-Han Wu"
 description              : &description "Machine Learning PhD student"
-url                      : https://yhwu.com # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
+url                      : "https://pojoowu.github.io" # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "pojoowu/pojoowu.github.io"
 
