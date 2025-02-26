@@ -11,54 +11,36 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D in Applied Mathematics and Machine Learning, Sorbonne University, 2027 (expected)
+* Diploma of ENS in Applied Mathematics, Ecole Normale Supérieure, 2024
+* M.S. in Statistics and Machine Learning, University Paris-Saclay, 2023
+* B.S. in Applied Mathematics, University Paris-Cité, 2021
+* Classe préparatoire, Lycée Louis-Le-Grand, 2020
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Winter 2023: Research Intern
+  * Owkin
+  * Research topic: Federated Learning (FL) and Invariant Risk Minimization (IRM)
+  * Supervisor: Ulysse Marteau-Ferey
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Summer 2023: Research Intern
+  * Sorbonne University
+  * Research topic: Implicit regularization of residual network
+  * Supervisor: Gérard Biau, Pierre Marion
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Summer 2022: Research Intern
+  * California Institute of Technology
+  * Research topic: Extremal Combinatorics and Euclidean Ramsey Theory
+  * Supervisor: David Conlon
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Mathemtatics
+* Python
 
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
