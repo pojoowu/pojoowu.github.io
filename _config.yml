@@ -1,14 +1,14 @@
 locale                   : "en-US"
-title                    : "Yu-Han Wu"
+title                    : "Yu Han Wu"
 title_separator          : "-"
-name                     : &name "Yu-Han Wu"
+name                     : &name "Yu Han Wu"
 description              : &description "Machine Learning PhD student"
 url                      : https://yhwu.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "pojoowu/pojoowu.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
-seo_description          : "Site for Yu-Han Wu, Google DeepMind co-advised PhD student at Sorbonne University"
+seo_description          : "Site for Yu Han Wu, Google DeepMind co-advised PhD student at Sorbonne University"
 words_per_minute         : 160
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
@@ -71,7 +71,7 @@ social:
 
 # Site Author
 author:
-  name             : "Yu-Han Wu"
+  name             : "Yu Han Wu"
   avatar           : ""
 #  bio              : "Ethnographer of computation and computational ethnographer. <br> <br> Assistant Professor at UC San Diego: <ul><li><a style='color: black;' href='http://communication.ucsd.edu'>Department of Communication</a></li> <li><a style='color: black;' href='http://hdsi.ucsd.edu'>Halıcıoğlu Data Science Institute</a></li></ul>"
 #  bio              : "Ethnographer of computation and computational ethnographer. <br> <br> Assistant Professor at UC San Diego, in <ul> <li><a style="color: black;" href="http://communication.ucsd.edu">Department of Communication</a></li> <li><a style="color: black;" href="http://hdsi.ucsd.edu">Halıcıoğlu Data Science Institute</a></li> <li><a style="color: black;" href="http://ipe.ucsd.edu">Institute for Practical Ethics</a></li> </ul>"
