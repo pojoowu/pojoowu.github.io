@@ -15,3 +15,8 @@ Hi, I am Yu-Han. I have been a PhD student in [LPSM](https://www.lpsm.paris/) at
 * 2022-2023: University Paris-Saclay, Master degree (Mathematics of Randomness)
 * 2018-2020: Lycée Louis-le-Grand, Prepatory classes
 
+## Internships
+* 2024: Sorbonne University, Research Internship
+* 2023: Owkin, Research Internship
+* 2023: Sorbonne University, Research Internship
+* 2022: Caltech, Research Internship
