@@ -37,6 +37,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
+  hide                   : false
   path                   : # blank (default) uses feed.xml
 read_more                : "enabled" # if enabled, adds a "read more" link to excerpts 
 future                   : true
@@ -105,17 +106,21 @@ author:
   weibo            :
   xing             :
   youtube          :
-  # wikipedia        : "staeiou"
+  # wikipedia        : "staeiou"\
 
+publication_category:
+  books:
+    title: 'Books'
+  manuscripts:
+    title: 'Journal Articles'    
+  conferences:
+    title: 'Conference Papers'
 
 # Reading Files
 include:
   - .htaccess
   - _pages
-  - "*.pdf"
-  - "papers/*.pdf"
-  - "portfolio/papers/*.pdf"
-  - "portfolio/*.pdf"
+  - files
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -171,7 +176,7 @@ collections:
   teaching:
     output: true
     permalink: /:collection/:path/
-  articles:
+  publications:
     output: true
     permalink: /:collection/:path/
   expressions:
