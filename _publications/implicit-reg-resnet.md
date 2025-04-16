@@ -6,7 +6,7 @@ permalink: /publication/implicit-reg-resnet
 excerpt: ''
 date: 2023-01-01
 venue: 'ICLR2024'
-paperurl: 'http://pojoowu.github.io/files/2208.13513v2.pdf'
+paperurl: 'http://pojoowu.github.io/files/2309.01213v3.pdf'
 citation: 'Marion, P., Wu, Y. H., Sander, M. E., & Biau, G. (2023). Implicit regularization of deep residual networks towards neural ODEs. arXiv preprint arXiv:2309.01213.'
 ---
 
