@@ -15,6 +15,11 @@ Hi, I am Yu-Han. I have been a PhD student in [LPSM](https://www.lpsm.paris/) at
 * 2022-2023: University Paris-Saclay, Master degree (Mathematics of Randomness)
 * 2018-2020: Lycée Louis-le-Grand, Prepatory classes
 
+## Publications
+* Wu, Y. H., Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. arXiv preprint arXiv:2502.03435.
+* Pierre Marion, Yu-Han Wu, Michael Eli Sander, & Gerard Biau (2024). Implicit regularization of deep residual networks towards neural ODEs. In The Twelfth International Conference on Learning Representations.
+* Conlon, D., & Wu, Y. H. (2023). More on lines in Euclidean Ramsey theory. Comptes Rendus. Mathématique, 361(G5), 897-901.
+
 ## Internships
 * 2024: Sorbonne University, Research Internship
 * 2023: Owkin, Research Internship
