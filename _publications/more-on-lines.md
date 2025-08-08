@@ -4,7 +4,7 @@ collection: publications
 category: manuscripts
 permalink: /publication/more-on-lines
 excerpt: ''
-date: 2023-01-01
+date: 2022-01-01
 venue: 'Comptes Rendus. Mathématique'
 paperurl: 'http://pojoowu.github.io/files/2208.13513v2.pdf'
 citation: 'Conlon, D., & Wu, Y. H. (2023). More on lines in Euclidean Ramsey theory. Comptes Rendus. Mathématique, 361(G5), 897-901.'
