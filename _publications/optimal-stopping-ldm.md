@@ -6,7 +6,7 @@ permalink: /publication/optimal-stopping-ldm
 excerpt: ''
 date: 2025-10-10
 venue: 'arxiv:2510.08409'
-paperurl: 'http://pojoowu.github.io/files/2309.01213v3.pdf'
+paperurl: 'http://pojoowu.github.io/files/2510.08409v1.pdf'
 citation: 'Yu-Han Wu, Quentin Berthet, Gérard Biau, Claire Boyer, Romuald Elie & Pierre Marion (2025). Optimal Stopping in Latent Diffusion Model. arXiv preprint arXiv:2510.08409.'
 ---
 
