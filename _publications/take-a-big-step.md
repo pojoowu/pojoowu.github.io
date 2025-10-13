@@ -6,7 +6,7 @@ permalink: /publication/take-a-big-step
 excerpt: ''
 date: 2025-02-05
 venue: 'COLT2025'
-paperurl: 'http://pojoowu.github.io/files/2502.03435v1.pdf'
+paperurl: 'http://pojoowu.github.io/files/2510.08409v1.pdf'
 citation: 'Wu, Y. H., Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756'
 ---
 
