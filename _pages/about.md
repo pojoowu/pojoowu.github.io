@@ -16,7 +16,8 @@ Hi, I am Yu-Han. I have been a PhD student in [LPSM](https://www.lpsm.paris/) at
 * 2018-2020: Lycée Louis-le-Grand, Prepatory classes
 
 ## Publications
-* __Wu, Y. H.__, Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. arXiv preprint arXiv:2502.03435.
+* __Wu, Y. H.__, Berthet, Q., Biau, G., Boyer, C, Elie, R., & Marion P. (2025). Optimal Stopping in Latent Diffusion Models. arXiv preprint arXiv:2510.08409.
+* __Wu, Y. H.__, Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756.
 * Marion, P.\*, __Wu, Y.-H.\*__, Sander, M. E., & Biau, G. (2024). Implicit regularization of deep residual networks towards neural ODEs. The Twelfth International Conference on Learning Representations.
 * Conlon, D., & __Wu, Y. H.__ (2023). More on lines in Euclidean Ramsey theory. Comptes Rendus. Mathématique, 361(G5), 897-901.
 
