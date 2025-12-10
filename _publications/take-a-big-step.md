@@ -7,7 +7,7 @@ excerpt: ''
 date: 2025-02-05
 venue: 'COLT2025'
 paperurl: 'http://pojoowu.github.io/files/2502.03435v1.pdf'
-slidesurl: 'http://pojoowu.github.io/files/_COLT_Slides__Take_a_big_step__memorization_prevention_presentation.pdf'
+slidesurl: '(https://github.com/pojoowu/pojoowu.github.io/blob/master/files/_COLT_Slides__Take_a_big_step__memorization_prevention_presentation.pdf'
 citation: 'Wu, Y. H., Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756'
 ---
 ## [Slides](https://github.com/pojoowu/pojoowu.github.io/blob/master/files/_COLT_Slides__Take_a_big_step__memorization_prevention_presentation.pdf)
