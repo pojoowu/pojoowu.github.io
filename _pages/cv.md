@@ -17,6 +17,18 @@ Education
 * B.S. in Applied Mathematics, University Paris-Cité, 2021
 * Classe préparatoire, Lycée Louis-Le-Grand, 2020
 
+Publications
+======
+  <ul>{% for post in site.publications reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+
+Talks
+======
+  <ul>{% for post in site.talks reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+
 Work experience
 ======
 * Winter 2023: Research Intern
@@ -38,15 +50,3 @@ Skills
 ======
 * Mathemtatics
 * Python
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
