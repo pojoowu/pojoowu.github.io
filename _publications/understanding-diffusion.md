@@ -6,7 +6,7 @@ permalink: /publication/understanding-diffusion
 excerpt: ''
 date: 2026-05-07
 venue: 'arXiv'
-paperurl: 'http://pojoowu.github.io/files/2309.01213v3.pdf'
+paperurl: 'http://pojoowu.github.io/files/Position_paper___memorization_diffusion_arXiv.pdf'
 citation: 'Pierre Marion and Yu-Han Wu (2026) Understanding diffusion models requires rethinking (again) generalization arXiv:'
 ---
 ### Abstract
