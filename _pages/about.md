@@ -17,7 +17,7 @@ Hi, I am Yu-Han. I have been a PhD student in [LPSM](https://www.lpsm.paris/) at
 
 ## Publications
 * Marion, P.\* & __Wu, Y.-H.__\* (2026). Understanding diffusion models requires rethinking (again) generalization. arXiv:2605.06077.
-* Berthet, Q., __Wu, Y.-H.__, Crepy, C., Elie, R., Greff, K. & Sander, M. E. (2026) MIND: Monge Inception Distance for Generative Models Evaluation. arXiv:2605.06797.
+* Berthet, Q., __Wu, Y.-H.__, Crepy, C., Elie, R., Greff, K. & Sander, M. E. (2026) [MIND: Monge Inception Distance for Generative Models Evaluation.](/publication/mind) arXiv:2605.06797.
 * __Wu, Y.-H.__, Berthet, Q., Biau, G., Boyer, C, Elie, R., & Marion P. (2025). Optimal Stopping in Latent Diffusion Models. arXiv:2510.08409.
 * __Wu, Y.-H.__, Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756.
 * Marion, P.\*, __Wu, Y.-H.\*__, Sander, M. E., & Biau, G. (2024). Implicit regularization of deep residual networks towards neural ODEs. The Twelfth International Conference on Learning Representations.
