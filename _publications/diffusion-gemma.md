@@ -1,0 +1,13 @@
+---
+title: "DiffusionGemma"
+collection: publications
+category: manuscripts
+permalink: /publication/diffusion-gemma
+excerpt: ''
+date: 2026-07-31
+venue: 'arXiv:2608.00146'
+paperurl: 'http://pojoowu.github.io/files/diffusiongemma.pdf'
+citation: 'Taïga, DiffusionGemma Team Adrien Ali et al. “DiffusionGemma Technical Report.” (2026).'
+---
+### Abstract
+We introduce DiffusionGemma, an experimental open-weight language model that uses discrete diffusion to generate text at exceptionally high speed. Rather than decoding one token at a time, DiffusionGemma iteratively refines blocks of 256 tokens in parallel, avoiding the sequential decoding bottleneck of conventional autoregressive (AR) large language models. Instead of training from scratch, we obtain DiffusionGemma by fine-tuning the mixture-of-experts Gemma 4 model with 3.8B activated and 25.2B total parameters. Our compute-efficient two-stage training pipeline uses fewer than 10% of the starting AR model’s total training token budget. The first stage uses supervised fine-tuning to teach bidirectional denoising, while the second stage combines reinforcement learning with sampler distillation to jointly improve generation quality and inference efficiency. DiffusionGemma establishes a new Pareto frontier for the trade-off between generation speed and model capability. Averaged across our full evaluation suite, it generates around 20 tokens per forward pass and achieves roughly 1,500 output tokens per second on a single NVIDIA H100 GPU, which is substantially faster than AR models even with state-ofthe-art speculative decoding. DiffusionGemma also retains the starting model’s support for thinking mode, multimodal inputs, and long contexts. Despite diffusion fine-tuning, it remains capable of AR generation with only minor performance degradation, suggesting a path toward hybrid diffusion-AR decoding.
