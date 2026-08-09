@@ -16,7 +16,7 @@ Hi, I am Yu-Han. I have been a PhD student in [LPSM](https://www.lpsm.paris/) at
 * 2018-2020: Lycée Louis-le-Grand, Prepatory classes
 
 ## Publications
-* Couairon, G., Jacq, A. D., __Wu, Y.-H.__, Singh, R., Hasson, Y., Berthet, Q. & Elie, R.(2026). [Understanding diffusion models requires rethinking (again) generalization.](/publication/kastor) arXiv:2608.06107.
+* Couairon, G., Jacq, A. D., __Wu, Y.-H.__, Singh, R., Hasson, Y., Berthet, Q. & Elie, R.(2026). [Kastor: An efficient fine-tuning strategy for generative emulation of PDE simulations.](/publication/kastor) arXiv:2608.06107.
 * Marion, P.\* & __Wu, Y.-H.__\* (2026). [Understanding diffusion models requires rethinking (again) generalization.](/publication/understanding-diffusion) arXiv:2605.06077.
 * Berthet, Q., __Wu, Y.-H.__, Crepy, C., Elie, R., Greff, K. & Sander, M. E. (2026). [MIND: Monge Inception Distance for Generative Models Evaluation.](/publication/mind) arXiv:2605.06797.
 * __Wu, Y.-H.__, Berthet, Q., Biau, G., Boyer, C, Elie, R., & Marion P. (2025). [Optimal Stopping in Latent Diffusion Models.](/publication/optimal-stopping-ldm) arXiv:2510.08409.
