@@ -91,6 +91,9 @@
 
   img {
     max-width: 175px;
+    /* width/height attributes on the <img> reserve the box before the image
+       decodes; height: auto keeps them as an aspect ratio only */
+    height: auto;
     border-radius: 50%;
 
     @include breakpoint($large) {

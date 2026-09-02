@@ -2,8 +2,6 @@
    BASE ELEMENTS
    ========================================================================== */
 html {
-  /* sticky footer fix */
-  position: relative;
   min-height: 100%;
 }
 
@@ -14,7 +12,11 @@ body {
 
   margin: 0;
   padding: $masthead-height 0 0;
-  padding-bottom: 9em;
+  /* Sticky footer without JavaScript: flex column, #main grows (see
+     _page.scss) and .page__footer is the last item (see _footer.scss). */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: $global-font-family;
   line-height: 1.5;
 
@@ -314,23 +316,8 @@ nav {
    ANIMATIONS
    ========================================================================== */
 
-   @-webkit-keyframes intro {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes intro {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+/* The theme's staggered "intro" fade-ins were removed: page changes are
+   animated by view transitions (assets/css/transitions.css) instead. */
 
 /* Global animation transition */
 b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, tr, td, form button, input[type="submit"], .btn, .highlight, .archive__item-teaser {

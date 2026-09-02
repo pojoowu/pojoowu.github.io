@@ -7,22 +7,37 @@
     try { return localStorage.getItem('theme'); } catch (e) { return null; }
   }
 
-  function currentTheme() {
-    return root.getAttribute('data-theme') ||
-      getStoredTheme() ||
+  function preferredTheme() {
+    return getStoredTheme() ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   }
 
+  function currentTheme() {
+    return root.getAttribute('data-theme') || preferredTheme();
+  }
+
+  function render(theme) {
+    root.setAttribute('data-theme', theme);
+    btn.setAttribute('aria-pressed', String(theme === 'dark'));
+  }
+
   function applyTheme(next) {
-    root.setAttribute('data-theme', next);
-    btn.setAttribute('aria-pressed', String(next === 'dark'));
+    render(next);
     try { localStorage.setItem('theme', next); } catch (e) {}
   }
 
-  // Synchronize button state on load with the active theme
-  var active = currentTheme();
-  root.setAttribute('data-theme', active);
-  btn.setAttribute('aria-pressed', String(active === 'dark'));
+  // Re-read the stored theme whenever this document is (re)shown. A prerendered
+  // page ran the inline head script early, and a page restored from the
+  // back/forward cache keeps its old attribute, so both are stale if the theme
+  // was toggled in the meantime. `pagereveal` fires before the incoming page is
+  // captured for the cross-document view transition, so the correction is
+  // never visible.
+  function syncFromStorage() { render(preferredTheme()); }
+
+  render(currentTheme());
+  window.addEventListener('pagereveal', syncFromStorage);
+  window.addEventListener('pageshow', function (e) { if (e.persisted) syncFromStorage(); });
+  window.addEventListener('storage', function (e) { if (e.key === 'theme') syncFromStorage(); });
 
   btn.addEventListener('click', function () {
     var next = currentTheme() === 'dark' ? 'light' : 'dark';
@@ -32,6 +47,8 @@
       return;
     }
 
+    // While .theme-switch is set the masthead has no view-transition-name
+    // (see transitions.css), so header and content crossfade together.
     root.classList.add('theme-switch');
     var vt = document.startViewTransition(function () {
       applyTheme(next);

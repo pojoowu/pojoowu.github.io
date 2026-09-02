@@ -2,7 +2,8 @@
 
 <!-- _includes/head/custom.html -->
 <style>
-  /* 1. Register transition before the parser touches the body */
+  /* 1. Opt every page into cross-document view transitions. This must sit in the
+        head of both the outgoing and the incoming document. */
   @view-transition {
     navigation: auto;
   }
@@ -14,18 +15,16 @@
   }
 </style>
 
-<!-- Load transition styling -->
-<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
+<!-- 3. Hold the first paint, and therefore the view-transition capture of the new
+        page, until #page-ready (placed after the scripts at the end of <body>) has
+        been parsed. Otherwise the browser paints as soon as the head stylesheets
+        arrive and the jQuery bundle rearranges the page in the middle of the fade.
+        The preload starts the bundle download early so the hold stays short. -->
+<link rel="expect" href="#page-ready" blocking="render">
+<link rel="preload" href="{{ base_path }}/assets/js/main.min.js" as="script">
 
-<!-- Keep the early theme detection script -->
-<script>
-  (function () {
-    var stored = null;
-    try { stored = localStorage.getItem('theme'); } catch (e) {}
-    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-</script>
+<!-- Transition styling (the early theme script lives in head.html, before main.css) -->
+<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
 
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>
@@ -37,8 +36,6 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"/>
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1b"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
-<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
-
 
 <!-- Support for MatJax -->
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

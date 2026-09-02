@@ -1,25 +1,28 @@
-/* 1. Backdrop safety */
+/* View transitions: cross-document navigation (see @view-transition in
+   _includes/head/custom.html) and the same-document theme toggle
+   (assets/js/theme-toggle.js).
+
+   Design: the old page is held fully opaque underneath while the new page fades
+   in on top, so there is never a dip to the backdrop colour. */
+
+/* 1. Backdrop follows the active palette. Custom properties inherit from <html>,
+      so this is exactly the page background in both themes. */
 ::view-transition {
-  background-color: #ffffff;
+  background-color: var(--global-bg-color);
 }
 
-html[data-theme="dark"]::view-transition,
-html.dark::view-transition {
-  background-color: #1a1a1a;
-}
-
-/* 2. Standard alpha blending */
+/* 2. Plain alpha compositing instead of the UA default plus-lighter blend */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
 }
 
-/* 3. Hold old page 100% solid underneath (NO animation, NO flash) */
+/* 3. Old page: held solid, no animation */
 ::view-transition-old(root) {
   animation: none;
 }
 
-/* 4. Fade incoming page cleanly over the old page */
+/* 4. New page fades in over it */
 ::view-transition-new(root) {
   animation: 240ms cubic-bezier(0, 0, 0.2, 1) both vt-fade-in;
 }
@@ -29,16 +32,19 @@ html.dark::view-transition {
   to   { opacity: 1; }
 }
 
-/* 5. Suppress AcademicPages built-in entrance animations */
-@supports (view-transition-name: none) {
-  .masthead,
-  .page__footer,
-  .page__hero,
-  .page__hero--overlay,
-  #main {
-    animation: none !important;
-    -webkit-animation: none !important;
-  }
+/* 5. The header is identical on every page, so during navigation it gets its own
+      group with no animation and stays put while the content crossfades.
+      The theme toggle adds .theme-switch to <html> before it starts its
+      transition; then the header has no name, stays part of the root group,
+      and changes colour together with the content. */
+html:not(.theme-switch) .masthead {
+  view-transition-name: masthead;
+}
+
+::view-transition-group(masthead),
+::view-transition-old(masthead),
+::view-transition-new(masthead) {
+  animation: none;
 }
 
 /* 6. Accessibility */
