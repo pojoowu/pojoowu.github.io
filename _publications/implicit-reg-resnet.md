@@ -6,7 +6,7 @@ permalink: /publication/implicit-reg-resnet
 excerpt: ''
 date: 2023-01-01
 venue: 'ICLR2024'
-paperurl: 'http://pojoowu.github.io/files/2309.01213v3.pdf'
+paperurl: '/files/2309.01213v3.pdf'
 citation: 'Pierre Marion, Yu-Han Wu, Michael Eli Sander, & Gerard Biau (2024). Implicit regularization of deep residual networks towards neural ODEs. In The Twelfth International Conference on Learning Representations.'
 ---
 ### Abstract
