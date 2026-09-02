@@ -1,31 +1,44 @@
-@view-transition {
-  navigation: auto;
+/* 1. Prevent background canvas flash */
+::view-transition {
+  background-color: #ffffff;
 }
 
-/* Turn off blend mode glare */
+html[data-theme="dark"]::view-transition,
+html.dark::view-transition {
+  background-color: #1a1a1a;
+}
+
+/* 2. Disable plus-lighter glare wash */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
+  /* Adjust duration on native crossfade instead of custom keyframes */
+  animation-duration: 220ms;
 }
 
-/* Keep old page underneath and fade it out slowly */
-::view-transition-old(root) {
-  animation: 280ms ease-out both vt-fade-out;
-  z-index: 1;
+/* 3. Kill AcademicPages' built-in load animation on #main */
+@supports (view-transition-name: none) {
+  .masthead,
+  .page__footer,
+  .page__hero,
+  .page__hero--overlay,
+  #main {
+    animation: none !important;
+    -webkit-animation: none !important;
+  }
 }
 
-/* Place new page on top and fade it in cleanly */
-::view-transition-new(root) {
-  animation: 320ms cubic-bezier(0.2, 0, 0, 1) both vt-fade-in;
-  z-index: 2;
+/* 4. Accessibility fallback */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 
-@keyframes vt-fade-out {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
-
-@keyframes vt-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+/* 5. Theme toggle crossfade (in-place) */
+html.theme-switch::view-transition-old(root),
+html.theme-switch::view-transition-new(root) {
+  animation-duration: 180ms;
 }
