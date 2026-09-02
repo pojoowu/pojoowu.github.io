@@ -1,89 +1,53 @@
-/* 1. Prevent horizontal layout shift from scrollbar toggling */
-html {
-  scrollbar-gutter: stable;
-  overflow-y: scroll;
-}
-
-/* 2. Enable View Transitions */
+/* Enable cross-document transitions */
 @view-transition {
   navigation: auto;
 }
 
-/* 3. Match transition canvas to your theme background */
+/* Force vertical scrollbar track to prevent horizontal layout shift */
+html {
+  scrollbar-gutter: stable both-edges;
+  overflow-y: scroll;
+}
+
+/* Match backdrop color to prevent white flash during crossfade */
 ::view-transition {
-  background-color: var(--global-bg-color, #ffffff);
+  background-color: #ffffff;
 }
 
 html[data-theme="dark"]::view-transition,
 html.dark::view-transition {
-  background-color: var(--global-bg-color, #1a1a1a);
+  background-color: #1a1a1a;
 }
 
-/* 4. Disable blend mode to avoid white glare/flash */
+/* Disable plus-lighter glare */
 ::view-transition-old(root),
-::view-transition-new(root),
-::view-transition-old(main-content),
-::view-transition-new(main-content) {
+::view-transition-new(root) {
   mix-blend-mode: normal;
 }
 
-/* 5. Root handles ONLY the smooth crossfade (no translation) */
+/* Simple, stable crossfade with no vertical movement */
 ::view-transition-old(root) {
-  animation: vt-fade-out 140ms ease both;
+  animation: 90ms ease-out both vt-fade-out;
 }
+
 ::view-transition-new(root) {
-  animation: vt-fade-in 200ms ease both;
+  animation: 160ms ease-in both vt-fade-in;
 }
 
-/* 6. Animate ONLY the main content area with translateY */
-#main {
-  view-transition-name: main-content;
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
-::view-transition-old(main-content) {
-  animation: vt-main-out 140ms ease both;
-}
-::view-transition-new(main-content) {
-  animation: vt-main-in 200ms cubic-bezier(0, 0, 0.2, 1) both;
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes vt-fade-out { to { opacity: 0; } }
-@keyframes vt-fade-in  { from { opacity: 0; } }
-
-@keyframes vt-main-out {
-  to {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-}
-@keyframes vt-main-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
-
-/* 7. Keep masthead truly static (do NOT name the sidebar) */
-.masthead {
-  view-transition-name: masthead;
-}
-
-/* 8. Override AcademicPages default intro animations */
+/* Kill theme intro keyframes */
 @supports (view-transition-name: none) {
-  .masthead,
-  .page__footer,
-  .page__hero,
-  .page__hero--overlay,
-  #main {
-    animation: none !important;
-    -webkit-animation: none !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
+  * {
+    animation-duration: 0.001s !important;
+    animation-name: none !important;
   }
 }
