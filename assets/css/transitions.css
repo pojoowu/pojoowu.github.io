@@ -1,4 +1,4 @@
-/* 1. Prevent background canvas flash */
+/* 1. Backdrop safety */
 ::view-transition {
   background-color: #ffffff;
 }
@@ -8,15 +8,28 @@ html.dark::view-transition {
   background-color: #1a1a1a;
 }
 
-/* 2. Disable plus-lighter glare wash */
+/* 2. Standard alpha blending */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
-  /* Adjust duration on native crossfade instead of custom keyframes */
-  animation-duration: 220ms;
 }
 
-/* 3. Kill AcademicPages' built-in load animation on #main */
+/* 3. Hold old page 100% solid underneath (NO animation, NO flash) */
+::view-transition-old(root) {
+  animation: none;
+}
+
+/* 4. Fade incoming page cleanly over the old page */
+::view-transition-new(root) {
+  animation: 240ms cubic-bezier(0, 0, 0.2, 1) both vt-fade-in;
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 5. Suppress AcademicPages built-in entrance animations */
 @supports (view-transition-name: none) {
   .masthead,
   .page__footer,
@@ -28,17 +41,11 @@ html.dark::view-transition {
   }
 }
 
-/* 4. Accessibility fallback */
+/* 6. Accessibility */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
     animation: none !important;
   }
-}
-
-/* 5. Theme toggle crossfade (in-place) */
-html.theme-switch::view-transition-old(root),
-html.theme-switch::view-transition-new(root) {
-  animation-duration: 180ms;
 }
