@@ -1,0 +1,90 @@
+/* ==========================================================================
+   CUSTOM THEME — light + dark, switchable at runtime
+   ========================================================================== */
+
+/* Build-time Sass variables. Used by the layout partials during compilation,
+   so these cannot be changed live in the browser. */
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
+
+$danger-color               : #ee5f5b;
+$info-color                 : #2f7f93;
+$notice-color               : #7a8288;
+$success-color              : #62c462;
+$warning-color              : #f89406;
+
+$border-radius              : 4px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* --------------------------------------------------------------------------
+   Palettes
+   -------------------------------------------------------------------------- */
+
+@mixin palette-light {
+  --global-base-color                : #7a8288;
+  --global-bg-color                  : #ffffff;
+  --global-border-color              : #f2f2f3;
+  --global-code-background-color     : #fafafa;
+  --global-code-text-color           : #313436;
+  --global-fig-caption-color         : #767a7d;
+  --global-link-color                : #2f7f93;
+  --global-link-color-hover          : #235f6e;
+  --global-link-color-visited        : #639fae;
+  --global-masthead-link-color       : #494e52;
+  --global-masthead-link-color-hover : #5c6266;
+  --global-text-color                : #494e52;
+  --global-text-color-light          : #bcc0c4;
+  --global-thead-color               : #f2f2f3;
+}
+
+@mixin palette-dark {
+  --global-base-color                : #6d7378;  /* changed */
+  --global-bg-color                  : #1b1b1b;  /* changed */
+  --global-border-color              : #3a3a3a;  /* changed */
+  --global-code-background-color     : #262626;  /* changed */
+  --global-code-text-color           : #e6e6e6;  /* changed */
+  --global-fig-caption-color         : #b6bcc0;  /* changed */
+  --global-link-color                : #0ea1c5;
+  --global-link-color-hover          : #4ab8d4;  /* changed */
+  --global-link-color-visited        : #7fc9de;  /* changed */
+  --global-masthead-link-color       : #ffffff;
+  --global-masthead-link-color-hover : #dadada;
+  --global-text-color                : #ffffff;
+  --global-text-color-light          : #bcc0c4;
+  --global-thead-color               : #2a2a2a;  /* changed */
+}
+
+/* --------------------------------------------------------------------------
+   Application: system preference by default, data-theme overrides it
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+  @include palette-light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    @include palette-dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  @include palette-dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  @include palette-light;
+}
