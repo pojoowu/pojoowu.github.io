@@ -1,0 +1,31 @@
+/* ==========================================================================
+   THEME TOGGLE
+   ========================================================================== */
+
+.theme-toggle {
+  float: right;
+  margin: 0 0 0 1em;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: $border-radius;
+  background: transparent;
+  color: var(--global-masthead-link-color);
+  font-size: $type-size-6;
+  line-height: 1;
+  cursor: pointer;
+  transition: $global-transition;
+
+  &:hover {
+    color: var(--global-masthead-link-color-hover);
+    border-color: var(--global-masthead-link-color-hover);
+  }
+
+  .fa-moon { display: none; }
+  .fa-sun  { display: inline-block; }
+}
+
+:root[data-theme="dark"] .theme-toggle,
+:root:not([data-theme="light"]) .theme-toggle {
+  .fa-moon { display: inline-block; }
+  .fa-sun  { display: none; }
+}
