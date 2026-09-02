@@ -17,3 +17,19 @@
   ::view-transition-old(*),
   ::view-transition-new(*) { animation: none !important; }
 }
+
+/* Theme switch: crossfade in place, no slide */
+html.theme-switch::view-transition-old(root) { animation: vt-fade-out 180ms ease both; }
+html.theme-switch::view-transition-new(root) { animation: vt-fade-in  180ms ease both; }
+@keyframes vt-fade-out { to   { opacity: 0; } }
+@keyframes vt-fade-in  { from { opacity: 0; } }
+
+/* The `intro` keyframe fires on five elements on every page load.
+   With view transitions running, it double-animates. */
+@supports (view-transition-name: none) {
+  .masthead,
+  .page__footer,
+  .page__hero,
+  .page__hero--overlay,
+  #main { animation: none; }
+}
