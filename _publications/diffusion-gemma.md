@@ -6,7 +6,7 @@ permalink: /publication/diffusion-gemma
 excerpt: ''
 date: 2026-07-31
 venue: 'arXiv:2608.00146'
-paperurl: 'http://pojoowu.github.io/files/diffusiongemma.pdf'
+paperurl: '/files/diffusiongemma.pdf'
 citation: 'Taïga, DiffusionGemma Team Adrien Ali et al. “DiffusionGemma Technical Report.” (2026).'
 ---
 ### Abstract
