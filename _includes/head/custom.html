@@ -1,6 +1,23 @@
 {% include base_path %}
 
-<!-- start custom head snippets -->
+<!-- _includes/head/custom.html -->
+<style>
+  /* 1. Register transition before the parser touches the body */
+  @view-transition {
+    navigation: auto;
+  }
+
+  /* 2. Prevent horizontal jump from scrollbar toggle */
+  html {
+    scrollbar-gutter: stable;
+    overflow-y: scroll;
+  }
+</style>
+
+<!-- Load transition styling -->
+<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
+
+<!-- Keep the early theme detection script -->
 <script>
   (function () {
     var stored = null;
