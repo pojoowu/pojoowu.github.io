@@ -6,7 +6,7 @@ permalink: /publication/kastor
 excerpt: ''
 date: 2026-08-05
 venue: 'arXiv:2608.06107'
-paperurl: 'http://pojoowu.github.io/files/kastor.pdf'
+paperurl: '/files/kastor.pdf'
 citation: 'Guillaume Couairon, Alexis Jacq, Yu-Han Wu, Renu Singh, Yana Hasson, Quentin Berthet and Romuald Elie (2026) Kastor: An efficient fine-tuning strategy for generative emulation of PDE simulations. arXiv:2608.06107.'
 ---
 ### Abstract
