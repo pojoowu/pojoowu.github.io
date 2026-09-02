@@ -2,14 +2,11 @@
 
 <!-- start custom head snippets -->
 <script>
-(function () {
-  try {
-    var t = localStorage.getItem('theme');
-    if (t === 'dark' || t === 'light') {
-      document.documentElement.setAttribute('data-theme', t);
-    }
-  } catch (e) {}
-})();
+  (function() {
+    var theme = localStorage.getItem('theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
 </script>
 
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
