@@ -1,35 +1,69 @@
-/* assets/css/transitions.css */
+/* Enable cross-document view transitions */
 @view-transition { navigation: auto; }
 
-::view-transition-old(root) { animation: vt-out 140ms ease both; }
-::view-transition-new(root) { animation: vt-in  220ms ease both; }
+/* 1. Prevent the underlying canvas from showing through */
+::view-transition {
+  background-color: var(--background-color, #1a1a1a); /* Match your site's background */
+}
 
-@keyframes vt-out { to   { opacity: 0; transform: translateY(-6px); } }
-@keyframes vt-in  { from { opacity: 0; transform: translateY(8px);  } }
+/* 2. Turn off plus-lighter to stop the bright exposure flash */
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
 
-/* Persistent chrome holds still instead of cross-fading with the content */
+/* 3. Keep old page beneath and slide/fade new page over it */
+::view-transition-old(root) {
+  animation: vt-out 160ms cubic-bezier(0.4, 0, 1, 1) both;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 220ms cubic-bezier(0, 0, 0.2, 1) both;
+  z-index: 2;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Persistent chrome */
 .masthead     { view-transition-name: masthead; }
 .sidebar      { view-transition-name: sidebar; }
 .page__footer { view-transition-name: site-footer; }
 
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) { animation: none !important; }
-}
-
-/* Theme switch: crossfade in place, no slide */
-html.theme-switch::view-transition-old(root) { animation: vt-fade-out 180ms ease both; }
-html.theme-switch::view-transition-new(root) { animation: vt-fade-in  180ms ease both; }
-@keyframes vt-fade-out { to   { opacity: 0; } }
-@keyframes vt-fade-in  { from { opacity: 0; } }
-
-/* The `intro` keyframe fires on five elements on every page load.
-   With view transitions running, it double-animates. */
+/* 4. Use !important to completely kill the theme's default load animation */
 @supports (view-transition-name: none) {
   .masthead,
   .page__footer,
   .page__hero,
   .page__hero--overlay,
-  #main { animation: none; }
+  #main {
+    animation: none !important;
+    -webkit-animation: none !important;
+  }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Theme switch: crossfade in place */
+html.theme-switch::view-transition-old(root) { animation: vt-fade-out 180ms ease both; }
+html.theme-switch::view-transition-new(root) { animation: vt-fade-in 180ms ease both; }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in  { from { opacity: 0; } }
