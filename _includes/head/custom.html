@@ -3,8 +3,9 @@
 <!-- start custom head snippets -->
 <script>
   (function() {
-    var theme = localStorage.getItem('theme') || 
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var storedTheme = localStorage.getItem('theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = storedTheme || (systemDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
   })();
 </script>
