@@ -6,7 +6,7 @@ permalink: /publication/mind
 excerpt: ''
 date: 2026-05-07
 venue: 'arXiv'
-paperurl: 'http://pojoowu.github.io/files/2605.06797v1.pdf'
+paperurl: '/files/2605.06797v1.pdf'
 citation: 'Quentin Berther, Yu-Han Wu, Clément Crepy, Romuald Elie, Klaus Greff & Michael Eli Sander (2026). MIND: Monge Inception Distance for Generative Models Evaluation. arXiv:2605.06797.'
 ---
 ![mind](http://pojoowu.github.io/images/mind.jpeg)
