@@ -1,0 +1,19 @@
+/* assets/css/transitions.css */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: vt-out 140ms ease both; }
+::view-transition-new(root) { animation: vt-in  220ms ease both; }
+
+@keyframes vt-out { to   { opacity: 0; transform: translateY(-6px); } }
+@keyframes vt-in  { from { opacity: 0; transform: translateY(8px);  } }
+
+/* Persistent chrome holds still instead of cross-fading with the content */
+.masthead     { view-transition-name: masthead; }
+.sidebar      { view-transition-name: sidebar; }
+.page__footer { view-transition-name: site-footer; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
