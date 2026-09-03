@@ -43,18 +43,18 @@ layout: default
       </header>
 
       <section class="page__content" itemprop="text">
-        {% if page.figure %}
-        <figure class="post-figure pubpage__figure">
-          <img src="{{ base_path }}{{ page.figure }}" alt="Key figure from the paper" loading="lazy">
-          {% if page.figure_caption %}<figcaption>{{ page.figure_caption }}</figcaption>{% endif %}
-        </figure>
-        {% endif %}
-
         {% if page.highlights %}
         <h2 id="in-brief">In brief</h2>
         <ul class="brief">
           {% for h in page.highlights %}<li>{{ h | markdownify | remove: "<p>" | remove: "</p>" }}</li>{% endfor %}
         </ul>
+        {% endif %}
+
+        {% if page.figure %}
+        <figure class="post-figure pubpage__figure">
+          <img src="{{ base_path }}{{ page.figure }}" alt="Key figure from the paper" loading="lazy">
+          {% if page.figure_caption %}<figcaption>{{ page.figure_caption }}</figcaption>{% endif %}
+        </figure>
         {% endif %}
 
         {{ content }}

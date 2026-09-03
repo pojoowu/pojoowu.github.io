@@ -22,10 +22,12 @@ repository               : "pojoowu/pojoowu.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "bio.jpg"
+  avatar           : "portrait.jpg"
   name             : "Yu-Han Wu"
-  pronouns         : "he/him"  
-  bio              : "Google DeepMind co-advised PhD student at Sorbonne University, supervised by Gérard Biau."
+  name_native      : "吳雨翰"
+  pronouns         : "he/him"
+  bio              : "PhD student in machine learning"
+  affiliation      : "Sorbonne University · Google DeepMind"
   location         : "Paris, France"
   employer         : "Google DeepMind"
   uri              : # URL

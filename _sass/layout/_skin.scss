@@ -332,24 +332,47 @@ a {
 
 .sidebar .author__name {
   margin: 0.25em 0 0.1em;
-  font-size: 1.15em;
+  font-size: 1.45em;
   font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 
   @include breakpoint($large) {
-    margin-top: 0.75em;
+    margin-top: 0.7em;
   }
 }
 
-.author__pronouns {
-  margin: 0;
-  font-size: 0.8em;
+/* name in Chinese characters under the Latin name */
+.author__name-native {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--global-text-color-light);
 }
 
+.author__pronouns {
+  margin: 0.3em 0 0;
+  font-family: $skin-mono;
+  font-size: 0.72em;
+  color: var(--global-text-color-light);
+}
+
+/* title and affiliation */
 .sidebar .author__bio {
-  margin: 0.6em 0 0;
-  font-size: 0.85em;
-  line-height: 1.5;
+  margin: 0.75em 0 0;
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--global-text-color);
+}
+
+.sidebar .author__affiliation {
+  margin: 0.2em 0 0;
+  font-size: 0.82em;
+  line-height: 1.45;
+  color: var(--global-text-color-light);
 
   @include breakpoint($large) {
     margin-bottom: 1.1em;
@@ -749,6 +772,7 @@ a {
   grid-template-rows: 0fr;
   margin: 0;
   padding: 0 0.9em;
+  border-width: 0;
   border-color: transparent;
   opacity: 0;
   overflow: hidden;
@@ -767,6 +791,7 @@ a {
     grid-template-rows: 1fr;
     margin: 0.9em 0 0.25em;
     padding: 0.7em 0.9em;
+    border-width: 1px;
     border-color: var(--global-border-color);
     opacity: 1;
   }
@@ -945,6 +970,40 @@ a {
 /* --------------------------------------------------------------------------
    Home page components (used in _pages/about.md)
    -------------------------------------------------------------------------- */
+
+/* key facts on the home page: monospace label, value */
+.page__content .facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35em 1.25em;
+  margin: 0 0 1.25em;
+
+  dt {
+    margin: 0;
+    font-family: $skin-mono;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    padding-top: 0.25em;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 599px) {
+    grid-template-columns: 1fr;
+    gap: 0 0;
+
+    dd {
+      margin-bottom: 0.6em;
+    }
+  }
+}
 
 .chips {
   display: flex;
@@ -1459,6 +1518,7 @@ a {
 
   figcaption {
     margin-top: 0.6em;
+    font-family: inherit;   /* the theme sets captions in a serif */
     font-size: 0.85em;
     line-height: 1.5;
     color: var(--global-text-color-light);

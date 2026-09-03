@@ -10,6 +10,8 @@ paperurl: '/files/diffusiongemma.pdf'
 arxivurl: 'https://arxiv.org/abs/2608.00146'
 authors: 'DiffusionGemma Team, Google DeepMind'
 summary: 'An open-weight discrete-diffusion language model fine-tuned from Gemma 4.'
+figure: /images/papers/diffusion-gemma.png
+figure_caption: "Pareto plot of quality versus output decoding speed comparing DiffusionGemma to the Gemma 4 model family and other diffusion models. Quality and output speed are calculated as the average across GPQA-Diamond and LiveCodeBench-v6 for all models."
 highlights:
   - "**Problem.** Autoregressive LLMs decode one token at a time, a sequential bottleneck for generation speed."
   - "**Approach.** Fine-tune Gemma 4 into a block-diffusion model that refines 256 tokens in parallel: supervised denoising, then reinforcement learning with sampler distillation, using under 10% of the base model's training tokens."
