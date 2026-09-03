@@ -12,7 +12,7 @@ site_theme               : "custom"
 title                    : "Yu Han Wu"
 title_separator          : "-"
 name                     : &name "Yu Han Wu"
-description              : &description "Machine Learning PhD student"
+description              : &description "PhD student working on diffusion models"
 url                      : https://yh-wu.com # custom domain (CNAME file at the repo root); GitHub Pages redirects pojoowu.github.io here
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "pojoowu/pojoowu.github.io"
@@ -25,7 +25,7 @@ author:
   avatar           : "portrait.jpg"
   name             : "Yu-Han Wu"
   name_native      : "吳雨翰"
-  pronouns         : "he/him"
+  pronouns         : # removed by request
   bio              : "PhD student in machine learning"
   affiliation      : "Sorbonne University · Google DeepMind"
   location         : "Paris, France"

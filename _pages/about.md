@@ -7,13 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-I am a PhD student in machine learning at [LPSM](https://www.lpsm.paris/), [Sorbonne University](https://www.sorbonne-universite.fr/), since September 2024, and part of the co-advised PhD student program at [Google DeepMind](https://deepmind.google/).
+I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](https://www.sorbonne-universite.fr/), and [Google DeepMind](https://deepmind.google/), working on **diffusion models**. I started in September 2024, within the co-advised PhD student program between the two institutions.
 
 <dl class="facts">
   <dt>Advisors</dt>
   <dd><a href="https://perso.lpsm.paris/~biau/">Gérard Biau</a>, <a href="https://www.imo.universite-paris-saclay.fr/~claire.boyer/">Claire Boyer</a> and <a href="https://pierremarion23.github.io/">Pierre Marion</a></dd>
   <dt>At Google DeepMind</dt>
-  <dd>Quentin Berthet and Romuald Elie</dd>
+  <dd><a href="https://q-berthet.github.io/">Quentin Berthet</a> and <a href="https://www.linkedin.com/in/romuald-elie-b9bb817b/">Romuald Elie</a></dd>
 </dl>
 
 <div class="chips" aria-label="Research interests">
