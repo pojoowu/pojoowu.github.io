@@ -7,7 +7,26 @@
 <div class="author__card" itemscope itemtype="http://schema.org/Person">
 
   <div class="author__avatar">
-    {% if author.avatar contains "://" %}
+    {% if author.avatars and author.avatars.size > 1 %}
+    {%- assign cycle = author.avatar_cycle | default: 30000 -%}
+    {%- comment -%} Stacked photos that crossfade in a loop (see .avatar-loop in _skin.scss).
+        The first one is the default and the only one exposed to assistive tech. {%- endcomment -%}
+    <span class="avatar-loop" data-cycle="{{ cycle }}" style="--avatar-cycle: {{ cycle }}ms">
+      {%- for a in author.avatars %}
+      <img src="{{ a | prepend: "/images/" | prepend: base_path }}" width="175" height="175" class="author__avatar avatar-loop__img" alt="{% if forloop.first %}{{ author.name }}{% endif %}"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+      {%- endfor %}
+    </span>
+    <script>
+      (function () {
+        var s = document.querySelector('.avatar-loop');
+        if (!s) return;
+        var T = parseInt(s.getAttribute("data-cycle"), 10) || 30000;
+        function sync() { s.style.setProperty('--avatar-phase', (-(Date.now() % T)) + 'ms'); }
+        sync();
+        window.addEventListener('pageshow', function (e) { if (e.persisted) sync(); });
+      })();
+    </script>
+    {% elsif author.avatar contains "://" %}
     	<img src="{{ author.avatar }}" width="175" height="175" alt="{{ author.name }}">
     {% else %}
     	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" width="175" height="175" class="author__avatar" alt="{{ author.name }}">
@@ -15,9 +34,10 @@
   </div>
 
   <div class="author__content">
-    <h3 class="author__name">{{ author.name }}</h3>
+    <h3 class="author__name">{{ author.name }}{% if author.name_native %} <span class="author__name-native" lang="zh-Hant">{{ author.name_native }}</span>{% endif %}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    {% if author.affiliation %}<p class="author__affiliation">{{ author.affiliation }}</p>{% endif %}
   </div>
 
   <div class="author__urls-wrapper">

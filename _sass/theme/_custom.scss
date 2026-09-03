@@ -46,13 +46,17 @@ $sidebar-screen-min-width   : 1024px;
   --global-accent-color              : #c2410c;
   --global-accent-color-hover        : #9a3412;
   --global-accent-soft-color         : #fdeee4;
+  --global-accent-2-color            : #28618c;   /* cool accent: metadata badges, topic chips, button icons */
+  --global-accent-2-soft-color       : #e8f1f8;
+  --global-award-color               : #ffffff;   /* distinctions (spotlight, oral): white text ... */
+  --global-award-soft-color          : #0b7a52;   /* ... on a solid emerald badge, far from orange and blue */
   --global-link-color                : #c2410c;
   --global-link-color-hover          : #9a3412;
   --global-link-color-visited        : #c2410c;
   --global-masthead-link-color       : #1f2328;
   --global-masthead-link-color-hover : #c2410c;
-  --global-text-color                : #1f2328;
-  --global-text-color-light          : #6b7280;
+  --global-text-color                : #24292f;
+  --global-text-color-light          : #7b838f;   /* secondary text: authors, dates, descriptions, news */
   --global-thead-color               : #efefeb;
 }
 
@@ -68,13 +72,17 @@ $sidebar-screen-min-width   : 1024px;
   --global-accent-color              : #ff8a5b;
   --global-accent-color-hover        : #ffa983;
   --global-accent-soft-color         : rgba(255, 138, 91, 0.14);
+  --global-accent-2-color            : #8cc0e6;   /* cool accent: metadata badges, topic chips, button icons */
+  --global-accent-2-soft-color       : rgba(140, 192, 230, 0.14);
+  --global-award-color               : #062b1e;   /* distinctions (spotlight, oral): dark text ... */
+  --global-award-soft-color          : #34d399;   /* ... on a solid bright emerald badge */
   --global-link-color                : #ff8a5b;
   --global-link-color-hover          : #ffa983;
   --global-link-color-visited        : #ff8a5b;
   --global-masthead-link-color       : #e6edf3;
   --global-masthead-link-color-hover : #ff8a5b;
-  --global-text-color                : #e6edf3;
-  --global-text-color-light          : #9aa4b2;
+  --global-text-color                : #dfe5ec;
+  --global-text-color-light          : #8791a0;   /* secondary text: authors, dates, descriptions, news */
   --global-thead-color               : #1f262e;
 }
 

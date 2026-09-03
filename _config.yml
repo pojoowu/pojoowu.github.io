@@ -12,7 +12,7 @@ site_theme               : "custom"
 title                    : "Yu Han Wu"
 title_separator          : "-"
 name                     : &name "Yu Han Wu"
-description              : &description "Machine Learning PhD student"
+description              : &description "PhD student"
 url                      : https://yh-wu.com # custom domain (CNAME file at the repo root); GitHub Pages redirects pojoowu.github.io here
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "pojoowu/pojoowu.github.io"
@@ -22,10 +22,14 @@ repository               : "pojoowu/pojoowu.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "bio.jpg"
+  avatar           : "portrait-2.jpg"
+  avatars          : ["portrait-2.jpg", "portrait.jpg"] # sidebar crossfades through these; the first is the default
+  avatar_cycle     : 30000 # ms per full loop of the sidebar photos (each photo ~12.5s, ~2.4s crossfade)
   name             : "Yu-Han Wu"
-  pronouns         : "he/him"  
-  bio              : "Google DeepMind co-advised PhD student at Sorbonne University, supervised by Gérard Biau."
+  name_native      : "吳雨翰"
+  pronouns         : # removed by request
+  bio              : "PhD student in diffusion models"
+  affiliation      : "Sorbonne University · Google DeepMind"
   location         : "Paris, France"
   employer         : "Google DeepMind"
   uri              : # URL
@@ -261,10 +265,10 @@ defaults:
       path: ""
       type: publications
     values:
-      layout: single
+      layout: publication
       author_profile: true
-      share: true
-      comments: true
+      share: false
+      comments: false
   # # _portfolio
   # - scope:
   #     path: ""

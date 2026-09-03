@@ -21,7 +21,7 @@
   text: "Poster at [Lemanth 2026](/talks/lemanth2026), EPFL Bernoulli Center, on MIND."
 
 - date: 2025-12-07
-  text: "Talk at the [PriGM workshop](/talks/prigm2025) in Copenhagen on optimal stopping in latent diffusion models."
+  text: "[Optimal Stopping in Latent Diffusion Models](/publication/optimal-stopping-ldm) selected for an **oral** at the [PriGM workshop](/talks/prigm2025) of EurIPS 2025 in Copenhagen."
 
 - date: 2025-10-10
   text: "New preprint: [Optimal Stopping in Latent Diffusion Models](/publication/optimal-stopping-ldm)."
@@ -39,4 +39,4 @@
   text: "Started my PhD at LPSM, Sorbonne University, co-advised with Google DeepMind."
 
 - date: 2024-01-16   # approximate
-  text: "[Implicit regularization of deep residual networks towards neural ODEs](/publication/implicit-reg-resnet) accepted at ICLR 2024."
+  text: "[Implicit regularization of deep residual networks towards neural ODEs](/publication/implicit-reg-resnet) accepted at ICLR 2024 as a **spotlight**."

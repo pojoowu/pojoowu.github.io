@@ -18,14 +18,26 @@ $skin-max-width : 1120px;
 $skin-radius    : 16px;
 $skin-sidebar   : 280px;
 $skin-gap       : 2em;
+$skin-mono      : ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
 /* --------------------------------------------------------------------------
    Base
    -------------------------------------------------------------------------- */
 
+/* Type scale. The theme raises the root size to 18px from tablet width up,
+   which made everything large and crowded: 16px on phones, 15px elsewhere. */
+html {
+  font-size: 16px;
+
+  @include breakpoint($medium) {
+    font-size: 15px;
+  }
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
 }
 
 h1, h2, h3, h4 {
@@ -283,11 +295,11 @@ a {
   background: var(--global-surface-color);
   border: 1px solid var(--global-border-color);
   border-radius: $skin-radius;
-  padding: 1.25em;
+  padding: 1.1em;
   margin-bottom: 1.5em;
 
   @include breakpoint($large) {
-    padding: 1.75em 1.5em;
+    padding: 1.5em 1.25em;
     text-align: center;
   }
 }
@@ -312,6 +324,45 @@ a {
   }
 }
 
+/* Sidebar photo loop: photos are stacked in .avatar-loop; the first stays
+   visible underneath, the second fades in and out over --avatar-cycle. The
+   inline script in author-profile.html sets --avatar-phase from the clock so
+   every page load resumes the loop at the same point instead of restarting.
+   Keyframes are written for two photos; add stops if a third is ever added. */
+.avatar-loop {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 0;
+
+  /* the images also carry the .author__avatar class, which gives them the
+     theme's bottom margin; inside the stack that margin would inflate the
+     wrapper and stretch the overlay into an oval, so it is reset here and the
+     outer .author__avatar div keeps the spacing below the photo */
+  .avatar-loop__img {
+    display: block;
+    margin: 0;
+  }
+
+  .avatar-loop__img + .avatar-loop__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: avatar-loop var(--avatar-cycle, 30s) ease-in-out infinite;
+    animation-delay: var(--avatar-phase, 0ms);
+  }
+}
+
+@keyframes avatar-loop {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .author__content {
   @include breakpoint($large) {
     padding: 0;
@@ -320,24 +371,47 @@ a {
 
 .sidebar .author__name {
   margin: 0.25em 0 0.1em;
-  font-size: 1.15em;
+  font-size: 1.45em;
   font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 
   @include breakpoint($large) {
-    margin-top: 0.75em;
+    margin-top: 0.7em;
   }
 }
 
-.author__pronouns {
-  margin: 0;
-  font-size: 0.8em;
+/* name in Chinese characters under the Latin name */
+.author__name-native {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--global-text-color-light);
 }
 
+.author__pronouns {
+  margin: 0.3em 0 0;
+  font-family: $skin-mono;
+  font-size: 0.72em;
+  color: var(--global-text-color-light);
+}
+
+/* title and affiliation */
 .sidebar .author__bio {
-  margin: 0.6em 0 0;
-  font-size: 0.85em;
-  line-height: 1.5;
+  margin: 0.75em 0 0;
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--global-text-color);
+}
+
+.sidebar .author__affiliation {
+  margin: 0.2em 0 0;
+  font-size: 0.82em;
+  line-height: 1.45;
+  color: var(--global-text-color-light);
 
   @include breakpoint($large) {
     margin-bottom: 1.1em;
@@ -405,10 +479,10 @@ a {
     background: var(--global-surface-color);
     border: 1px solid var(--global-border-color);
     border-radius: $skin-radius;
-    padding: 1.5em 1.25em;
+    padding: 1.25em 1.1em;
 
     @include breakpoint($large) {
-      padding: 2.25em 2.5em;
+      padding: 1.9em 2.1em;
     }
   }
 }
@@ -417,14 +491,14 @@ a {
   background: var(--global-surface-color);
   border: 1px solid var(--global-border-color);
   border-radius: $skin-radius;
-  padding: 1.5em 1.25em;
+  padding: 1.25em 1.1em;
   margin-bottom: 2em;
 
   @include breakpoint($large) {
     float: right;
     width: calc(100% - #{$skin-sidebar} - #{$skin-gap});
     margin-right: 0;
-    padding: 2.25em 2.5em;
+    padding: 1.9em 2.1em;
   }
 }
 
@@ -438,8 +512,8 @@ a {
 }
 
 .page__title {
-  margin: 0 0 0.75em;
-  font-size: 1.9em;
+  margin: 0 0 0.6em;
+  font-size: 1.55em;
   line-height: 1.15;
   font-weight: 800;
 
@@ -451,29 +525,43 @@ a {
 
 .page__content,
 .archive {
+  /* section headings: smaller, heavier, with a short accent bar instead of a
+     full-width hairline, so they read as landmarks rather than more text */
   h2 {
-    margin: 1.75em 0 0.75em;
-    padding-bottom: 0.4em;
-    font-size: 1.3em;
-    border-bottom: 1px solid var(--global-border-color);
+    margin: 1.6em 0 0.7em;
+    padding-bottom: 0;
+    font-size: 1.12em;
+    font-weight: 800;
+    border-bottom: 0;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 2.2em;
+      height: 3px;
+      margin-top: 0.35em;
+      border-radius: 2px;
+      background: var(--global-accent-color);
+    }
   }
 
   h3 {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   p,
   li {
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
+  /* links are told apart by colour; the underline appears only on hover */
   a {
     color: var(--global-link-color);
-    text-decoration-color: color-mix(in srgb, var(--global-link-color) 40%, transparent);
+    text-decoration: none;
 
     &:hover {
       color: var(--global-link-color-hover);
-      text-decoration-color: currentColor;
+      text-decoration: underline;
     }
   }
 
@@ -496,7 +584,7 @@ a {
   padding-right: 0;
 
   .archive__item {
-    padding: 1.15em 0;
+    padding: 0.95em 0;
     border-bottom: 1px solid var(--global-border-color);
   }
 
@@ -511,17 +599,23 @@ a {
   margin: 0 0 0.3em;
   padding-bottom: 0;
   border-bottom: 0;
-  font-size: 1.1em;
-  line-height: 1.35;
-  font-weight: 700;
+  font-size: 1.35em;   /* item titles are the main entry point of each row */
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.012em;
 
+  &:after {
+    display: none;
+  }
+
+  /* full-contrast title; orange only when hovered, so a row is not a wall of orange */
   a {
-    color: var(--global-accent-color);
+    color: var(--global-text-color);
     text-decoration: none;
 
     &:hover {
-      color: var(--global-accent-color-hover);
-      text-decoration: underline;
+      color: var(--global-accent-color);
+      text-decoration: none;
     }
   }
 }
@@ -546,6 +640,7 @@ a {
 .archive__item-excerpt {
   margin: 0.25em 0 0;
   font-size: 0.92em;
+  color: var(--global-text-color-light);
 }
 
 .archive .page__meta + .archive__item-excerpt {
@@ -564,11 +659,297 @@ a {
   }
 }
 
-.pub__citation {
-  margin: 0 0 0.7em;
-  font-size: 0.85em;
+/* "Details" / "Cite" buttons in the row; their boxes appear below the row so
+   the buttons never move */
+.pub__toggle,
+.copy-btn {
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8em;
+  font-weight: 700;
+
+  &[aria-expanded="true"] {
+    border-color: var(--global-text-color-light);
+    color: var(--global-text-color);
+  }
+}
+
+/* shared box under the row (details in sans-serif, citation in monospace) */
+.pub__box,
+.page__content .pub__box {
+  margin: 0.9em 0 0.25em;
+  padding: 0.7em 0.9em;
+  border: 1px dashed var(--global-border-color);
+  border-radius: 8px;
+}
+
+/* "In brief": three bullets with a bold lead word (paper page and Details box) */
+.brief,
+.page__content .brief,
+.pub__details .brief {
+  list-style: none;
+  margin: 0 0 0.75em;
+  padding: 0;
+
+  li {
+    position: relative;
+    margin: 0 0 0.5em;
+    padding-left: 1.1em;
+    font-size: 0.95em;
+    line-height: 1.55;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--global-accent-2-color);
+    }
+
+    strong {
+      color: var(--global-text-color);
+    }
+  }
+}
+
+.page__content .brief {
+  margin-bottom: 1.25em;
+}
+
+/* BibTeX box: monospace entry with a Copy button in its corner */
+.pub__bibtex .pub__box-inner,
+.page__content .pub__bibtex .pub__box-inner {
+  position: relative;
+}
+
+.pub__bibtex .copy-btn,
+.page__content .pub__bibtex .copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78em;
+  font-weight: 700;
+  background: var(--global-surface-color);
+}
+
+.bibtex__code,
+.page__content .bibtex__code {
+  margin: 0;
+  padding: 0 6em 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: $skin-mono;
+  font-size: 0.76em;
   line-height: 1.55;
   color: var(--global-text-color-light);
+  white-space: pre;
+  overflow-x: auto;
+
+  code {
+    padding: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+}
+
+.pub__citation .pub__box-inner p {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.pub__details,
+.page__content .pub__details {
+  font-size: 0.9em;
+  line-height: 1.55;
+  color: var(--global-text-color);
+
+  p {
+    margin: 0 0 0.55em;
+    font-size: 1em;
+    line-height: 1.55;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pub__box-more {
+    font-size: 0.88em;
+    font-weight: 600;
+  }
+}
+
+
+/* citation text in a copyable monospace box (list toggle and paper page) */
+.pub__citation,
+.page__content .pub__citation {
+  margin: 0.9em 0 0.25em;   /* clear of the button row above it */
+  padding: 0.6em 0.8em;
+  border: 1px dashed var(--global-border-color);
+  border-radius: 8px;
+  font-family: $skin-mono;
+  font-size: 0.74em;
+  line-height: 1.55;
+  color: var(--global-text-color-light);
+}
+
+/* collapsible state (set by the script): slides open and fades in. Placed
+   after the citation rule so the closed box really has no margin or padding.
+   The grid-rows 0fr -> 1fr trick animates to the content's natural height. */
+.pub__box.pub__box--collapsible,
+.page__content .pub__box.pub__box--collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin: 0;
+  padding: 0 0.9em;
+  border-width: 0;
+  border-color: transparent;
+  opacity: 0;
+  overflow: hidden;
+  transition: grid-template-rows 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 220ms ease,
+              margin 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              padding 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 200ms ease;
+
+  > .pub__box-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &.is-open {
+    grid-template-rows: 1fr;
+    margin: 0.9em 0 0.25em;
+    padding: 0.7em 0.9em;
+    border-width: 1px;
+    border-color: var(--global-border-color);
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Paper page (_layouts/publication.html)
+   -------------------------------------------------------------------------- */
+
+.pubpage {
+  .page__title {
+    margin-bottom: 0.45em;
+  }
+
+  &__authors {
+    margin: 0 0 0.6em;
+    font-size: 0.95em;
+  }
+
+  &__summary {
+    margin: 0 0 1em;
+    font-size: 1.02em;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+  }
+
+  .pubpage__header .pub__actions {
+    margin: 0 0 1.5em;
+    padding-bottom: 1.4em;
+    border-bottom: 1px solid var(--global-border-color);
+  }
+
+  /* figures pasted into the abstract body */
+  .page__content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.25em 0;
+    padding: 0.5em;
+    border: 1px solid var(--global-border-color);
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  .page__content h3 {
+    margin-top: 1.4em;
+  }
+
+  .page__content .pub__citation {
+    margin: 0.5em 0 0;
+  }
+
+  /* key figure at the top of the page */
+  .page__content .pubpage__figure {
+    margin: 0.25em 0 1.5em;
+  }
+
+  .page__content .pubpage__cite-actions {
+    margin: 0.75em 0 0;
+  }
+
+  /* related papers of mine */
+  .page__content .related {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .related__item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.25em 0.7em;
+      margin: 0 0 0.7em;
+      padding: 0.7em 0.9em;
+      border: 1px solid var(--global-border-color);
+      border-radius: 10px;
+      background: var(--global-bg-color);
+    }
+
+    .related__title {
+      font-weight: 700;
+      color: var(--global-text-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--global-accent-color);
+      }
+    }
+
+    .related__meta {
+      font-family: $skin-mono;
+      font-size: 0.74em;
+      color: var(--global-accent-2-color);
+    }
+
+    .related__summary {
+      flex: 0 0 100%;
+      font-size: 0.86em;
+      color: var(--global-text-color-light);
+    }
+  }
+
+  /* room between the citation box and the "All publications" link */
+  .more {
+    margin-top: 1.75em;
+  }
+
+  /* back link above the header: arrow in front, no arrow after */
+  .more--back {
+    margin: 0 0 1em;
+
+    a:before {
+      content: "\2190  ";
+    }
+
+    a:after {
+      content: none;
+    }
+  }
 }
 
 .pub__actions {
@@ -587,17 +968,30 @@ a {
   padding: 0.3em 0.85em;
   border: 1px solid transparent;
   border-radius: 999px;
-  background: var(--global-accent-soft-color);
-  color: var(--global-accent-color);
+  background: var(--global-surface-2-color);
+  color: var(--global-text-color);
   font-size: 0.8em;
   font-weight: 700;
   text-decoration: none;
   transition: $global-transition;
 
+  /* neutral buttons with a blue icon; orange appears on hover only */
+  .fas,
+  .fab,
+  .ai {
+    color: var(--global-accent-2-color);
+  }
+
   &:hover {
     border-color: var(--global-accent-color);
     color: var(--global-accent-color);
     text-decoration: none;
+
+    .fas,
+    .fab,
+    .ai {
+      color: var(--global-accent-color);
+    }
   }
 
   &--ghost {
@@ -615,6 +1009,40 @@ a {
 /* --------------------------------------------------------------------------
    Home page components (used in _pages/about.md)
    -------------------------------------------------------------------------- */
+
+/* key facts on the home page: monospace label, value */
+.page__content .facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35em 1.25em;
+  margin: 0 0 1.25em;
+
+  dt {
+    margin: 0;
+    font-family: $skin-mono;
+    font-size: 0.78em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    padding-top: 0.25em;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 599px) {
+    grid-template-columns: 1fr;
+    gap: 0 0;
+
+    dd {
+      margin-bottom: 0.6em;
+    }
+  }
+}
 
 .chips {
   display: flex;
@@ -636,9 +1064,9 @@ a {
 .chip {
   padding: 0.3em 0.85em;
   border-radius: 999px;
-  background: var(--global-accent-soft-color);
-  color: var(--global-accent-color);
-  font-size: 0.8em;
+  background: var(--global-accent-2-soft-color);
+  color: var(--global-accent-2-color);
+  font-size: 0.78em;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -653,8 +1081,9 @@ a {
     position: relative;
     display: flex;
     gap: 0.75em;
-    margin: 0 0 0.75em;
+    margin: 0 0 0.55em;
     padding-left: 0.25em;
+    font-size: 0.94em;
 
     &:before {
       content: "";
@@ -767,8 +1196,6 @@ a {
    News, research focus, selected publications, blog list
    -------------------------------------------------------------------------- */
 
-$skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-
 /* monospace for metadata (dates, venues, labels): a small nod to
    terminal-style academic pages without changing the body type */
 .chips__label,
@@ -781,13 +1208,15 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   font-feature-settings: "tnum";
 }
 
+/* badges: cool accent for venues, dates and places; warm accent for the kind
+   of talk; grey for preprints, so published work stands out at a glance */
 .badge {
   display: inline-block;
   padding: 0.15em 0.6em;
-  border: 1px solid var(--global-border-color);
+  border: 1px solid transparent;
   border-radius: 6px;
-  background: var(--global-surface-2-color);
-  color: var(--global-text-color-light);
+  background: var(--global-accent-2-soft-color);
+  color: var(--global-accent-2-color);
   font-size: 0.72em;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -797,10 +1226,35 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
     margin: 0 0.1em;
   }
 
+  /* category (kind of talk): neutral, full-contrast text */
   &--accent {
+    border-color: var(--global-border-color);
+    background: var(--global-surface-2-color);
+    color: var(--global-text-color);
+  }
+
+  &--muted {
+    border-color: var(--global-border-color);
+    background: var(--global-surface-2-color);
+    color: var(--global-text-color-light);
+  }
+
+  /* distinction (Spotlight, Oral, Best paper): a solid emerald badge, the only
+     filled badge on the site, so it jumps out next to orange and blue */
+  &--award {
     border-color: transparent;
-    background: var(--global-accent-soft-color);
-    color: var(--global-accent-color);
+    padding: 0.2em 0.75em;
+    background: var(--global-award-soft-color);
+    color: var(--global-award-color);
+    font-family: inherit;        /* sans-serif, not the small monospace: easier to read on a filled badge */
+    font-size: 0.78em;
+    font-weight: 800;
+    letter-spacing: 0;
+
+    .fas {
+      font-size: 0.85em;
+      margin-right: 0.15em;
+    }
   }
 }
 
@@ -819,9 +1273,11 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
     min-width: 0;
   }
 
+  /* three distinct voices: authors small and grey (own name bold), the
+     takeaway full size and full contrast, the citation folded away */
   &__authors {
-    margin: 0 0 0.35em;
-    font-size: 0.9em;
+    margin: 0 0 0.4em;
+    font-size: 0.82em;
     color: var(--global-text-color-light);
 
     strong {
@@ -831,9 +1287,10 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   }
 
   &__summary {
-    margin: 0 0 0.6em;
-    font-size: 0.92em;
+    margin: 0 0 0.65em;
+    font-size: 0.96em;
     line-height: 1.55;
+    color: var(--global-text-color);
   }
 
 }
@@ -844,11 +1301,18 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   border-bottom: 1px solid var(--global-border-color);
 
   .pub__title {
-    font-size: 1.02em;
+    font-size: 1.25em;
+  }
+
+  /* the theme's `.page__content p` rule would otherwise reset these to 1em */
+  .pub__authors {
+    font-size: 0.78em;
   }
 
   .pub__summary {
     margin-bottom: 0.5em;
+    font-size: 0.92em;
+    color: var(--global-text-color-light);   /* on the home page the title carries the weight */
   }
 }
 
@@ -880,7 +1344,9 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   &__text {
     flex: 1 1 auto;
     min-width: 0;
+    font-size: 0.94em;
     line-height: 1.55;
+    color: var(--global-text-color-light);   /* news is secondary; the links carry the weight */
   }
 }
 
@@ -967,6 +1433,10 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   text-transform: uppercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-border-color);
+
+  &:after {
+    display: none;   /* year labels keep just the hairline, not the accent bar */
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -995,8 +1465,9 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
 
   &__desc {
     margin: 0 0 0.6em;
-    font-size: 0.92em;
+    font-size: 0.9em;
     line-height: 1.55;
+    color: var(--global-text-color-light);
   }
 
   @media screen and (max-width: 599px) {
@@ -1043,21 +1514,21 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
     height: 2.1em;
     margin-bottom: 0.6em;
     border-radius: 9px;
-    background: var(--global-accent-soft-color);
-    color: var(--global-accent-color);
+    background: var(--global-accent-2-soft-color);
+    color: var(--global-accent-2-color);
     font-size: 0.95em;
   }
 }
 
 .page__content .focus-card__title {
   margin: 0 0 0.3em;
-  font-size: 1em;
+  font-size: 0.95em;
   line-height: 1.35;
 }
 
 .page__content .focus-card__text {
   margin: 0 0 0.5em;
-  font-size: 0.88em;
+  font-size: 0.84em;
   line-height: 1.5;
   color: var(--global-text-color-light);
 }
@@ -1086,6 +1557,7 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
 
   figcaption {
     margin-top: 0.6em;
+    font-family: inherit;   /* the theme sets captions in a serif */
     font-size: 0.85em;
     line-height: 1.5;
     color: var(--global-text-color-light);

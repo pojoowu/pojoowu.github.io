@@ -1,13 +1,20 @@
 ---
 permalink: /
-title: "About me"
+title: "About"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lpsm.paris/) at [Sorbonne University](https://www.sorbonne-universite.fr/) since September 2024, supervised by [Gérard Biau](https://perso.lpsm.paris/~biau/), [Claire Boyer](https://www.imo.universite-paris-saclay.fr/~claire.boyer/) and [Pierre Marion](https://pierremarion23.github.io/). I am also part of the co-advised PhD student program at Google DeepMind, co-advised by Quentin Berthet and Romuald Elie.
+I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](https://www.sorbonne-universite.fr/), and [Google DeepMind](https://deepmind.google/), working on **diffusion models** and **machine learning theory**.
+
+<dl class="facts">
+  <dt>Advisors</dt>
+  <dd><a href="https://perso.lpsm.paris/~biau/">Gérard Biau</a>, <a href="https://www.imo.universite-paris-saclay.fr/~claire.boyer/">Claire Boyer</a> and <a href="https://pierremarion23.github.io/">Pierre Marion</a></dd>
+  <dt>At Google DeepMind</dt>
+  <dd><a href="https://q-berthet.github.io/">Quentin Berthet</a> and <a href="https://www.linkedin.com/in/romuald-elie-b9bb817b/">Romuald Elie</a></dd>
+</dl>
 
 <div class="chips" aria-label="Research interests">
   <span class="chips__label">Research interests</span>
@@ -15,12 +22,6 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
   <span class="chip">Regularization</span>
   <span class="chip">ML for science</span>
 </div>
-
-## News
-
-{% include news-list.html limit=5 %}
-
-<p class="more"><a href="/news/">All news</a></p>
 
 ## Research focus
 
@@ -57,20 +58,8 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
 
 <p class="more"><a href="/publications/">All publications</a></p>
 
-## Brief curriculum vitae
+## News
 
-<ul class="timeline">
-  <li><span class="timeline__date">2024 –</span> Sorbonne University and Google DeepMind, co-advised PhD student</li>
-  <li><span class="timeline__date">2020 – 2024</span> Ecole Normale Supérieure</li>
-  <li><span class="timeline__date">2022 – 2023</span> University Paris-Saclay, Master degree (Mathematics of Randomness)</li>
-  <li><span class="timeline__date">2018 – 2020</span> Lycée Louis-le-Grand, preparatory classes</li>
-</ul>
+{% include news-list.html limit=5 %}
 
-## Internships
-
-<ul class="timeline">
-  <li><span class="timeline__date">2024</span> Sorbonne University, Research Internship</li>
-  <li><span class="timeline__date">2023</span> Owkin, Research Internship</li>
-  <li><span class="timeline__date">2023</span> Sorbonne University, Research Internship</li>
-  <li><span class="timeline__date">2022</span> Caltech, Research Internship</li>
-</ul>
+<p class="more"><a href="/news/">All news</a></p>

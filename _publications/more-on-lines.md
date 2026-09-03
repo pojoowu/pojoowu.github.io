@@ -9,8 +9,21 @@ venue: 'Comptes Rendus Mathématique'
 paperurl: '/files/2208.13513v2.pdf'
 arxivurl: 'https://arxiv.org/abs/2208.13513'
 authors: 'David Conlon, Yu-Han Wu'
-summary: 'Answers a question of Conlon and Fox, and independently of Arman and Tsaturian: there is an m and a red/blue colouring of Euclidean space in every dimension with no red copy of l_3 and no blue copy of l_m.'
-citation: 'Conlon, D., & Wu, Y. H. (2023). More on lines in Euclidean Ramsey theory. Comptes Rendus. Mathématique, 361(G5), 897-901.'
+summary: 'A two-colouring of Euclidean space in every dimension with no red l_3 and no blue l_m.'
+highlights:
+  - "**Question.** Can Euclidean space be two-coloured, in every dimension, with no red copy of three equally spaced points on a line and no blue copy of some longer such configuration?"
+  - "**Result.** Yes: for some natural number m there is a red/blue colouring of Euclidean space in every dimension with no red copy of l_3 and no blue copy of l_m, answering a question of Conlon and Fox, and independently of Arman and Tsaturian."
+bibtex: |
+  @article{conlon2023more,
+    title={More on lines in {Euclidean} {Ramsey} theory},
+    author={Conlon, David and Wu, Yu-Han},
+    journal={Comptes Rendus. Math{\'e}matique},
+    volume={361},
+    number={G5},
+    pages={897--901},
+    year={2023}
+  }
+citation: 'David Conlon and Yu-Han Wu (2023). More on lines in Euclidean Ramsey theory. Comptes Rendus. Mathématique, 361(G5), 897–901.'
 ---
 ### Abstract
 Let l_m be a sequence of m points on a line with consecutive points at distance one. Answering a question raised by Fox and the first author and independently by Arman and Tsaturian, we show that there is a natural number m and a red/blue-colouring of En for every n that contains no red copy of l_3 and no blue copy of l_m.
