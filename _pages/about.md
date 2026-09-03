@@ -7,13 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I am Yu-Han. I have been a PhD student in [LPSM](https://www.lpsm.paris/) at [Sorbonne University](https://www.sorbonne-universite.fr/) since September 2024, supervised by [Gérard Biau](https://perso.lpsm.paris/~biau/), [Claire Boyer](https://www.imo.universite-paris-saclay.fr/~claire.boyer/) and [Pierre Marion](https://pierremarion23.github.io/). I am also part of the co-advised PhD student program at Google DeepMind, co-advised by Quentin Berthet and Romuald Elie.
+Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lpsm.paris/) at [Sorbonne University](https://www.sorbonne-universite.fr/) since September 2024, supervised by [Gérard Biau](https://perso.lpsm.paris/~biau/), [Claire Boyer](https://www.imo.universite-paris-saclay.fr/~claire.boyer/) and [Pierre Marion](https://pierremarion23.github.io/). I am also part of the co-advised PhD student program at Google DeepMind, co-advised by Quentin Berthet and Romuald Elie.
 
 <div class="chips" aria-label="Research interests">
   <span class="chips__label">Research interests</span>
   <span class="chip">Diffusion models</span>
   <span class="chip">Regularization</span>
-  <span class="chip">Latent representation learning</span>
+  <span class="chip">ML for science</span>
 </div>
 
 ## Brief curriculum vitae
