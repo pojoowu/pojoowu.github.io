@@ -45,7 +45,20 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1116"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
-<!-- Support for MatJax -->
+<!-- MathJax. Single dollars are accepted for inline math (kramdown leaves them
+     untouched, MathJax picks them up); \$ escapes a literal dollar sign. -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script type="speculationrules">
 {"prerender":[{
