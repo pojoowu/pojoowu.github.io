@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](https://www.sorbonne-universite.fr/), and [Google DeepMind](https://deepmind.google/), working on **diffusion models**. I started in September 2024, within the co-advised PhD student program between the two institutions.
+I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](https://www.sorbonne-universite.fr/), and [Google DeepMind](https://deepmind.google/), working on **diffusion models** and **machine learning theory**.
 
 <dl class="facts">
   <dt>Advisors</dt>

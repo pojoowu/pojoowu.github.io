@@ -324,6 +324,45 @@ a {
   }
 }
 
+/* Sidebar photo loop: photos are stacked in .avatar-loop; the first stays
+   visible underneath, the second fades in and out over --avatar-cycle. The
+   inline script in author-profile.html sets --avatar-phase from the clock so
+   every page load resumes the loop at the same point instead of restarting.
+   Keyframes are written for two photos; add stops if a third is ever added. */
+.avatar-loop {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 0;
+
+  /* the images also carry the .author__avatar class, which gives them the
+     theme's bottom margin; inside the stack that margin would inflate the
+     wrapper and stretch the overlay into an oval, so it is reset here and the
+     outer .author__avatar div keeps the spacing below the photo */
+  .avatar-loop__img {
+    display: block;
+    margin: 0;
+  }
+
+  .avatar-loop__img + .avatar-loop__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: avatar-loop var(--avatar-cycle, 30s) ease-in-out infinite;
+    animation-delay: var(--avatar-phase, 0ms);
+  }
+}
+
+@keyframes avatar-loop {
+  0%, 42% { opacity: 0; }
+  50%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .author__content {
   @include breakpoint($large) {
     padding: 0;
