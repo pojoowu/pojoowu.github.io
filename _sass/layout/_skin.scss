@@ -597,9 +597,10 @@ a {
   }
 }
 
-/* "Cite" button in the row; the citation box appears below the row so the
-   button itself never moves */
-.pub__cite-toggle {
+/* "Details" / "Cite" buttons in the row; their boxes appear below the row so
+   the buttons never move */
+.pub__toggle,
+.copy-btn {
   cursor: pointer;
   font: inherit;
   font-size: 0.8em;
@@ -608,6 +609,120 @@ a {
   &[aria-expanded="true"] {
     border-color: var(--global-text-color-light);
     color: var(--global-text-color);
+  }
+}
+
+/* shared box under the row (details in sans-serif, citation in monospace) */
+.pub__box,
+.page__content .pub__box {
+  margin: 0.9em 0 0.25em;
+  padding: 0.7em 0.9em;
+  border: 1px dashed var(--global-border-color);
+  border-radius: 8px;
+}
+
+/* "In brief": three bullets with a bold lead word (paper page and Details box) */
+.brief,
+.page__content .brief,
+.pub__details .brief {
+  list-style: none;
+  margin: 0 0 0.75em;
+  padding: 0;
+
+  li {
+    position: relative;
+    margin: 0 0 0.5em;
+    padding-left: 1.1em;
+    font-size: 0.95em;
+    line-height: 1.55;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--global-accent-2-color);
+    }
+
+    strong {
+      color: var(--global-text-color);
+    }
+  }
+}
+
+.page__content .brief {
+  margin-bottom: 1.25em;
+}
+
+/* BibTeX box: monospace entry with a Copy button in its corner */
+.pub__bibtex .pub__box-inner,
+.page__content .pub__bibtex .pub__box-inner {
+  position: relative;
+}
+
+.pub__bibtex .copy-btn,
+.page__content .pub__bibtex .copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78em;
+  font-weight: 700;
+  background: var(--global-surface-color);
+}
+
+.bibtex__code,
+.page__content .bibtex__code {
+  margin: 0;
+  padding: 0 6em 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-family: $skin-mono;
+  font-size: 0.76em;
+  line-height: 1.55;
+  color: var(--global-text-color-light);
+  white-space: pre;
+  overflow-x: auto;
+
+  code {
+    padding: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+}
+
+.pub__citation .pub__box-inner p {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.pub__details,
+.page__content .pub__details {
+  font-size: 0.9em;
+  line-height: 1.55;
+  color: var(--global-text-color);
+
+  p {
+    margin: 0 0 0.55em;
+    font-size: 1em;
+    line-height: 1.55;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pub__box-more {
+    font-size: 0.88em;
+    font-weight: 600;
   }
 }
 
@@ -623,6 +738,38 @@ a {
   font-size: 0.74em;
   line-height: 1.55;
   color: var(--global-text-color-light);
+}
+
+/* collapsible state (set by the script): slides open and fades in. Placed
+   after the citation rule so the closed box really has no margin or padding.
+   The grid-rows 0fr -> 1fr trick animates to the content's natural height. */
+.pub__box.pub__box--collapsible,
+.page__content .pub__box.pub__box--collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin: 0;
+  padding: 0 0.9em;
+  border-color: transparent;
+  opacity: 0;
+  overflow: hidden;
+  transition: grid-template-rows 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 220ms ease,
+              margin 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              padding 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 200ms ease;
+
+  > .pub__box-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &.is-open {
+    grid-template-rows: 1fr;
+    margin: 0.9em 0 0.25em;
+    padding: 0.7em 0.9em;
+    border-color: var(--global-border-color);
+    opacity: 1;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -668,13 +815,58 @@ a {
     margin-top: 1.4em;
   }
 
-  &__bibtex {
-    font-size: 0.78em;
-    border-radius: 8px;
-  }
-
   .page__content .pub__citation {
     margin: 0.5em 0 0;
+  }
+
+  /* key figure at the top of the page */
+  .page__content .pubpage__figure {
+    margin: 0.25em 0 1.5em;
+  }
+
+  .page__content .pubpage__cite-actions {
+    margin: 0.75em 0 0;
+  }
+
+  /* related papers of mine */
+  .page__content .related {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .related__item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.25em 0.7em;
+      margin: 0 0 0.7em;
+      padding: 0.7em 0.9em;
+      border: 1px solid var(--global-border-color);
+      border-radius: 10px;
+      background: var(--global-bg-color);
+    }
+
+    .related__title {
+      font-weight: 700;
+      color: var(--global-text-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--global-accent-color);
+      }
+    }
+
+    .related__meta {
+      font-family: $skin-mono;
+      font-size: 0.74em;
+      color: var(--global-accent-2-color);
+    }
+
+    .related__summary {
+      flex: 0 0 100%;
+      font-size: 0.86em;
+      color: var(--global-text-color-light);
+    }
   }
 
   /* room between the citation box and the "All publications" link */

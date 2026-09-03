@@ -21,16 +21,48 @@
 </script>
 
 <script>
-  /* "Cite" buttons in publication lists: reveal the citation box under the row. */
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest && e.target.closest('.pub__cite-toggle');
-    if (!btn) return;
-    var box = document.getElementById(btn.getAttribute('aria-controls'));
-    if (!box) return;
-    var open = box.hidden;
-    box.hidden = !open;
-    btn.setAttribute('aria-expanded', String(open));
-  });
+  /* "Details" / "Cite" toggles in publication lists: a box slides open under
+     the row; opening one box closes any other box of the same row. Boxes are
+     `hidden` in the HTML (nothing shows without JavaScript); here they switch
+     to a collapsible state animated by CSS (.pub__box--collapsible / .is-open). */
+  (function () {
+    var boxes = document.querySelectorAll('.pub__box[hidden]');
+    for (var i = 0; i < boxes.length; i++) {
+      boxes[i].hidden = false;
+      boxes[i].classList.add('pub__box--collapsible');
+      boxes[i].setAttribute('aria-hidden', 'true');
+    }
+    function setOpen(box, open) {
+      box.classList.toggle('is-open', open);
+      box.setAttribute('aria-hidden', String(!open));
+    }
+    /* "Copy BibTeX" on paper pages */
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.copy-btn');
+      if (!btn) return;
+      var src = document.getElementById(btn.getAttribute('data-copy-target'));
+      if (!src || !navigator.clipboard) return;
+      navigator.clipboard.writeText(src.textContent).then(function () {
+        var label = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>Copied';
+        setTimeout(function () { btn.innerHTML = label; }, 1500);
+      });
+    });
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.pub__toggle');
+      if (!btn) return;
+      var box = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!box) return;
+      var willOpen = !box.classList.contains('is-open');
+      var row = btn.closest('.pub') || document;
+      row.querySelectorAll('.pub__box.is-open').forEach(function (b) { setOpen(b, false); });
+      row.querySelectorAll('.pub__toggle[aria-expanded="true"]').forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+      if (willOpen) {
+        setOpen(box, true);
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  })();
 </script>
 
 {% include analytics.html %}

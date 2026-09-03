@@ -8,10 +8,29 @@ date: 2025-02-05
 venue: 'COLT 2025'
 paperurl: '/files/2502.03435v1.pdf'
 arxivurl: 'https://arxiv.org/abs/2502.03435'
-slidesurl: '/files/_COLT_Slides__Take_a_big_step__memorization_prevention_presentation.pdf'
+slidesurl: '/files/COLT2025_slides_take_a_big_step.pdf'
 authors: 'Yu-Han Wu, Pierre Marion, Gérard Biau, Claire Boyer'
 summary: 'Large learning rates implicitly regularize denoising score matching and prevent memorization.'
 selected: true
+figure: /images/papers/take-a-big-step.png
+figure_caption: "Graphs of the learned model with different learning rates and of the empirical optimal score, for two pairs of (μ, σ). As the learning rate decreases, the learned model approaches the empirical optimal score. When σ is smaller (right), that score is more irregular and a smaller learning rate is needed to reach it."
+highlights:
+  - "**Problem.** The exact minimizer of denoising score matching memorizes the training data, yet trained models memorize only mildly."
+  - "**Approach.** Analyze gradient descent with large steps, which can only converge to minima whose sharpness is bounded by the inverse learning rate."
+  - "**Result.** The memorizing solution is too sharp to be reached; large learning rates prevent memorization."
+related:
+  - understanding-diffusion
+  - implicit-reg-resnet
+bibtex: |
+  @inproceedings{wu2025taking,
+    title={Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization},
+    author={Wu, Yu-Han and Marion, Pierre and Biau, G{\'e}rard and Boyer, Claire},
+    booktitle={Proceedings of the Thirty Eighth Conference on Learning Theory ({COLT})},
+    series={Proceedings of Machine Learning Research},
+    volume={291},
+    pages={5718--5756},
+    year={2025}
+  }
 citation: 'Wu, Y. H., Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756'
 ---
 ### Abstract

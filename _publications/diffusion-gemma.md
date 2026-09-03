@@ -10,6 +10,21 @@ paperurl: '/files/diffusiongemma.pdf'
 arxivurl: 'https://arxiv.org/abs/2608.00146'
 authors: 'DiffusionGemma Team, Google DeepMind'
 summary: 'An open-weight discrete-diffusion language model fine-tuned from Gemma 4.'
+highlights:
+  - "**Problem.** Autoregressive LLMs decode one token at a time, a sequential bottleneck for generation speed."
+  - "**Approach.** Fine-tune Gemma 4 into a block-diffusion model that refines 256 tokens in parallel: supervised denoising, then reinforcement learning with sampler distillation, using under 10% of the base model's training tokens."
+  - "**Result.** About 1,500 output tokens per second on a single H100, a new speed-capability Pareto frontier, while keeping thinking mode, multimodal inputs and long context."
+related:
+  - kastor
+bibtex: |
+  @misc{diffusiongemma2026,
+    title={{DiffusionGemma} Technical Report},
+    author={{DiffusionGemma Team}},
+    year={2026},
+    eprint={2608.00146},
+    archivePrefix={arXiv},
+    primaryClass={cs.LG}
+  }
 citation: 'Taïga, DiffusionGemma Team Adrien Ali et al. “DiffusionGemma Technical Report.” (2026).'
 ---
 ### Abstract
