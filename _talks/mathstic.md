@@ -1,10 +1,12 @@
 ---
 title: "Optimisation et Apprentissage appliqués aux contenus numériques"
 collection: talks
-type: "talk"
+type: "Invited talk"
 permalink: /talks/mathstic
 venue: "MathSTIC"
 date: 2026-06-04
 location: "USPN, France"
+slidesurl: "/files/understanding_diffusion_slides.pdf"
+publication: /publication/understanding-diffusion
 ---
-[Slides](https://github.com/pojoowu/pojoowu.github.io/blob/master/files/understanding_diffusion_slides.pdf). Invited talk at USPN on the work "Understanding diffusion models requires rethinking (again) generalization".
+Invited talk at USPN on *Understanding diffusion models requires rethinking (again) generalization*.

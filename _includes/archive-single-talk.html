@@ -1,42 +1,32 @@
+{% comment %}
+  One talk row: date column on the left, then type/venue badges, title,
+  description and button pills. Front matter used: title, date, type, venue,
+  location, slidesurl, posterurl, videourl, publication (site path of the
+  related paper page). The body text is the description.
+{% endcomment %}
 {% include base_path %}
-
-{% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
-
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
-
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
-      </div>
-    {% endif %}
-    <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
-    </h2>
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-    {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
-    {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{{post.type}}, {{ post.venue }},  {{post.location}} {% endif %}
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>{% endif %}
+{% assign talk_desc = post.excerpt | strip %}
+<div class="list__item">
+  <article class="archive__item talk" itemscope itemtype="http://schema.org/Event">
+    <div class="talk__when">
+      <time datetime="{{ post.date | date: '%Y-%m-%d' }}" itemprop="startDate">{{ post.date | date: "%-d %b" }}</time>
+    </div>
+    <div class="talk__body">
+      <p class="pub__badges">
+        {% if post.type %}<span class="badge badge--accent">{{ post.type }}</span>{% endif %}
+        {% if post.venue %}<span class="badge" itemprop="location">{{ post.venue }}{% if post.location %} <span class="badge__sep">&middot;</span> {{ post.location }}{% endif %}</span>{% endif %}
+      </p>
+      <h3 class="archive__item-title talk__title" itemprop="name">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title }}</a>
+      </h3>
+      {% if talk_desc != '' %}<p class="talk__desc" itemprop="description">{{ talk_desc | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
+      <p class="pub__actions">
+        {% if post.slidesurl %}<a class="pub__pill" href="{{ post.slidesurl }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
+        {% if post.posterurl %}<a class="pub__pill" href="{{ post.posterurl }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
+        {% if post.videourl %}<a class="pub__pill" href="{{ post.videourl }}"><i class="fas fa-video" aria-hidden="true"></i>Video</a>{% endif %}
+        {% if post.publication %}<a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.publication }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
+        <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
+      </p>
+    </div>
   </article>
 </div>

@@ -24,18 +24,32 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
 
 ## Research focus
 
-<ul class="focus">
-  <li><span class="focus__topic">Memorization and generalization in diffusion models</span>
-      <span class="focus__links"><a href="/publication/take-a-big-step">Taking a Big Step</a> · <a href="/publication/understanding-diffusion">Rethinking generalization</a></span></li>
-  <li><span class="focus__topic">Sampling in latent diffusion models</span>
-      <span class="focus__links"><a href="/publication/optimal-stopping-ldm">Optimal Stopping</a></span></li>
-  <li><span class="focus__topic">Evaluating generative models</span>
-      <span class="focus__links"><a href="/publication/mind">MIND</a></span></li>
-  <li><span class="focus__topic">Generative models for science and language</span>
-      <span class="focus__links"><a href="/publication/kastor">Kastor</a> · <a href="/publication/diffusion-gemma">DiffusionGemma</a></span></li>
-  <li><span class="focus__topic">Implicit regularization in deep learning</span>
-      <span class="focus__links"><a href="/publication/implicit-reg-resnet">ResNets and neural ODEs</a></span></li>
-</ul>
+<div class="focus-grid">
+  <article class="focus-card">
+    <div class="focus-card__icon"><i class="fas fa-wave-square" aria-hidden="true"></i></div>
+    <h3 class="focus-card__title">Generalization in diffusion models</h3>
+    <p class="focus-card__text">Why diffusion models produce novel samples rather than copies of their training data, and how optimization shapes this.</p>
+    <p class="focus-card__links"><a href="/publication/take-a-big-step">Taking a Big Step</a> · <a href="/publication/understanding-diffusion">Rethinking generalization</a></p>
+  </article>
+  <article class="focus-card">
+    <div class="focus-card__icon"><i class="fas fa-sliders" aria-hidden="true"></i></div>
+    <h3 class="focus-card__title">Sampling and evaluation</h3>
+    <p class="focus-card__text">When to stop the reverse process in latent diffusion models, and how to measure sample quality reliably.</p>
+    <p class="focus-card__links"><a href="/publication/optimal-stopping-ldm">Optimal Stopping</a> · <a href="/publication/mind">MIND</a></p>
+  </article>
+  <article class="focus-card">
+    <div class="focus-card__icon"><i class="fas fa-flask" aria-hidden="true"></i></div>
+    <h3 class="focus-card__title">Generative models for science and language</h3>
+    <p class="focus-card__text">Generative emulators for PDE simulations, and discrete-diffusion language models.</p>
+    <p class="focus-card__links"><a href="/publication/kastor">Kastor</a> · <a href="/publication/diffusion-gemma">DiffusionGemma</a></p>
+  </article>
+  <article class="focus-card">
+    <div class="focus-card__icon"><i class="fas fa-bezier-curve" aria-hidden="true"></i></div>
+    <h3 class="focus-card__title">Implicit regularization in deep learning</h3>
+    <p class="focus-card__text">How gradient descent biases deep residual networks toward neural ODEs.</p>
+    <p class="focus-card__links"><a href="/publication/implicit-reg-resnet">ResNets and neural ODEs</a></p>
+  </article>
+</div>
 
 ## Selected publications
 

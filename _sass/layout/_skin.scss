@@ -579,7 +579,8 @@ a {
 }
 
 .archive .pub__pill,
-.page__content .pub__pill {
+.page__content .pub__pill,
+.page__inner-wrap .pub__pill {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
@@ -999,4 +1000,124 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   text-transform: uppercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-border-color);
+}
+
+/* --------------------------------------------------------------------------
+   Talks: date column + body with badges, title, description, pills
+   -------------------------------------------------------------------------- */
+
+.talk {
+  display: flex;
+  gap: 1.25em;
+  align-items: flex-start;
+
+  &__when {
+    flex: 0 0 4.5em;
+    padding-top: 0.3em;
+    font-family: $skin-mono;
+    font-size: 0.82em;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--global-text-color-light);
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__desc {
+    margin: 0 0 0.6em;
+    font-size: 0.92em;
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 599px) {
+    flex-direction: column;
+    gap: 0.4em;
+
+    &__when {
+      padding-top: 0;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Research focus cards (home page)
+   -------------------------------------------------------------------------- */
+
+.page__content .focus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9em;
+  margin: 0 0 1.25em;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.focus-card {
+  padding: 1em 1.1em 0.9em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 12px;
+  background: var(--global-bg-color);
+  transition: $global-transition;
+
+  &:hover {
+    border-color: var(--global-accent-color);
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1em;
+    height: 2.1em;
+    margin-bottom: 0.6em;
+    border-radius: 9px;
+    background: var(--global-accent-soft-color);
+    color: var(--global-accent-color);
+    font-size: 0.95em;
+  }
+}
+
+.page__content .focus-card__title {
+  margin: 0 0 0.3em;
+  font-size: 1em;
+  line-height: 1.35;
+}
+
+.page__content .focus-card__text {
+  margin: 0 0 0.5em;
+  font-size: 0.88em;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+.page__content .focus-card__links {
+  margin: 0;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Header tagline next to the name (wide screens only)
+   -------------------------------------------------------------------------- */
+
+.greedy-nav .visible-links li:first-child a {
+  display: inline-block;
+}
+
+.masthead__tagline {
+  display: none;
+  font-family: $skin-mono;
+  font-size: 0.72em;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--global-text-color-light);
+
+  @include breakpoint($large) {
+    display: inline;
+  }
 }

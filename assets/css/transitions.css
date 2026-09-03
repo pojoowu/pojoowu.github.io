@@ -2,29 +2,83 @@
    _includes/head/custom.html) and the same-document theme toggle
    (assets/js/theme-toggle.js).
 
-   Design: the old page is held fully opaque underneath while the new page fades
-   in on top, so there is never a dip to the backdrop colour. */
+   Design. Header and profile card are the same on every page, so they stay
+   put. The content card is the only thing that changes: the old one is hidden
+   at once and the new one rises into place with a short fade, like a
+   single-page app swapping a view. The root (page background, footer) does a
+   quick crossfade underneath.
 
-/* 1. Backdrop follows the active palette. Custom properties inherit from <html>,
-      so this is exactly the page background in both themes. */
+   During a theme switch the toggle script adds .theme-switch to <html>; then
+   nothing is named and the whole page crossfades, so header, card and content
+   change colour together. */
+
+/* 1. Backdrop follows the active palette (custom properties inherit from <html>) */
 ::view-transition {
   background-color: var(--global-bg-color);
 }
 
-/* 2. Plain alpha compositing instead of the UA default plus-lighter blend */
+/* 2. Root: plain alpha compositing, old held solid, new fades in quickly */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
 }
 
-/* 3. Old page: held solid, no animation */
 ::view-transition-old(root) {
   animation: none;
 }
 
-/* 4. New page fades in over it */
 ::view-transition-new(root) {
-  animation: 240ms cubic-bezier(0, 0, 0.2, 1) both vt-fade-in;
+  animation: 200ms cubic-bezier(0, 0, 0.2, 1) both vt-fade-in;
+}
+
+/* 3. Named parts, only during navigation */
+html:not(.theme-switch) .masthead {
+  view-transition-name: masthead;
+}
+
+html:not(.theme-switch) .sidebar {
+  view-transition-name: sidebar;
+}
+
+html:not(.theme-switch) #main > .page,
+html:not(.theme-switch) #main > .archive {
+  view-transition-name: content;
+}
+
+/* 4. Header and sidebar: static */
+::view-transition-group(masthead),
+::view-transition-old(masthead),
+::view-transition-new(masthead),
+::view-transition-group(sidebar),
+::view-transition-old(sidebar),
+::view-transition-new(sidebar) {
+  animation: none;
+}
+
+/* if a page has no sidebar (or the previous one had none), fade it rather than pop */
+::view-transition-old(sidebar):only-child {
+  animation: 200ms ease both vt-fade-out;
+}
+
+::view-transition-new(sidebar):only-child {
+  animation: 200ms ease both vt-fade-in;
+}
+
+/* 5. Content card: the group takes the new page's geometry at once (no slide
+      from where the old card was, which matters when the old page was
+      scrolled); the old card is hidden; the new card rises in. */
+::view-transition-group(content) {
+  animation: none;
+}
+
+::view-transition-old(content) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(content) {
+  mix-blend-mode: normal;
+  animation: 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both vt-rise;
 }
 
 @keyframes vt-fade-in {
@@ -32,22 +86,15 @@
   to   { opacity: 1; }
 }
 
-/* 5. The header is identical on every page, so during navigation it gets its own
-      group with no animation and stays put while the content crossfades.
-      The theme toggle adds .theme-switch to <html> before it starts its
-      transition; then the header has no name, stays part of the root group,
-      and changes colour together with the content. */
-html:not(.theme-switch) .masthead {
-  view-transition-name: masthead;
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
-::view-transition-group(masthead),
-::view-transition-old(masthead),
-::view-transition-new(masthead) {
-  animation: none;
+@keyframes vt-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
 }
 
-/* 6. Reduced motion. The transition above is a pure opacity crossfade with no
-      movement, which is compatible with the reduced-motion preference, so it
-      is kept. (An earlier version disabled every animation here; with macOS
-      "Reduce motion" on, that turned every navigation into a hard cut.) */
+/* 6. Reduced motion: the rise is 14px over 280ms and the rest is opacity
+      only, which is kept deliberately (see git history for the discussion). */
