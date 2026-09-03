@@ -18,6 +18,7 @@ $skin-max-width : 1120px;
 $skin-radius    : 16px;
 $skin-sidebar   : 280px;
 $skin-gap       : 2em;
+$skin-mono      : ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
 /* --------------------------------------------------------------------------
    Base
@@ -823,8 +824,6 @@ a {
 /* --------------------------------------------------------------------------
    News, research focus, selected publications, blog list
    -------------------------------------------------------------------------- */
-
-$skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
 /* monospace for metadata (dates, venues, labels): a small nod to
    terminal-style academic pages without changing the body type */
