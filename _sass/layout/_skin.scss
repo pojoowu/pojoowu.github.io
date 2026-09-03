@@ -888,13 +888,17 @@ a {
      filled badge on the site, so it jumps out next to orange and blue */
   &--award {
     border-color: transparent;
+    padding: 0.2em 0.75em;
     background: var(--global-award-soft-color);
     color: var(--global-award-color);
+    font-family: inherit;        /* sans-serif, not the small monospace: easier to read on a filled badge */
+    font-size: 0.78em;
     font-weight: 800;
+    letter-spacing: 0;
 
     .fas {
       font-size: 0.85em;
-      margin-right: 0.1em;
+      margin-right: 0.15em;
     }
   }
 }
