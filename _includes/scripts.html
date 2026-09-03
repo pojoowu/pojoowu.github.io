@@ -20,4 +20,17 @@
   })();
 </script>
 
+<script>
+  /* "Cite" buttons in publication lists: reveal the citation box under the row. */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.pub__cite-toggle');
+    if (!btn) return;
+    var box = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!box) return;
+    var open = box.hidden;
+    box.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>
+
 {% include analytics.html %}

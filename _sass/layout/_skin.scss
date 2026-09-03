@@ -597,28 +597,22 @@ a {
   }
 }
 
-/* "Cite" toggle in the button row; when open it takes the full row and shows
-   the citation in a small monospace box */
-.pub__cite {
-  flex: 0 0 auto;
+/* "Cite" button in the row; the citation box appears below the row so the
+   button itself never moves */
+.pub__cite-toggle {
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8em;
+  font-weight: 700;
 
-  > summary {
-    list-style: none;
-    cursor: pointer;
+  &[aria-expanded="true"] {
+    border-color: var(--global-text-color-light);
+    color: var(--global-text-color);
   }
+}
 
-  > summary::-webkit-details-marker {
-    display: none;
-  }
-
-  &[open] {
-    flex-basis: 100%;
-  }
-
-  &[open] > summary {
-    margin-bottom: 0.5em;
-  }
-
+.pub .pub__citation {
+  margin-top: 0.7em;
 }
 
 /* citation text in a copyable monospace box (list toggle and paper page) */

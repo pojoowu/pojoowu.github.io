@@ -40,12 +40,13 @@
         {% if post.link %}<a class="pub__pill" href="{{ post.link }}"><i class="fas fa-up-right-from-square" aria-hidden="true"></i>Link</a>{% endif %}
         <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
         {% if post.citation and include.compact != true %}
-        <details class="pub__cite">
-          <summary class="pub__pill pub__pill--ghost"><i class="fas fa-quote-left" aria-hidden="true"></i>Cite</summary>
-          <p class="pub__citation">{{ post.citation }}</p>
-        </details>
+        {% assign cite_id = post.url | slugify | prepend: "cite-" %}
+        <button type="button" class="pub__pill pub__pill--ghost pub__cite-toggle" aria-expanded="false" aria-controls="{{ cite_id }}"><i class="fas fa-quote-left" aria-hidden="true"></i>Cite</button>
         {% endif %}
       </div>
+      {% if post.citation and include.compact != true %}
+      <p class="pub__citation" id="{{ cite_id }}" hidden>{{ post.citation }}</p>
+      {% endif %}
     </div>
   </article>
 </div>
