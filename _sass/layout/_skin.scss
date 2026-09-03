@@ -1069,6 +1069,19 @@ a {
   font-size: 0.78em;
   font-weight: 700;
   white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* chips that link to a filtered publications list */
+.page__content a.chip {
+  color: var(--global-accent-2-color);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--global-accent-2-color);
+    color: var(--global-bg-color);
+  }
 }
 
 .page__content .timeline {
@@ -1539,6 +1552,63 @@ a {
   font-weight: 600;
 }
 
+/* The card links to the publications page filtered on its focus tag: the
+   title link is stretched over the whole card with a pseudo-element, and the
+   paper links plus the "All N papers" link sit above that overlay so they
+   stay clickable on their own. */
+.focus-card {
+  position: relative;
+}
+
+.page__content .focus-card__title a {
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+}
+
+.focus-card:hover .focus-card__title a {
+  color: var(--global-accent-color);
+}
+
+.page__content .focus-card__links a,
+.page__content .focus-card__more {
+  position: relative;
+  z-index: 1;
+}
+
+.page__content .focus-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-top: 0.7em;
+  font-family: $skin-mono;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--global-text-color-light);
+
+  .fas {
+    transition: transform 0.15s ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--global-accent-color);
+
+    .fas {
+      transform: translateX(3px);
+    }
+  }
+}
+
 /* --------------------------------------------------------------------------
    Blog posts: figures, callouts, provenance note
    -------------------------------------------------------------------------- */
@@ -1604,4 +1674,121 @@ a {
   @include breakpoint($large) {
     display: inline;
   }
+}
+
+/* ==========================================================================
+   Topic filters on the publications page
+   ========================================================================== */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45em 0.45em;
+  margin: 0.4em 0 1.6em;
+}
+
+.filters__label {
+  margin-right: 0.35em;
+  font-family: $skin-mono;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}
+
+.filter {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+
+  /* `display` above would beat the browser's [hidden] rule (the Clear button
+     is hidden while no filter is active) */
+  &[hidden] {
+    display: none;
+  }
+  align-items: center;
+  gap: 0.4em;
+  margin: 0;
+  padding: 0.32em 0.85em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+  background: var(--global-surface-2-color);
+  color: var(--global-text-color);
+  font: inherit;
+  font-size: 0.82em;
+  font-weight: 600;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: var(--global-accent-2-color);
+    color: var(--global-accent-2-color);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-accent-2-color);
+    outline-offset: 2px;
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--global-accent-2-color);
+    border-color: var(--global-accent-2-color);
+    color: var(--global-bg-color);
+  }
+
+  .fas {
+    font-size: 0.85em;
+  }
+}
+
+.filter__count {
+  font-family: $skin-mono;
+  font-size: 0.8em;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+/* pressing this button on top of the current selection would leave no paper */
+.filter--none:not([aria-pressed="true"]) {
+  opacity: 0.45;
+}
+
+.filter--clear {
+  background: transparent;
+  font-weight: 500;
+  color: var(--global-text-color-light);
+
+  &:hover {
+    color: var(--global-text-color);
+    border-color: var(--global-text-color-light);
+  }
+}
+
+.filters__status {
+  font-family: $skin-mono;
+  font-size: 0.75em;
+  color: var(--global-text-color-light);
+}
+
+.filters__empty {
+  margin: 1em 0 2em;
+  color: var(--global-text-color-light);
+  font-style: italic;
+}
+
+/* rows that stay visible after a filter change re-enter with a short rise */
+@keyframes pub-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.is-filtering .year-group:not([hidden]) .list__item:not([hidden]) {
+  animation: pub-in 0.25s ease-out both;
 }

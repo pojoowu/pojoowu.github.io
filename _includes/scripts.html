@@ -65,4 +65,79 @@
   })();
 </script>
 
+<script>
+  /* Topic filters on the publications page (#pub-filters). Buttons toggle;
+     several can be active and a paper stays visible only if it carries every
+     active topic (intersection). Each button's count shows how many papers
+     would remain if it were pressed on top of the current selection, and a
+     button that would leave none is dimmed. Year sections with nothing left
+     are hidden, the selection is mirrored in the URL hash (#topics=a,b) so a
+     filtered view can be linked, and rows re-enter with a short rise. Without
+     JavaScript the page shows every paper. */
+  (function () {
+    var bar = document.getElementById('pub-filters');
+    if (!bar) return;
+    var buttons = Array.prototype.slice.call(bar.querySelectorAll('.filter[data-topic]'));
+    var clear = bar.querySelector('[data-clear]');
+    var status = bar.querySelector('.filters__status');
+    var empty = document.getElementById('pub-empty');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.year-group .list__item'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.year-group'));
+    var main = document.getElementById('main');
+    var topicsOf = items.map(function (it) { return (it.getAttribute('data-topics') || '').split(/\s+/); });
+
+    function active() {
+      return buttons.filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; })
+                    .map(function (b) { return b.getAttribute('data-topic'); });
+    }
+    function matches(topics, sel) {
+      return sel.every(function (t) { return topics.indexOf(t) !== -1; });
+    }
+    function apply(fromClick) {
+      var sel = active(), shown = 0;
+      items.forEach(function (it, i) {
+        var show = matches(topicsOf[i], sel);
+        it.hidden = !show;
+        if (show) shown++;
+      });
+      buttons.forEach(function (b) {
+        var t = b.getAttribute('data-topic');
+        var withT = sel.indexOf(t) === -1 ? sel.concat([t]) : sel;
+        var n = topicsOf.filter(function (topics) { return matches(topics, withT); }).length;
+        var count = b.querySelector('.filter__count');
+        if (count) count.textContent = n;
+        b.classList.toggle('filter--none', n === 0);
+      });
+      groups.forEach(function (g) { g.hidden = !g.querySelector('.list__item:not([hidden])'); });
+      if (empty) empty.hidden = shown !== 0;
+      if (clear) clear.hidden = sel.length === 0;
+      if (status) status.textContent = sel.length ? shown + ' of ' + items.length : '';
+      if (fromClick) {
+        history.replaceState(null, '', sel.length ? '#topics=' + sel.join(',') : location.pathname + location.search);
+        if (main) { main.classList.remove('is-filtering'); void main.offsetWidth; main.classList.add('is-filtering'); }
+      }
+    }
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('.filter');
+      if (!b) return;
+      if (b.hasAttribute('data-clear')) {
+        buttons.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      } else {
+        b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      }
+      apply(true);
+    });
+    /* read the selection from the hash: on load, and again when the hash
+       changes without a reload (a pasted #topics= link in the same tab) */
+    function fromHash() {
+      var m = location.hash.match(/^#topics=([\w,-]+)$/);
+      var want = m ? m[1].split(',') : [];
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', want.indexOf(b.getAttribute('data-topic')) !== -1 ? 'true' : 'false'); });
+    }
+    window.addEventListener('hashchange', function () { fromHash(); apply(false); });
+    fromHash();
+    apply(false);
+  })();
+</script>
+
 {% include analytics.html %}

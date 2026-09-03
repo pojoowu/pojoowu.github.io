@@ -6,6 +6,7 @@ permalink: /publication/take-a-big-step
 excerpt: ''
 date: 2025-02-05
 venue: 'COLT 2025'
+topics: [diffusion, theory, regularization]
 paperurl: '/files/2502.03435v1.pdf'
 arxivurl: 'https://arxiv.org/abs/2502.03435'
 slidesurl: '/files/COLT2025_slides_take_a_big_step.pdf'
