@@ -866,6 +866,12 @@ a {
     background: var(--global-surface-2-color);
     color: var(--global-text-color-light);
   }
+
+  /* a distinction at the venue ("Spotlight", "Oral") inside the venue box */
+  &__award {
+    color: var(--global-accent-color);
+    font-weight: 800;
+  }
 }
 
 .pub__badges {

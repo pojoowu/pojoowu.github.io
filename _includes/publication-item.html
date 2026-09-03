@@ -15,8 +15,10 @@
     <div class="pub__body">
       <p class="pub__badges">
         {% comment %} venues that already carry a year ("ICML 2026") are shown alone; others get the publication year {% endcomment %}
-        <span class="badge{% if post.venue contains 'arXiv' or post.venue contains 'reprint' or post.venue == nil %} badge--muted{% endif %}">{% if post.venue %}{{ post.venue }}{% else %}Preprint{% endif %}{% unless post.venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}</span>
-        {% if post.award %}<span class="badge badge--accent">{{ post.award }}</span>{% endif %}
+        {% comment %} `award` (Spotlight, Oral, Best paper) is a distinction at that venue and sits inside the venue box;
+            `badges` (a list) are separate accent badges for other distinctions, e.g. a workshop oral. {% endcomment %}
+        <span class="badge{% if post.venue contains 'arXiv' or post.venue contains 'reprint' or post.venue == nil %} badge--muted{% endif %}">{% if post.venue %}{{ post.venue }}{% else %}Preprint{% endif %}{% unless post.venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}{% if post.award %} <span class="badge__sep">&middot;</span> <span class="badge__award">{{ post.award }}</span>{% endif %}</span>
+        {% if post.badges %}{% for b in post.badges %}<span class="badge badge--accent">{{ b }}</span>{% endfor %}{% endif %}
       </p>
       <h3 class="archive__item-title pub__title" itemprop="headline">
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>

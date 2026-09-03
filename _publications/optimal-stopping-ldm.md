@@ -6,6 +6,8 @@ permalink: /publication/optimal-stopping-ldm
 excerpt: ''
 date: 2025-10-10
 venue: 'ICML 2026'
+badges:
+  - 'Oral at the PriGM workshop, EurIPS 2025'
 paperurl: '/files/2510.08409v1.pdf'
 arxivurl: 'https://arxiv.org/abs/2510.08409'
 slidesurl: '/files/_PriGM_Slides__Optimal_Stopping_LDM.pdf'
