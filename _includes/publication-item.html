@@ -15,7 +15,7 @@
     <div class="pub__body">
       <p class="pub__badges">
         {% comment %} venues that already carry a year ("ICML 2026") are shown alone; others get the publication year {% endcomment %}
-        <span class="badge">{% if post.venue %}{{ post.venue }}{% else %}Preprint{% endif %}{% unless post.venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}</span>
+        <span class="badge{% if post.venue contains 'arXiv' or post.venue contains 'reprint' or post.venue == nil %} badge--muted{% endif %}">{% if post.venue %}{{ post.venue }}{% else %}Preprint{% endif %}{% unless post.venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}</span>
         {% if post.award %}<span class="badge badge--accent">{{ post.award }}</span>{% endif %}
       </p>
       <h3 class="archive__item-title pub__title" itemprop="headline">
