@@ -10,8 +10,11 @@
 {% assign pub_excerpt = post.excerpt | strip %}
 <div class="list__item">
   <article class="archive__item pub{% if include.compact %} pub--compact{% endif %}" itemscope itemtype="http://schema.org/ScholarlyArticle">
-    {% comment %} No figure preview in the lists (it either squashed the text or
-        overwhelmed the short entries); figures live on the paper's own page. {% endcomment %}
+    {% if post.header.teaser %}
+    <a class="pub__thumb" href="{{ base_path }}{{ post.url }}" tabindex="-1" aria-hidden="true">
+      <img src="{% if post.header.teaser contains '://' %}{{ post.header.teaser }}{% else %}{{ base_path }}/images/{{ post.header.teaser }}{% endif %}" alt="" loading="lazy">
+    </a>
+    {% endif %}
     <div class="pub__body">
       <p class="pub__badges">
         {% comment %} venues that already carry a year ("ICML 2026") are shown alone; others get the publication year {% endcomment %}
