@@ -16,12 +16,6 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
   <span class="chip">ML for science</span>
 </div>
 
-## News
-
-{% include news-list.html limit=5 %}
-
-<p class="more"><a href="/news/">All news</a></p>
-
 ## Research focus
 
 <div class="focus-grid">
@@ -57,20 +51,8 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
 
 <p class="more"><a href="/publications/">All publications</a></p>
 
-## Brief curriculum vitae
+## News
 
-<ul class="timeline">
-  <li><span class="timeline__date">2024 –</span> Sorbonne University and Google DeepMind, co-advised PhD student</li>
-  <li><span class="timeline__date">2020 – 2024</span> Ecole Normale Supérieure</li>
-  <li><span class="timeline__date">2022 – 2023</span> University Paris-Saclay, Master degree (Mathematics of Randomness)</li>
-  <li><span class="timeline__date">2018 – 2020</span> Lycée Louis-le-Grand, preparatory classes</li>
-</ul>
+{% include news-list.html limit=5 %}
 
-## Internships
-
-<ul class="timeline">
-  <li><span class="timeline__date">2024</span> Sorbonne University, Research Internship</li>
-  <li><span class="timeline__date">2023</span> Owkin, Research Internship</li>
-  <li><span class="timeline__date">2023</span> Sorbonne University, Research Internship</li>
-  <li><span class="timeline__date">2022</span> Caltech, Research Internship</li>
-</ul>
+<p class="more"><a href="/news/">All news</a></p>

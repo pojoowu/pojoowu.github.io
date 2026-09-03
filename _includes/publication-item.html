@@ -29,7 +29,7 @@
       {% elsif pub_excerpt != '' %}
       <p class="pub__summary" itemprop="description">{{ pub_excerpt | markdownify | remove: '<p>' | remove: '</p>' }}</p>
       {% endif %}
-      <p class="pub__actions">
+      <div class="pub__actions">
         {% if post.paperurl %}<a class="pub__pill" href="{{ post.paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
         {% if post.arxivurl %}<a class="pub__pill" href="{{ post.arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
         {% if post.codeurl %}<a class="pub__pill" href="{{ post.codeurl }}"><i class="fab fa-github" aria-hidden="true"></i>Code</a>{% endif %}
@@ -43,7 +43,7 @@
           <p class="pub__citation">{{ post.citation }}</p>
         </details>
         {% endif %}
-      </p>
+      </div>
     </div>
   </article>
 </div>

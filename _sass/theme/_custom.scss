@@ -53,8 +53,8 @@ $sidebar-screen-min-width   : 1024px;
   --global-link-color-visited        : #c2410c;
   --global-masthead-link-color       : #1f2328;
   --global-masthead-link-color-hover : #c2410c;
-  --global-text-color                : #1f2328;
-  --global-text-color-light          : #6b7280;
+  --global-text-color                : #24292f;
+  --global-text-color-light          : #7b838f;   /* secondary text: authors, dates, descriptions, news */
   --global-thead-color               : #efefeb;
 }
 
@@ -77,8 +77,8 @@ $sidebar-screen-min-width   : 1024px;
   --global-link-color-visited        : #ff8a5b;
   --global-masthead-link-color       : #e6edf3;
   --global-masthead-link-color-hover : #ff8a5b;
-  --global-text-color                : #e6edf3;
-  --global-text-color-light          : #9aa4b2;
+  --global-text-color                : #dfe5ec;
+  --global-text-color-light          : #8791a0;   /* secondary text: authors, dates, descriptions, news */
   --global-thead-color               : #1f262e;
 }
 
