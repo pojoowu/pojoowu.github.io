@@ -10,6 +10,8 @@ layout: default
 
   <article class="page pubpage" itemscope itemtype="http://schema.org/ScholarlyArticle">
     <div class="page__inner-wrap">
+      <p class="more more--back"><a href="{{ base_path }}/publications/">All publications</a></p>
+
       <header class="pubpage__header">
         <p class="pub__badges">
           <span class="badge{% if page.venue contains 'arXiv' or page.venue contains 'reprint' or page.venue == nil %} badge--muted{% endif %}">{% if page.venue %}{{ page.venue }}{% else %}Preprint{% endif %}{% unless page.venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}</span>
@@ -34,6 +36,7 @@ layout: default
           {% if page.slidesurl %}<a class="pub__pill" href="{{ page.slidesurl }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
           {% if page.posterurl %}<a class="pub__pill" href="{{ page.posterurl }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
           {% if page.link %}<a class="pub__pill" href="{{ page.link }}"><i class="fas fa-up-right-from-square" aria-hidden="true"></i>Link</a>{% endif %}
+          {% if page.citation or page.bibtex %}<a class="pub__pill pub__pill--ghost" href="#cite"><i class="fas fa-quote-left" aria-hidden="true"></i>Cite</a>{% endif %}
         </div>
       </header>
 
