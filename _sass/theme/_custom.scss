@@ -46,8 +46,10 @@ $sidebar-screen-min-width   : 1024px;
   --global-accent-color              : #c2410c;
   --global-accent-color-hover        : #9a3412;
   --global-accent-soft-color         : #fdeee4;
-  --global-accent-2-color            : #28618c;   /* cool accent: metadata badges, topic chips */
+  --global-accent-2-color            : #28618c;   /* cool accent: metadata badges, topic chips, button icons */
   --global-accent-2-soft-color       : #e8f1f8;
+  --global-award-color               : #8a5a00;   /* distinctions: spotlight, oral, best paper */
+  --global-award-soft-color          : #fbefcf;
   --global-link-color                : #c2410c;
   --global-link-color-hover          : #9a3412;
   --global-link-color-visited        : #c2410c;
@@ -70,8 +72,10 @@ $sidebar-screen-min-width   : 1024px;
   --global-accent-color              : #ff8a5b;
   --global-accent-color-hover        : #ffa983;
   --global-accent-soft-color         : rgba(255, 138, 91, 0.14);
-  --global-accent-2-color            : #8cc0e6;   /* cool accent: metadata badges, topic chips */
+  --global-accent-2-color            : #8cc0e6;   /* cool accent: metadata badges, topic chips, button icons */
   --global-accent-2-soft-color       : rgba(140, 192, 230, 0.14);
+  --global-award-color               : #f0c35c;   /* distinctions: spotlight, oral, best paper */
+  --global-award-soft-color          : rgba(240, 195, 92, 0.16);
   --global-link-color                : #ff8a5b;
   --global-link-color-hover          : #ffa983;
   --global-link-color-visited        : #ff8a5b;
