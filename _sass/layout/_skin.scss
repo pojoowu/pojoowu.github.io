@@ -144,6 +144,70 @@ a {
   background: var(--global-text-color);
 }
 
+/* Small screens: name and theme toggle on the first row, the links on a second
+   row. Pure CSS, so the header is final at first paint (the greedy-nav script
+   used to move links into a hamburger after load, which showed up as a jump
+   in the middle of the page transition). */
+@media screen and (max-width: 599px) {
+  .masthead {
+    height: auto;
+  }
+
+  .masthead__inner-wrap {
+    position: relative;
+    display: block;
+    padding: 0.9em 1.25em 0.6em;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 0.9em;
+    right: 1.25em;
+    margin: 0;
+  }
+
+  .greedy-nav {
+    min-width: 0;
+
+    .visible-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 0.35em;
+
+      li {
+        display: block;
+      }
+
+      li:first-child {
+        flex: 0 0 100%;
+        margin-bottom: 0.35em;
+        padding-right: 3em;
+      }
+
+      li:first-child a {
+        line-height: 2.25rem;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    a {
+      margin: 0 0.35rem 0 0;
+      padding: 0.35rem 0.75rem;
+    }
+
+    button,
+    .hidden-links {
+      display: none !important;
+    }
+  }
+
+  body {
+    padding-top: 112px;
+  }
+}
+
 .theme-toggle {
   float: none;
   order: 2;

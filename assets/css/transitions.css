@@ -47,11 +47,7 @@ html:not(.theme-switch) .masthead {
   animation: none;
 }
 
-/* 6. Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
-}
+/* 6. Reduced motion. The transition above is a pure opacity crossfade with no
+      movement, which is compatible with the reduced-motion preference, so it
+      is kept. (An earlier version disabled every animation here; with macOS
+      "Reduce motion" on, that turned every navigation into a hard cut.) */
