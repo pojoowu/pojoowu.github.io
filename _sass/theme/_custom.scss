@@ -16,9 +16,9 @@ $notice-color               : #7a8288;
 $success-color              : #62c462;
 $warning-color              : #f89406;
 
-$border-radius              : 4px;
+$border-radius              : 10px;
 $box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
-$global-transition          : all 0.2s ease-in-out;
+$global-transition          : all 0.15s ease-in-out;
 $masthead-height            : 70px;
 $navicon-width              : 28px;
 $navicon-height             : 4px;
@@ -27,40 +27,55 @@ $sidebar-screen-min-width   : 1024px;
 
 /* --------------------------------------------------------------------------
    Palettes
+   --------------------------------------------------------------------------
+   bg        page background            surface   cards
+   surface-2 pills, code, hover fills   border    hairlines
+   text      body copy                  text-light muted copy / metadata
+   accent    links, highlights, publication actions
    -------------------------------------------------------------------------- */
 
 @mixin palette-light {
-  --global-base-color                : #7a8288;
-  --global-bg-color                  : #ffffff;
-  --global-border-color              : #f2f2f3;
-  --global-code-background-color     : #fafafa;
-  --global-code-text-color           : #313436;
-  --global-fig-caption-color         : #767a7d;
-  --global-link-color                : #2f7f93;
-  --global-link-color-hover          : #235f6e;
-  --global-link-color-visited        : #639fae;
-  --global-masthead-link-color       : #494e52;
-  --global-masthead-link-color-hover : #5c6266;
-  --global-text-color                : #494e52;
-  --global-text-color-light          : #bcc0c4;
-  --global-thead-color               : #f2f2f3;
+  --global-base-color                : #6b7280;
+  --global-bg-color                  : #f6f6f3;
+  --global-surface-color             : #ffffff;
+  --global-surface-2-color           : #efefeb;
+  --global-border-color              : #e3e3de;
+  --global-code-background-color     : #efefeb;
+  --global-code-text-color           : #1f2328;
+  --global-fig-caption-color         : #6b7280;
+  --global-accent-color              : #c2410c;
+  --global-accent-color-hover        : #9a3412;
+  --global-accent-soft-color         : #fdeee4;
+  --global-link-color                : #c2410c;
+  --global-link-color-hover          : #9a3412;
+  --global-link-color-visited        : #c2410c;
+  --global-masthead-link-color       : #1f2328;
+  --global-masthead-link-color-hover : #c2410c;
+  --global-text-color                : #1f2328;
+  --global-text-color-light          : #6b7280;
+  --global-thead-color               : #efefeb;
 }
 
 @mixin palette-dark {
-  --global-base-color                : #6d7378;  /* changed */
-  --global-bg-color                  : #1b1b1b;  /* changed */
-  --global-border-color              : #3a3a3a;  /* changed */
-  --global-code-background-color     : #262626;  /* changed */
-  --global-code-text-color           : #e6e6e6;  /* changed */
-  --global-fig-caption-color         : #b6bcc0;  /* changed */
-  --global-link-color                : #0ea1c5;
-  --global-link-color-hover          : #4ab8d4;  /* changed */
-  --global-link-color-visited        : #7fc9de;  /* changed */
-  --global-masthead-link-color       : #ffffff;
-  --global-masthead-link-color-hover : #dadada;
-  --global-text-color                : #ffffff;
-  --global-text-color-light          : #bcc0c4;
-  --global-thead-color               : #2a2a2a;  /* changed */
+  --global-base-color                : #9aa4b2;
+  --global-bg-color                  : #0e1116;
+  --global-surface-color             : #161b22;
+  --global-surface-2-color           : #1f262e;
+  --global-border-color              : #2a313a;
+  --global-code-background-color     : #1f262e;
+  --global-code-text-color           : #e6edf3;
+  --global-fig-caption-color         : #9aa4b2;
+  --global-accent-color              : #ff8a5b;
+  --global-accent-color-hover        : #ffa983;
+  --global-accent-soft-color         : rgba(255, 138, 91, 0.14);
+  --global-link-color                : #ff8a5b;
+  --global-link-color-hover          : #ffa983;
+  --global-link-color-visited        : #ff8a5b;
+  --global-masthead-link-color       : #e6edf3;
+  --global-masthead-link-color-hover : #ff8a5b;
+  --global-text-color                : #e6edf3;
+  --global-text-color-light          : #9aa4b2;
+  --global-thead-color               : #1f262e;
 }
 
 /* --------------------------------------------------------------------------
