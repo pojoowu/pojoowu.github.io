@@ -9,7 +9,7 @@ venue: 'Comptes Rendus Mathématique'
 paperurl: '/files/2208.13513v2.pdf'
 arxivurl: 'https://arxiv.org/abs/2208.13513'
 authors: 'David Conlon, Yu-Han Wu'
-summary: 'Answers a question of Conlon and Fox, and independently of Arman and Tsaturian: there is an m and a red/blue colouring of Euclidean space in every dimension with no red copy of l_3 and no blue copy of l_m.'
+summary: 'A two-colouring of Euclidean space in every dimension with no red l_3 and no blue l_m.'
 citation: 'Conlon, D., & Wu, Y. H. (2023). More on lines in Euclidean Ramsey theory. Comptes Rendus. Mathématique, 361(G5), 897-901.'
 ---
 ### Abstract

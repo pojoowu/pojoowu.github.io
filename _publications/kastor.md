@@ -9,7 +9,7 @@ venue: 'arXiv preprint'
 paperurl: '/files/kastor.pdf'
 arxivurl: 'https://arxiv.org/abs/2608.06107'
 authors: 'Guillaume Couairon, Alexis Jacq, Yu-Han Wu, Renu Singh, Yana Hasson, Quentin Berthet, Romuald Elie'
-summary: 'Turns a deterministic physics foundation model into a fast and accurate generative emulator, with a two-stage inference scheme and mean-prediction regularization, improving forecasts across The Well benchmark.'
+summary: 'Fine-tunes a deterministic physics foundation model into a fast, accurate generative PDE emulator.'
 selected: true
 citation: 'Guillaume Couairon, Alexis Jacq, Yu-Han Wu, Renu Singh, Yana Hasson, Quentin Berthet and Romuald Elie (2026) Kastor: An efficient fine-tuning strategy for generative emulation of PDE simulations. arXiv:2608.06107.'
 ---

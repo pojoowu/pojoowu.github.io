@@ -10,7 +10,7 @@ paperurl: '/files/2502.03435v1.pdf'
 arxivurl: 'https://arxiv.org/abs/2502.03435'
 slidesurl: '/files/_COLT_Slides__Take_a_big_step__memorization_prevention_presentation.pdf'
 authors: 'Yu-Han Wu, Pierre Marion, Gérard Biau, Claire Boyer'
-summary: 'Shows that the large learning rates used in practice implicitly regularize denoising score matching and keep training away from the memorizing empirical optimal score.'
+summary: 'Large learning rates implicitly regularize denoising score matching and prevent memorization.'
 selected: true
 citation: 'Wu, Y. H., Marion, P., Biau, G., & Boyer, C. (2025). Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization. Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756'
 ---

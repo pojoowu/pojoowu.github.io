@@ -884,11 +884,13 @@ a {
     color: var(--global-text-color-light);
   }
 
-  /* distinction (Spotlight, Oral, Best paper): gold, the only place it is used */
+  /* distinction (Spotlight, Oral, Best paper): a solid emerald badge, the only
+     filled badge on the site, so it jumps out next to orange and blue */
   &--award {
+    border-color: transparent;
     background: var(--global-award-soft-color);
     color: var(--global-award-color);
-    font-weight: 700;
+    font-weight: 800;
 
     .fas {
       font-size: 0.85em;
@@ -950,7 +952,8 @@ a {
 
   .pub__summary {
     margin-bottom: 0.5em;
-    font-size: 0.94em;
+    font-size: 0.92em;
+    color: var(--global-text-color-light);   /* on the home page the title carries the weight */
   }
 }
 

@@ -9,7 +9,7 @@ venue: 'arXiv preprint'
 paperurl: '/files/diffusiongemma.pdf'
 arxivurl: 'https://arxiv.org/abs/2608.00146'
 authors: 'DiffusionGemma Team, Google DeepMind'
-summary: 'An experimental open-weight language model that generates text with discrete diffusion, obtained by fine-tuning Gemma 4, reaching about 1,500 output tokens per second on a single H100.'
+summary: 'An open-weight discrete-diffusion language model fine-tuned from Gemma 4.'
 citation: 'Taïga, DiffusionGemma Team Adrien Ali et al. “DiffusionGemma Technical Report.” (2026).'
 ---
 ### Abstract

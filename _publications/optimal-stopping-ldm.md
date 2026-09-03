@@ -13,7 +13,7 @@ arxivurl: 'https://arxiv.org/abs/2510.08409'
 slidesurl: '/files/_PriGM_Slides__Optimal_Stopping_LDM.pdf'
 posterurl: '/files/_Poster__Optimal_stopping_LDM.pdf'
 authors: 'Yu-Han Wu, Quentin Berthet, Gérard Biau, Claire Boyer, Romuald Elie, Pierre Marion'
-summary: 'The last denoising steps of a latent diffusion model can degrade sample quality. This is intrinsic to the latent dimensionality reduction, and we give a principled account of when to stop.'
+summary: 'Why the last denoising steps of a latent diffusion model can hurt, and when to stop.'
 selected: true
 citation: 'Yu-Han Wu, Quentin Berthet, Gérard Biau, Claire Boyer, Romuald Elie & Pierre Marion (2025). Optimal Stopping in Latent Diffusion Model. arXiv preprint arXiv:2510.08409.'
 ---

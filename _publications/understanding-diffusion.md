@@ -11,7 +11,7 @@ arxivurl: 'https://arxiv.org/abs/2605.06077'
 header:
   teaser: 'understanding.png'
 authors: 'Pierre Marion*, Yu-Han Wu* (* equal contribution)'
-summary: 'A position paper arguing that generalization in diffusion models needs new theory: memorization and generalization are incompatible, so the question is what a model learns before it memorizes.'
+summary: 'Generalization in diffusion models needs new theory: what is learned before memorization?'
 selected: true
 citation: 'Pierre Marion and Yu-Han Wu (2026) Understanding diffusion models requires rethinking (again) generalization. arXiv:2605.06077.'
 ---
