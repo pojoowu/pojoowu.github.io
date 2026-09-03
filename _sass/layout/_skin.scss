@@ -491,13 +491,14 @@ a {
     line-height: 1.6;
   }
 
+  /* links are told apart by colour; the underline appears only on hover */
   a {
     color: var(--global-link-color);
-    text-decoration-color: color-mix(in srgb, var(--global-link-color) 40%, transparent);
+    text-decoration: none;
 
     &:hover {
       color: var(--global-link-color-hover);
-      text-decoration-color: currentColor;
+      text-decoration: underline;
     }
   }
 
@@ -592,11 +593,38 @@ a {
   }
 }
 
-.pub__citation {
-  margin: 0 0 0.7em;
-  font-size: 0.8em;
-  line-height: 1.5;
-  color: var(--global-text-color-light);
+/* "Cite" toggle in the button row; when open it takes the full row and shows
+   the citation in a small monospace box */
+.pub__cite {
+  flex: 0 0 auto;
+
+  > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  &[open] {
+    flex-basis: 100%;
+  }
+
+  &[open] > summary {
+    margin-bottom: 0.5em;
+  }
+
+  .pub__citation {
+    margin: 0;
+    padding: 0.6em 0.8em;
+    border: 1px dashed var(--global-border-color);
+    border-radius: 8px;
+    font-family: $skin-mono;
+    font-size: 0.74em;
+    line-height: 1.55;
+    color: var(--global-text-color-light);
+  }
 }
 
 .pub__actions {
@@ -855,9 +883,11 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
     min-width: 0;
   }
 
+  /* three distinct voices: authors small and grey (own name bold), the
+     takeaway full size and full contrast, the citation folded away */
   &__authors {
-    margin: 0 0 0.35em;
-    font-size: 0.86em;
+    margin: 0 0 0.4em;
+    font-size: 0.82em;
     color: var(--global-text-color-light);
 
     strong {
@@ -867,9 +897,10 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   }
 
   &__summary {
-    margin: 0 0 0.6em;
-    font-size: 0.9em;
+    margin: 0 0 0.65em;
+    font-size: 0.96em;
     line-height: 1.55;
+    color: var(--global-text-color);
   }
 
 }

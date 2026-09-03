@@ -29,7 +29,6 @@
       {% elsif pub_excerpt != '' %}
       <p class="pub__summary" itemprop="description">{{ pub_excerpt | markdownify | remove: '<p>' | remove: '</p>' }}</p>
       {% endif %}
-      {% unless include.compact %}{% if post.citation %}<p class="pub__citation">{{ post.citation }}</p>{% endif %}{% endunless %}
       <p class="pub__actions">
         {% if post.paperurl %}<a class="pub__pill" href="{{ post.paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
         {% if post.arxivurl %}<a class="pub__pill" href="{{ post.arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
@@ -38,6 +37,12 @@
         {% if post.posterurl %}<a class="pub__pill" href="{{ post.posterurl }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
         {% if post.link %}<a class="pub__pill" href="{{ post.link }}"><i class="fas fa-up-right-from-square" aria-hidden="true"></i>Link</a>{% endif %}
         <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
+        {% if post.citation and include.compact != true %}
+        <details class="pub__cite">
+          <summary class="pub__pill pub__pill--ghost"><i class="fas fa-quote-left" aria-hidden="true"></i>Cite</summary>
+          <p class="pub__citation">{{ post.citation }}</p>
+        </details>
+        {% endif %}
       </p>
     </div>
   </article>
