@@ -818,12 +818,12 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   align-items: flex-start;
 
   &__thumb {
-    flex: 0 0 150px;
+    flex: 0 0 240px;
     margin-top: 0.2em;
 
     img {
       display: block;
-      width: 150px;
+      width: 240px;
       height: auto;
       border: 1px solid var(--global-border-color);
       border-radius: 10px;
@@ -859,6 +859,11 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
 
     &__thumb {
       flex-basis: auto;
+
+      img {
+        width: 100%;
+        max-width: 320px;
+      }
     }
   }
 }
@@ -869,10 +874,10 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   border-bottom: 1px solid var(--global-border-color);
 
   .pub__thumb {
-    flex-basis: 110px;
+    flex-basis: 200px;
 
     img {
-      width: 110px;
+      width: 200px;
     }
   }
 
