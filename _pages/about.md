@@ -18,9 +18,9 @@ I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](htt
 
 <div class="chips" aria-label="Research interests">
   <span class="chips__label">Research interests</span>
-  <a class="chip" href="/publications/#topics=diffusion">Diffusion models</a>
-  <a class="chip" href="/publications/#topics=regularization">Regularization</a>
-  <a class="chip" href="/publications/#topics=applications">ML for science</a>
+  <a class="chip" href="/publications/#diffusion">Diffusion models</a>
+  <a class="chip" href="/publications/#regularization">Regularization</a>
+  <a class="chip" href="/publications/#applications">ML for science</a>
 </div>
 
 ## Research focus
@@ -42,31 +42,31 @@ I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](htt
 <div class="focus-grid">
   <article class="focus-card">
     <div class="focus-card__icon"><i class="fas fa-wave-square" aria-hidden="true"></i></div>
-    <h3 class="focus-card__title"><a href="/publications/#topics=diffusion,theory">Generalization in diffusion models</a></h3>
+    <h3 class="focus-card__title"><a href="/publications/#diffusion+theory">Generalization in diffusion models</a></h3>
     <p class="focus-card__text">Why diffusion models produce novel samples rather than copies of their training data, and how optimization shapes this.</p>
     <p class="focus-card__links"><a href="/publication/take-a-big-step">Taking a Big Step</a> · <a href="/publication/understanding-diffusion">Rethinking generalization</a></p>
-    <a class="focus-card__more" href="/publications/#topics=diffusion,theory">All {{ n_gen }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+    <a class="focus-card__more" href="/publications/#diffusion+theory">All {{ n_gen }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
   </article>
   <article class="focus-card">
     <div class="focus-card__icon"><i class="fas fa-sliders" aria-hidden="true"></i></div>
-    <h3 class="focus-card__title"><a href="/publications/#topics=diffusion,sampling">Sampling and evaluation</a></h3>
+    <h3 class="focus-card__title"><a href="/publications/#diffusion+sampling">Sampling and evaluation</a></h3>
     <p class="focus-card__text">When to stop the reverse process in latent diffusion models, and how to measure sample quality reliably.</p>
     <p class="focus-card__links"><a href="/publication/optimal-stopping-ldm">Optimal Stopping</a> · <a href="/publication/mind">MIND</a></p>
-    <a class="focus-card__more" href="/publications/#topics=diffusion,sampling">All {{ n_samp }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+    <a class="focus-card__more" href="/publications/#diffusion+sampling">All {{ n_samp }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
   </article>
   <article class="focus-card">
     <div class="focus-card__icon"><i class="fas fa-flask" aria-hidden="true"></i></div>
-    <h3 class="focus-card__title"><a href="/publications/#topics=diffusion,applications">Generative models for science and language</a></h3>
+    <h3 class="focus-card__title"><a href="/publications/#diffusion+applications">Generative models for science and language</a></h3>
     <p class="focus-card__text">Generative emulators for PDE simulations, and discrete-diffusion language models.</p>
     <p class="focus-card__links"><a href="/publication/kastor">Kastor</a> · <a href="/publication/diffusion-gemma">DiffusionGemma</a></p>
-    <a class="focus-card__more" href="/publications/#topics=diffusion,applications">All {{ n_app }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+    <a class="focus-card__more" href="/publications/#diffusion+applications">All {{ n_app }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
   </article>
   <article class="focus-card">
     <div class="focus-card__icon"><i class="fas fa-bezier-curve" aria-hidden="true"></i></div>
-    <h3 class="focus-card__title"><a href="/publications/#topics=regularization">Implicit regularization in deep learning</a></h3>
+    <h3 class="focus-card__title"><a href="/publications/#regularization">Implicit regularization in deep learning</a></h3>
     <p class="focus-card__text">How gradient descent biases deep residual networks toward neural ODEs, and how large learning rates regularize score matching.</p>
     <p class="focus-card__links"><a href="/publication/implicit-reg-resnet">ResNets and neural ODEs</a> · <a href="/publication/take-a-big-step">Taking a Big Step</a></p>
-    <a class="focus-card__more" href="/publications/#topics=regularization">All {{ n_reg }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+    <a class="focus-card__more" href="/publications/#regularization">All {{ n_reg }} papers <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
   </article>
 </div>
 
