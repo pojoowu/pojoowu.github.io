@@ -1,13 +1,20 @@
 {% include base_path %}
+<meta charset="utf-8">
+<!-- Tells the browser the page supports both schemes so the canvas it paints
+     before any stylesheet arrives already matches the user's preference
+     (some Chromium-based browsers, e.g. Arc, otherwise flash white between pages). -->
+<meta name="color-scheme" content="light dark">
 <script>
   (function() {
-    var theme = localStorage.getItem('theme') || 
+    var theme = localStorage.getItem('theme') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
+    var root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    /* Same idea for the site's own toggle: set the colour scheme inline so the
+       pre-CSS canvas is dark when the user chose dark on a light system. */
+    root.style.colorScheme = theme;
   })();
 </script>
-
-<meta charset="utf-8">
 
 {% include seo.html %}
 
