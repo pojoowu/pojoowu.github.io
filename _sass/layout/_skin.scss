@@ -1004,6 +1004,10 @@ $skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospa
   text-transform: uppercase;
   color: var(--global-text-color-light);
   border-bottom: 1px solid var(--global-border-color);
+
+  &:after {
+    display: none;   /* year labels keep just the hairline, not the accent bar */
+  }
 }
 
 /* --------------------------------------------------------------------------
