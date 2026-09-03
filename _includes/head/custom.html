@@ -2,7 +2,8 @@
 
 <!-- _includes/head/custom.html -->
 <style>
-  /* 1. Register transition before the parser touches the body */
+  /* 1. Opt every page into cross-document view transitions. This must sit in the
+        head of both the outgoing and the incoming document. */
   @view-transition {
     navigation: auto;
   }
@@ -14,18 +15,24 @@
   }
 </style>
 
-<!-- Load transition styling -->
-<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
+<!-- 3. Hold the first paint, and therefore the view-transition capture of the new
+        page, until #page-ready at the end of <body> has been parsed, so the whole
+        page is laid out before it is shown. Nothing that runs later may change
+        the layout: the scripts are deferred and must not move things (the
+        mobile header is CSS-only, the footer is CSS-only). A synchronous
+        external jQuery bundle makes Chrome drop this marker, so keep `defer`. -->
+<link rel="expect" href="#page-ready" blocking="render">
+<script defer src="{{ base_path }}/assets/js/main.min.js"></script>
+<script defer src="{{ base_path }}/assets/js/theme-toggle.js"></script>
+<link rel="preload" href="{{ base_path }}/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Icon fonts too: otherwise the icons arrive one frame after the first paint
+     and pop in during the transition (Font Awesome uses font-display: block). -->
+<link rel="preload" href="{{ base_path }}/assets/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base_path }}/assets/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base_path }}/assets/fonts/academicons.woff" as="font" type="font/woff" crossorigin>
 
-<!-- Keep the early theme detection script -->
-<script>
-  (function () {
-    var stored = null;
-    try { stored = localStorage.getItem('theme'); } catch (e) {}
-    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-  })();
-</script>
+<!-- Transition styling (the early theme script lives in head.html, before main.css) -->
+<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
 
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>
@@ -34,11 +41,9 @@
 <link rel="icon" type="image/png" href="{{ base_path }}/images/favicon-192x192.png" sizes="192x192"/>
 <link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
 <link rel="icon" href="/images/favicon.ico"/>
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"/>
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1b"/>
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f6f3"/>
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1116"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
-<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
-
 
 <!-- Support for MatJax -->
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

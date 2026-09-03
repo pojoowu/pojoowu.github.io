@@ -8,7 +8,7 @@
    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
  */
 
-@import 
+@import
     "vendor/breakpoint/breakpoint",
 
     "themes",
@@ -35,9 +35,12 @@
     "layout/page",
     "layout/archive",
     "layout/sidebar",
-    
+
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands",
-    "vendor/magnific-popup/magnific-popup"
+    "vendor/magnific-popup/magnific-popup",
+
+    /* Card layout + typography, overrides everything above. Keep last. */
+    "layout/skin"
 ;

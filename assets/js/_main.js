@@ -6,24 +6,9 @@ $(document).ready(function(){
   // These should be the same as the settings in _variables.scss
   scssLarge = 925; // pixels
 
-  // Sticky footer
-  var bumpIt = function() {
-      $("body").css("margin-bottom", $(".page__footer").outerHeight(true));
-    },
-    didResize = false;
+  // (The sticky-footer body-margin hack was removed: the footer is positioned
+  // with a CSS flex column now, see _sass/layout/_base.scss.)
 
-  bumpIt();
-
-  $(window).resize(function() {
-    didResize = true;
-  });
-  setInterval(function() {
-    if (didResize) {
-      didResize = false;
-      bumpIt();
-    }
-  }, 250);
-  
   // FitVids init
   fitvids();
 
