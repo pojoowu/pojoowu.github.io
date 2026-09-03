@@ -670,11 +670,12 @@ a {
   }
 
   &__date {
-    flex: 0 0 6.5em;
+    flex: 0 0 8em;
     padding-top: 0.15em;
     font-size: 0.85em;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
     color: var(--global-text-color-light);
   }
 }
@@ -759,4 +760,243 @@ a {
 
 .page__footer-copyright {
   font-size: 0.75em;
+}
+
+/* --------------------------------------------------------------------------
+   News, research focus, selected publications, blog list
+   -------------------------------------------------------------------------- */
+
+$skin-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+/* monospace for metadata (dates, venues, labels): a small nod to
+   terminal-style academic pages without changing the body type */
+.chips__label,
+.page__content .timeline__date,
+.news__date,
+.badge,
+.archive .page__meta,
+.more a {
+  font-family: $skin-mono;
+  font-feature-settings: "tnum";
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
+  background: var(--global-surface-2-color);
+  color: var(--global-text-color-light);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+
+  &__sep {
+    margin: 0 0.1em;
+  }
+
+  &--accent {
+    border-color: transparent;
+    background: var(--global-accent-soft-color);
+    color: var(--global-accent-color);
+  }
+}
+
+.pub__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0 0 0.45em;
+}
+
+/* publication rows, with an optional thumbnail on the left */
+.pub {
+  display: flex;
+  gap: 1.25em;
+  align-items: flex-start;
+
+  &__thumb {
+    flex: 0 0 150px;
+    margin-top: 0.2em;
+
+    img {
+      display: block;
+      width: 150px;
+      height: auto;
+      border: 1px solid var(--global-border-color);
+      border-radius: 10px;
+      background: var(--global-surface-2-color);
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__authors {
+    margin: 0 0 0.35em;
+    font-size: 0.9em;
+    color: var(--global-text-color-light);
+
+    strong {
+      color: var(--global-text-color);
+      font-weight: 700;
+    }
+  }
+
+  &__summary {
+    margin: 0 0 0.6em;
+    font-size: 0.92em;
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 599px) {
+    flex-direction: column;
+    gap: 0.75em;
+
+    &__thumb {
+      flex-basis: auto;
+    }
+  }
+}
+
+/* compact variant for "Selected publications" on the home page */
+.page__content .pub--compact {
+  padding: 0.9em 0;
+  border-bottom: 1px solid var(--global-border-color);
+
+  .pub__thumb {
+    flex-basis: 110px;
+
+    img {
+      width: 110px;
+    }
+  }
+
+  .pub__title {
+    font-size: 1.02em;
+  }
+
+  .pub__summary {
+    margin-bottom: 0.5em;
+  }
+}
+
+.page__content .list__item:last-of-type .pub--compact {
+  border-bottom: 0;
+}
+
+/* news */
+.news {
+  list-style: none;
+  margin: 0 0 0.75em;
+  padding: 0;
+
+  &__item {
+    display: flex;
+    gap: 1em;
+    align-items: baseline;
+    margin: 0 0 0.65em;
+  }
+
+  &__date {
+    flex: 0 0 5.5em;
+    font-size: 0.82em;
+    font-weight: 600;
+    color: var(--global-text-color-light);
+    white-space: nowrap;
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    min-width: 0;
+    line-height: 1.55;
+  }
+}
+
+/* "All news", "All publications" */
+.more {
+  margin: 0.25em 0 0;
+  font-size: 0.82em;
+
+  a {
+    font-weight: 700;
+    text-decoration: none;
+
+    &:after {
+      content: " \2192";
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* research focus: topic + the papers behind it */
+.page__content .focus {
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+
+  li {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em 0.75em;
+    align-items: baseline;
+    margin: 0 0 0.55em;
+    padding-left: 1.1em;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--global-accent-color);
+    }
+  }
+
+  &__topic {
+    font-weight: 700;
+  }
+
+  &__links {
+    font-size: 0.9em;
+    color: var(--global-text-color-light);
+  }
+}
+
+/* blog list: date line under each post title */
+.archive .page__date {
+  margin: 0 0 0.4em;
+  font-size: 0.85em;
+  color: var(--global-text-color-light);
+
+  strong {
+    font-weight: 600;
+  }
+
+  .fa,
+  .fas {
+    color: var(--global-accent-color);
+  }
+}
+
+/* blog list: year headings */
+.archive .archive__subtitle {
+  margin: 1.5em 0 0.25em;
+  padding-bottom: 0.35em;
+  font-family: $skin-mono;
+  font-size: 0.85em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-border-color);
 }

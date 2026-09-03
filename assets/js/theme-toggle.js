@@ -18,6 +18,7 @@
 
   function render(theme) {
     root.setAttribute('data-theme', theme);
+    root.style.colorScheme = theme; // keeps the pre-CSS canvas colour in step (see head.html)
     btn.setAttribute('aria-pressed', String(theme === 'dark'));
   }
 

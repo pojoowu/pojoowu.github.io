@@ -13,27 +13,7 @@
 {% endif %}
 
 {% if post.collection == 'publications' %}
-{% assign pub_excerpt = post.excerpt | strip %}
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item pub" itemscope itemtype="http://schema.org/ScholarlyArticle">
-    <h2 class="archive__item-title pub__title" itemprop="headline">
-      <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-    </h2>
-    <p class="pub__meta">
-      {% if post.venue %}<span itemprop="publisher">{{ post.venue }}</span>{% endif %}
-      {% if post.venue and post.date %}<span class="pub__sep">&middot;</span>{% endif %}
-      {% if post.date %}<time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y" }}</time>{% endif %}
-    </p>
-    {% if post.citation %}<p class="pub__citation">{{ post.citation }}</p>{% endif %}
-    {% if pub_excerpt != '' %}<p class="archive__item-excerpt" itemprop="description">{{ pub_excerpt | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
-    <p class="pub__actions">
-      {% if post.paperurl %}<a class="pub__pill" href="{{ post.paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
-      {% if post.slidesurl %}<a class="pub__pill" href="{{ post.slidesurl }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
-      {% if post.link %}<a class="pub__pill" href="{{ post.link }}"><i class="fas fa-up-right-from-square" aria-hidden="true"></i>Link</a>{% endif %}
-      <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
-    </p>
-  </article>
-</div>
+{% include publication-item.html %}
 {% else %}
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
