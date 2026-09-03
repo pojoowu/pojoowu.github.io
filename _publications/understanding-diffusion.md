@@ -6,6 +6,7 @@ permalink: /publication/understanding-diffusion
 excerpt: ''
 date: 2026-05-07
 venue: 'arXiv preprint'
+topics: [diffusion, theory]
 paperurl: '/files/Position_paper___memorization_diffusion_arXiv.pdf'
 arxivurl: 'https://arxiv.org/abs/2605.06077'
 header:

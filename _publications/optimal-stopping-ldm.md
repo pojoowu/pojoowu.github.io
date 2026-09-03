@@ -6,6 +6,7 @@ permalink: /publication/optimal-stopping-ldm
 excerpt: ''
 date: 2025-10-10
 venue: 'ICML 2026'
+topics: [diffusion, theory, sampling]
 badges:
   - 'Oral at the PriGM workshop, EurIPS 2025'
 paperurl: '/files/2510.08409v1.pdf'

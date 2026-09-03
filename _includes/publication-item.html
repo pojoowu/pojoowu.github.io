@@ -11,7 +11,7 @@
 {% include base_path %}
 {% assign pub_year = post.date | date: "%Y" %}
 {% assign pub_id = post.url | slugify %}
-<div class="list__item">
+<div class="list__item"{% if post.topics %} data-topics="{{ post.topics | join: ' ' }}"{% endif %}>
   <article class="archive__item pub{% if include.compact %} pub--compact{% endif %}" itemscope itemtype="http://schema.org/ScholarlyArticle">
     <div class="pub__body">
       <p class="pub__badges">

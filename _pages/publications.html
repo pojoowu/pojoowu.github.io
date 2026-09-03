@@ -11,13 +11,37 @@ author_profile: true
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-{% comment %} newest first, grouped by year {% endcomment %}
+{% comment %}
+  Topic filters. Buttons toggle on and off; several can be active at once and a
+  paper stays visible only if it carries every active topic. The selection is
+  mirrored in the URL hash (#topics=a,b) so a filtered view can be linked.
+  Topics come from _data/topics.yml and each paper's `topics` front matter; the
+  behaviour lives in _includes/scripts.html. Without JavaScript every paper is
+  shown and the counts are the totals per topic.
+{% endcomment %}
+<div class="filters" id="pub-filters" role="group" aria-label="Filter publications by topic">
+  <span class="filters__label">Topics</span>
+  {%- for t in site.data.topics %}
+    {%- assign n = 0 %}
+    {%- for p in site.publications %}{% if p.topics contains t.id %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+  <button type="button" class="filter" data-topic="{{ t.id }}" aria-pressed="false">{{ t.label }}<span class="filter__count">{{ n }}</span></button>
+  {%- endfor %}
+  <button type="button" class="filter filter--clear" data-clear hidden><i class="fas fa-xmark" aria-hidden="true"></i>Clear</button>
+  <span class="filters__status" aria-live="polite"></span>
+</div>
+
+{% comment %} newest first, grouped by year; each year sits in its own section so a year with no matching paper can be hidden while filtering {% endcomment %}
 {% assign written_year = '' %}
 {% for post in site.publications reversed %}
   {% assign year = post.date | date: '%Y' %}
   {% if year != written_year %}
+    {% unless written_year == '' %}</section>{% endunless %}
+    <section class="year-group" data-year="{{ year }}">
     <h2 id="y{{ year }}" class="archive__subtitle">{{ year }}</h2>
     {% assign written_year = year %}
   {% endif %}
   {% include publication-item.html %}
 {% endfor %}
+{% unless written_year == '' %}</section>{% endunless %}
+
+<p class="filters__empty" id="pub-empty" hidden>No paper matches the selected topics.</p>

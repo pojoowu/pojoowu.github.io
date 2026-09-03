@@ -6,6 +6,7 @@ permalink: /publication/kastor
 excerpt: ''
 date: 2026-08-05
 venue: 'arXiv preprint'
+topics: [diffusion, applications]
 paperurl: '/files/kastor.pdf'
 arxivurl: 'https://arxiv.org/abs/2608.06107'
 authors: 'Guillaume Couairon, Alexis Jacq, Yu-Han Wu, Renu Singh, Yana Hasson, Quentin Berthet, Romuald Elie'

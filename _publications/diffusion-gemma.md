@@ -6,6 +6,7 @@ permalink: /publication/diffusion-gemma
 excerpt: ''
 date: 2026-07-31
 venue: 'arXiv preprint'
+topics: [diffusion, applications]
 paperurl: '/files/diffusiongemma.pdf'
 arxivurl: 'https://arxiv.org/abs/2608.00146'
 authors: 'DiffusionGemma Team, Google DeepMind'

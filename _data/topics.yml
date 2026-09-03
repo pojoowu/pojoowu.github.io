@@ -1,0 +1,15 @@
+# Topic filters shown on /publications/. Each publication lists the ids that
+# apply in its `topics` front matter; order here is the button order. Several
+# filters combine as an intersection, and the research-focus cards on the home
+# page link to /publications/#topics=<id>,<id> with the combination that best
+# matches each card.
+- id: diffusion
+  label: Diffusion models
+- id: theory
+  label: ML theory
+- id: applications
+  label: Applications
+- id: regularization
+  label: Regularization
+- id: sampling
+  label: Sampling & evaluation
