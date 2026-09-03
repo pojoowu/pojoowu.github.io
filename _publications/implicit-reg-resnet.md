@@ -5,8 +5,11 @@ category: manuscripts
 permalink: /publication/implicit-reg-resnet
 excerpt: ''
 date: 2023-01-01
-venue: 'ICLR2024'
+venue: 'ICLR 2024'
 paperurl: '/files/2309.01213v3.pdf'
+arxivurl: 'https://arxiv.org/abs/2309.01213'
+authors: 'Pierre Marion*, Yu-Han Wu*, Michael E. Sander, Gérard Biau (* equal contribution)'
+summary: 'Proves that a residual network initialized as a discretization of a neural ODE stays one throughout gradient-flow training, with convergence to a global minimum under a Polyak–Łojasiewicz condition.'
 citation: 'Pierre Marion, Yu-Han Wu, Michael Eli Sander, & Gerard Biau (2024). Implicit regularization of deep residual networks towards neural ODEs. In The Twelfth International Conference on Learning Representations.'
 ---
 ### Abstract

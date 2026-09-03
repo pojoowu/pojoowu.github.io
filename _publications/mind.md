@@ -5,9 +5,15 @@ category: manuscripts
 permalink: /publication/mind
 excerpt: ''
 date: 2026-05-07
-venue: 'arXiv'
+venue: 'arXiv preprint'
 paperurl: '/files/2605.06797v1.pdf'
-citation: 'Quentin Berther, Yu-Han Wu, Clément Crepy, Romuald Elie, Klaus Greff & Michael Eli Sander (2026). MIND: Monge Inception Distance for Generative Models Evaluation. arXiv:2605.06797.'
+arxivurl: 'https://arxiv.org/abs/2605.06797'
+posterurl: '/files/MIND_poster.pdf'
+header:
+  teaser: 'mind.jpeg'
+authors: 'Quentin Berthet, Yu-Han Wu, Clément Crepy, Romuald Elie, Klaus Greff, Michael E. Sander'
+summary: 'A sliced-Wasserstein replacement for FID that is an order of magnitude more sample-efficient, two orders of magnitude faster to compute, and more robust to adversarial moment matching.'
+citation: 'Quentin Berthet, Yu-Han Wu, Clément Crepy, Romuald Elie, Klaus Greff & Michael Eli Sander (2026). MIND: Monge Inception Distance for Generative Models Evaluation. arXiv:2605.06797.'
 ---
 ![mind](http://pojoowu.github.io/images/mind.jpeg)
 ### Abstract

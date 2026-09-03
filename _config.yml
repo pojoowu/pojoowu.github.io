@@ -281,6 +281,16 @@ defaults:
     values:
       layout: talk
       author_profile: true
+  # _posts (blog)
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: false
+      related: false
 
 
 # Sass/SCSS

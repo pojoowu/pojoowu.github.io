@@ -16,6 +16,33 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
   <span class="chip">ML for science</span>
 </div>
 
+## News
+
+{% include news-list.html limit=5 %}
+
+<p class="more"><a href="/news/">All news</a></p>
+
+## Research focus
+
+<ul class="focus">
+  <li><span class="focus__topic">Memorization and generalization in diffusion models</span>
+      <span class="focus__links"><a href="/publication/take-a-big-step">Taking a Big Step</a> · <a href="/publication/understanding-diffusion">Rethinking generalization</a></span></li>
+  <li><span class="focus__topic">Sampling in latent diffusion models</span>
+      <span class="focus__links"><a href="/publication/optimal-stopping-ldm">Optimal Stopping</a></span></li>
+  <li><span class="focus__topic">Evaluating generative models</span>
+      <span class="focus__links"><a href="/publication/mind">MIND</a></span></li>
+  <li><span class="focus__topic">Generative models for science and language</span>
+      <span class="focus__links"><a href="/publication/kastor">Kastor</a> · <a href="/publication/diffusion-gemma">DiffusionGemma</a></span></li>
+  <li><span class="focus__topic">Implicit regularization in deep learning</span>
+      <span class="focus__links"><a href="/publication/implicit-reg-resnet">ResNets and neural ODEs</a></span></li>
+</ul>
+
+## Selected publications
+
+{% for post in site.publications reversed %}{% if post.selected %}{% include publication-item.html compact=true %}{% endif %}{% endfor %}
+
+<p class="more"><a href="/publications/">All publications</a></p>
+
 ## Brief curriculum vitae
 
 <ul class="timeline">
@@ -24,20 +51,6 @@ Hi, I am Yu-Han (吳雨翰). I have been a PhD student in [LPSM](https://www.lps
   <li><span class="timeline__date">2022 – 2023</span> University Paris-Saclay, Master degree (Mathematics of Randomness)</li>
   <li><span class="timeline__date">2018 – 2020</span> Lycée Louis-le-Grand, preparatory classes</li>
 </ul>
-
-## Publications
-
-<div class="pub-list" markdown="1">
-
-* Couairon, G., Jacq, A. D., __Wu, Y.-H.__, Singh, R., Hasson, Y., Berthet, Q. & Elie, R. (2026). [Kastor: An efficient fine-tuning strategy for generative emulation of PDE simulations.](/publication/kastor) arXiv:2608.06107.
-* Marion, P.\* & __Wu, Y.-H.__\* (2026). [Understanding diffusion models requires rethinking (again) generalization.](/publication/understanding-diffusion) arXiv:2605.06077.
-* Berthet, Q., __Wu, Y.-H.__, Crepy, C., Elie, R., Greff, K. & Sander, M. E. (2026). [MIND: Monge Inception Distance for Generative Models Evaluation.](/publication/mind) arXiv:2605.06797.
-* __Wu, Y.-H.__, Berthet, Q., Biau, G., Boyer, C, Elie, R., & Marion P. (2025). [Optimal Stopping in Latent Diffusion Models.](/publication/optimal-stopping-ldm) arXiv:2510.08409.
-* __Wu, Y.-H.__, Marion, P., Biau, G., & Boyer, C. (2025). [Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization.](/publication/take-a-big-step) Proceedings of Thirty Eighth Conference on Learning Theory, PMLR 291:5718-5756.
-* Marion, P.\*, __Wu, Y.-H.\*__, Sander, M. E., & Biau, G. (2024). [Implicit regularization of deep residual networks towards neural ODEs.](/publication/implicit-reg-resnet) The Twelfth International Conference on Learning Representations.
-* Conlon, D., & __Wu, Y.-H.__ (2023). [More on lines in Euclidean Ramsey theory.](/publication/more-on-lines) Comptes Rendus. Mathématique, 361(G5), 897-901.
-
-</div>
 
 ## Internships
 

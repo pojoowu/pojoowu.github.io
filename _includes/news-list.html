@@ -1,0 +1,15 @@
+{% comment %}
+  Dated news list from _data/news.yml. Usage:
+    {% include news-list.html %}            all items
+    {% include news-list.html limit=5 %}    latest five
+{% endcomment %}
+{% assign news_items = site.data.news | sort: "date" | reverse %}
+{% if include.limit %}{% assign news_items = news_items | slice: 0, include.limit %}{% endif %}
+<ul class="news">
+{% for item in news_items %}
+  <li class="news__item">
+    <time class="news__date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" }}</time>
+    <div class="news__text">{{ item.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+  </li>
+{% endfor %}
+</ul>

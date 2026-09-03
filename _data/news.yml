@@ -1,0 +1,42 @@
+# News items shown on the home page (latest five) and on /news/ (all).
+# Newest first is not required: the list is sorted by date at build time.
+# `text` is Markdown. Dates marked "approximate" were inferred; adjust freely.
+
+- date: 2026-08-05
+  text: "New preprint: [Kastor](/publication/kastor), an efficient fine-tuning strategy for generative emulation of PDE simulations, with colleagues at Google DeepMind."
+
+- date: 2026-07-31
+  text: "The [DiffusionGemma](/publication/diffusion-gemma) technical report is out: an open-weight discrete-diffusion language model obtained by fine-tuning Gemma 4."
+
+- date: 2026-06-04
+  text: "Talk at [MathSTIC](/talks/mathstic) (USPN) on *Understanding diffusion models requires rethinking (again) generalization*."
+
+- date: 2026-05-07
+  text: "Two new preprints: [Understanding diffusion models requires rethinking (again) generalization](/publication/understanding-diffusion) (with Pierre Marion) and [MIND](/publication/mind), a sample-efficient alternative to FID."
+
+- date: 2026-05-01   # approximate
+  text: "[Optimal Stopping in Latent Diffusion Models](/publication/optimal-stopping-ldm) accepted at ICML 2026."
+
+- date: 2026-04-22
+  text: "Poster at [Lemanth 2026](/talks/lemanth2026), EPFL Bernoulli Center, on MIND."
+
+- date: 2025-12-07
+  text: "Talk at the [PriGM workshop](/talks/prigm2025) in Copenhagen on optimal stopping in latent diffusion models."
+
+- date: 2025-10-10
+  text: "New preprint: [Optimal Stopping in Latent Diffusion Models](/publication/optimal-stopping-ldm)."
+
+- date: 2025-07-28
+  text: "Talk at [COLT 2025](/talks/colt2025), ENS Lyon, presenting [Taking a Big Step](/publication/take-a-big-step)."
+
+- date: 2025-07-03
+  text: "Talk at the [Journées de Statistique 2025](/talks/jds2025) in Marseille."
+
+- date: 2025-02-05
+  text: "New preprint: [Taking a Big Step: Large Learning Rates in Denoising Score Matching Prevent Memorization](/publication/take-a-big-step), later accepted at COLT 2025."
+
+- date: 2024-09-01
+  text: "Started my PhD at LPSM, Sorbonne University, co-advised with Google DeepMind."
+
+- date: 2024-01-16   # approximate
+  text: "[Implicit regularization of deep residual networks towards neural ODEs](/publication/implicit-reg-resnet) accepted at ICLR 2024."
