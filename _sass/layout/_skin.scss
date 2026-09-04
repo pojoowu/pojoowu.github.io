@@ -385,6 +385,13 @@ a {
   }
 }
 
+/* Traditional Chinese text (the name): name a CJK face explicitly, so macOS
+   uses PingFang, Windows JhengHei, and Linux (the PDF render in CI) Noto CJK
+   rather than a fallback with no glyphs */
+[lang="zh-Hant"] {
+  font-family: "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+}
+
 /* name in Chinese characters under the Latin name */
 .author__name-native {
   display: block;
