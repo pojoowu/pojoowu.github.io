@@ -30,6 +30,7 @@ redirect_from:
     <li><a href="https://yh-wu.com">yh-wu.com</a></li>
     <li><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a></li>
     {% if site.author.googlescholar %}<li><a href="{{ site.author.googlescholar }}">Google Scholar</a></li>{% endif %}
+    {% if site.author.linkedin %}<li><a href="https://www.linkedin.com/in/{{ site.author.linkedin }}/">linkedin.com/in/{{ site.author.linkedin }}</a></li>{% endif %}
   </ul>
 </header>
 
