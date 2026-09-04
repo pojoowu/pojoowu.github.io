@@ -45,8 +45,8 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1116"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
-{% if page.math %}
-<!-- MathJax, only on pages whose front matter sets `math: true`.
+{% if page.math or content contains "$" or content contains "\(" %}
+<!-- MathJax, only on pages that contain math (or set `math: true`).
      Single dollars are accepted for inline math (kramdown leaves them
      untouched, MathJax picks them up); \$ escapes a literal dollar sign. -->
 <script>

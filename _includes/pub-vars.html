@@ -1,0 +1,107 @@
+{% comment %}
+  Derived values for one publication, so a paper file needs only a few fields.
+  Expects `post` (the publication document); sets, for use after the include:
+    pub_slug        file name = last URL segment
+    pub_year        from `date`
+    pub_venue       `venue`, or "arXiv preprint"
+    pub_is_preprint venue contains "arXiv"/"preprint"
+    pub_arxivurl    `arxivurl`, or https://arxiv.org/abs/<arxiv>
+    pub_paperurl    `paperurl`, else files/<slug>.pdf if that file exists, else the arXiv PDF
+    pub_figure      `figure`, else images/papers/<slug>.png if it exists
+    pub_blogurl     `blogurl`, else the URL of a post whose front matter says `paper: <slug>`
+    pub_summary     `summary`, else the first sentence of the abstract (the body)
+    pub_citation    `citation`, or "Authors (Year). Title. Venue or arXiv:id."
+    pub_bibtex      `bibtex`, or a generated @misc / @inproceedings entry
+{% endcomment %}
+{%- assign pub_slug = post.url | split: "/" | last -%}
+{%- assign pub_year = post.date | date: "%Y" -%}
+{%- assign pub_venue = post.venue | default: "arXiv preprint" -%}
+{%- assign pub_is_preprint = false -%}
+{%- if pub_venue contains "arXiv" or pub_venue contains "reprint" %}{% assign pub_is_preprint = true %}{% endif -%}
+
+{%- assign pub_arxivurl = post.arxivurl -%}
+{%- if pub_arxivurl == nil and post.arxiv %}{% assign pub_arxivurl = "https://arxiv.org/abs/" | append: post.arxiv %}{% endif -%}
+{%- assign pub_arxiv_id = post.arxiv -%}
+{%- if pub_arxiv_id == nil and pub_arxivurl %}{% assign pub_arxiv_id = pub_arxivurl | split: "/abs/" | last %}{% endif -%}
+
+{%- assign pub_paperurl = post.paperurl -%}
+{%- if pub_paperurl == nil -%}
+  {%- assign pub_pdf_path = "/files/" | append: pub_slug | append: ".pdf" -%}
+  {%- assign pub_pdf_file = site.static_files | where: "path", pub_pdf_path | first -%}
+  {%- if pub_pdf_file %}{% assign pub_paperurl = pub_pdf_path %}
+  {%- elsif pub_arxiv_id %}{% assign pub_paperurl = "https://arxiv.org/pdf/" | append: pub_arxiv_id %}{% endif -%}
+{%- endif -%}
+
+{%- assign pub_figure = post.figure -%}
+{%- if pub_figure == nil -%}
+  {%- assign pub_fig_path = "/images/papers/" | append: pub_slug | append: ".png" -%}
+  {%- assign pub_fig_file = site.static_files | where: "path", pub_fig_path | first -%}
+  {%- if pub_fig_file %}{% assign pub_figure = pub_fig_path %}{% endif -%}
+{%- endif -%}
+
+{%- assign pub_blogurl = post.blogurl -%}
+{%- if pub_blogurl == nil -%}
+  {%- assign pub_post = site.posts | where: "paper", pub_slug | first -%}
+  {%- if pub_post %}{% assign pub_blogurl = pub_post.url %}{% endif -%}
+{%- endif -%}
+
+{%- assign pub_summary = post.summary -%}
+{%- if pub_summary == nil or pub_summary == "" -%}
+  {%- assign pub_summary = post.content | strip_html | remove_first: "Abstract" | strip | split: ". " | first | strip -%}
+  {%- if pub_summary != "" %}{% unless pub_summary contains "." %}{% assign pub_summary = pub_summary | append: "." %}{% endunless %}{% endif -%}
+{%- endif -%}
+
+{%- assign pub_names = post.authors | default: "" | replace: " (* equal contribution)", "" | replace: "*", "" | split: ", " -%}
+{%- assign pub_n = pub_names | size -%}
+{%- assign pub_penult = pub_n | minus: 1 -%}
+{%- capture pub_authors_text -%}
+  {%- for name in pub_names -%}
+    {{- name | strip -}}
+    {%- if forloop.index == pub_penult %} and {% elsif forloop.last %}{% else %}, {% endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- capture pub_where -%}
+  {%- if pub_is_preprint -%}
+    {%- if pub_arxiv_id %}arXiv:{{ pub_arxiv_id }}{% else %}Preprint{% endif -%}
+  {%- else -%}
+    {{- pub_venue -}}{%- unless pub_venue contains "20" %} {{ pub_year }}{% endunless -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if post.citation -%}
+  {%- assign pub_citation = post.citation -%}
+{%- else -%}
+  {%- capture pub_citation -%}{{ pub_authors_text }} ({{ pub_year }}). {{ post.title }}. {{ pub_where }}.{%- endcapture -%}
+{%- endif -%}
+{%- if post.bibtex -%}
+  {%- assign pub_bibtex = post.bibtex -%}
+{%- else -%}
+  {%- assign pub_first = pub_names | first | strip | split: " " | last | downcase | replace: "é", "e" | replace: "è", "e" -%}
+  {%- assign pub_word = post.title | downcase | split: " " | first | replace: ":", "" | replace: ",", "" -%}
+  {%- capture pub_bib_authors -%}
+    {%- for name in pub_names -%}
+      {%- assign parts = name | strip | split: " " -%}
+      {%- assign nparts = parts | size | minus: 1 -%}
+      {%- if nparts > 0 -%}{{ parts | last }}, {{ parts | slice: 0, nparts | join: " " }}{%- else -%}{{ parts | first }}{%- endif -%}
+      {%- unless forloop.last %} and {% endunless -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- capture pub_bibtex -%}
+{%- if pub_is_preprint -%}
+@misc{ {{- pub_first }}{{ pub_year }}{{ pub_word }},
+  title={ {{- post.title -}} },
+  author={ {{- pub_bib_authors -}} },
+  year={ {{- pub_year -}} },{% if pub_arxiv_id %}
+  eprint={ {{- pub_arxiv_id -}} },
+  archivePrefix={arXiv},{% endif %}
+  primaryClass={cs.LG}
+}
+{%- else -%}
+@inproceedings{ {{- pub_first }}{{ pub_year }}{{ pub_word }},
+  title={ {{- post.title -}} },
+  author={ {{- pub_bib_authors -}} },
+  booktitle={ {{- pub_venue -}} },
+  year={ {{- pub_year -}} }
+}
+{%- endif -%}
+  {%- endcapture -%}
+{%- endif -%}

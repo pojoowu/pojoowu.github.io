@@ -33,7 +33,7 @@ redirect_from:
   </ul>
 </header>
 
-<p class="cv__download"><a class="pub__pill" href="{{ base_path }}{{ site.author.cv_pdf }}"><i class="fas fa-file-arrow-down" aria-hidden="true"></i>Download PDF</a> <span class="cv__hint">Rendered from this page, so the two never drift apart.</span></p>
+<p class="cv__download"><a class="pub__pill" href="{{ base_path }}{{ site.author.cv_pdf }}"><i class="fas fa-file-arrow-down" aria-hidden="true"></i>Download PDF</a></p>
 
 <section class="cv__section">
   <h2 id="education">Education</h2>
@@ -48,7 +48,7 @@ redirect_from:
   <ol class="cv__pubs">
     {%- for p in papers %}{% unless p.venue contains "arXiv" or p.venue contains "reprint" %}
     <li>
-      {{ p.citation | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}
+      {% assign post = p %}{% include pub-vars.html %}{{ pub_citation | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}
       {%- if p.award %} <span class="cv__flag">{{ p.award }}</span>{% endif %}
       {%- if p.badges %}{% for b in p.badges %} <span class="cv__flag">{{ b }}</span>{% endfor %}{% endif %}
       <a class="cv__pub-link" href="{{ base_path }}{{ p.url }}">page</a>
@@ -60,7 +60,7 @@ redirect_from:
   <ol class="cv__pubs">
     {%- for p in papers %}{% if p.venue contains "arXiv" or p.venue contains "reprint" %}
     <li>
-      {{ p.citation | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}
+      {% assign post = p %}{% include pub-vars.html %}{{ pub_citation | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}
       <a class="cv__pub-link" href="{{ base_path }}{{ p.url }}">page</a>
     </li>
     {%- endif %}{% endfor %}

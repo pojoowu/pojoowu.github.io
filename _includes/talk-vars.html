@@ -1,0 +1,25 @@
+{% comment %}
+  Derived values for one talk. Expects `post` (the talk document); sets
+    talk_slug    file name = last URL segment
+    talk_slides  `slidesurl`, else /files/<slug>-slides.pdf if that file exists
+    talk_poster  `posterurl`, else /files/<slug>-poster.pdf if that file exists
+    talk_desc    the body text, else "Presentation of *Paper title*." from `publication`
+{% endcomment %}
+{%- assign talk_slug = post.url | split: "/" | last -%}
+{%- assign talk_slides = post.slidesurl -%}
+{%- if talk_slides == nil -%}
+  {%- assign talk_slides_path = "/files/" | append: talk_slug | append: "-slides.pdf" -%}
+  {%- assign talk_slides_file = site.static_files | where: "path", talk_slides_path | first -%}
+  {%- if talk_slides_file %}{% assign talk_slides = talk_slides_path %}{% endif -%}
+{%- endif -%}
+{%- assign talk_poster = post.posterurl -%}
+{%- if talk_poster == nil -%}
+  {%- assign talk_poster_path = "/files/" | append: talk_slug | append: "-poster.pdf" -%}
+  {%- assign talk_poster_file = site.static_files | where: "path", talk_poster_path | first -%}
+  {%- if talk_poster_file %}{% assign talk_poster = talk_poster_path %}{% endif -%}
+{%- endif -%}
+{%- assign talk_desc = post.content | strip_html | strip -%}
+{%- if talk_desc == "" and post.publication -%}
+  {%- assign talk_paper = site.publications | where: "url", post.publication | first -%}
+  {%- if talk_paper %}{% capture talk_desc %}Presentation of *{{ talk_paper.title }}*.{% endcapture %}{% endif -%}
+{%- endif -%}

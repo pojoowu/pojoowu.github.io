@@ -1,15 +1,46 @@
 {% comment %}
-  Dated news list from _data/news.yml. Usage:
-    {% include news-list.html %}            all items
-    {% include news-list.html limit=5 %}    latest five
+  Dated news list. Items come from three places and are merged by date:
+    _data/news.yml                 free-form items (`date`, `text` in Markdown)
+    _publications/*.md  `news:`    `news: true` -> "New preprint/paper: [Title](url), Venue."
+                                   `news: "..."` -> your own Markdown text
+    _talks/*.md         `news:`    `news: true` -> "Talk at [Event](url), City."
+  Usage: {% include news-list.html %} (all) or {% include news-list.html limit=5 %}
 {% endcomment %}
-{% assign news_items = site.data.news | sort: "date" | reverse %}
-{% if include.limit %}{% assign news_items = news_items | slice: 0, include.limit %}{% endif %}
+{%- assign news_entries = "" | split: "" -%}
+{%- for item in site.data.news -%}
+  {%- capture e %}{{ item.date | date: "%Y-%m-%d" }}‖{{ item.text }}{% endcapture -%}
+  {%- assign news_entries = news_entries | push: e -%}
+{%- endfor -%}
+{%- for p in site.publications -%}
+  {%- if p.news -%}
+    {%- if p.news == true -%}
+      {%- capture t -%}New {% if p.venue == nil or p.venue contains "arXiv" or p.venue contains "reprint" %}preprint{% else %}paper{% endif %}: [{{ p.title }}]({{ p.url }}){% if p.venue and p.venue contains "arXiv" == false and p.venue contains "reprint" == false %}, {{ p.venue }}{% endif %}.{%- endcapture -%}
+    {%- else -%}
+      {%- assign t = p.news -%}
+    {%- endif -%}
+    {%- capture e %}{{ p.date | date: "%Y-%m-%d" }}‖{{ t }}{% endcapture -%}
+    {%- assign news_entries = news_entries | push: e -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for tk in site.talks -%}
+  {%- if tk.news -%}
+    {%- if tk.news == true -%}
+      {%- capture t -%}{{ tk.type | default: "Talk" }} at [{{ tk.title }}]({{ tk.url }}){% if tk.location %}, {{ tk.location }}{% endif %}.{%- endcapture -%}
+    {%- else -%}
+      {%- assign t = tk.news -%}
+    {%- endif -%}
+    {%- capture e %}{{ tk.date | date: "%Y-%m-%d" }}‖{{ t }}{% endcapture -%}
+    {%- assign news_entries = news_entries | push: e -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign news_entries = news_entries | sort | reverse -%}
+{%- if include.limit %}{% assign news_entries = news_entries | slice: 0, include.limit %}{% endif -%}
 <ul class="news">
-{% for item in news_items %}
+{%- for e in news_entries -%}
+  {%- assign parts = e | split: "‖" -%}
   <li class="news__item">
-    <time class="news__date" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %Y" }}</time>
-    <div class="news__text">{{ item.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+    <time class="news__date" datetime="{{ parts[0] }}">{{ parts[0] | date: "%b %Y" }}</time>
+    <div class="news__text">{{ parts[1] | markdownify | remove: '<p>' | remove: '</p>' }}</div>
   </li>
-{% endfor %}
+{%- endfor %}
 </ul>

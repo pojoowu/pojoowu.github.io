@@ -87,6 +87,16 @@
   <meta property="og:image" content="{% if page.header.image contains "://" %}{{ page.header.image }}{% else %}{{ page.header.image | prepend: "/images/" | prepend: base_path }}{% endif %}">
 {% elsif page.header.overlay_image %}
   <meta property="og:image" content="{% if page.header.overlay_image contains "://" %}{{ page.header.overlay_image }}{% else %}{{ page.header.overlay_image | prepend: "/images/" | prepend: base_path }}{% endif %}">
+{% elsif page.collection == "publications" %}
+  {% comment %} a paper page previews with its key figure when it has one {% endcomment %}
+  {% assign post = page %}{% include pub-vars.html %}
+  {% if pub_figure %}
+  <meta property="og:image" content="{{ pub_figure | prepend: base_path }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ pub_figure | prepend: base_path }}">
+  {% elsif site.og_image %}
+  <meta property="og:image" content="{{ site.og_image | prepend: "/images/" | prepend: base_path }}">
+  {% endif %}
 {% elsif site.og_image %}
   {% comment %} site-wide preview card for shared links (Slack, LinkedIn, Bluesky, iMessage) {% endcomment %}
   <meta property="og:image" content="{{ site.og_image | prepend: "/images/" | prepend: base_path }}">

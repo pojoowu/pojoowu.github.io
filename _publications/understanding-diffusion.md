@@ -7,6 +7,7 @@ excerpt: ''
 date: 2026-05-07
 venue: 'arXiv preprint'
 topics: [diffusion, theory]
+short: Rethinking generalization
 paperurl: '/files/Position_paper___memorization_diffusion_arXiv.pdf'
 arxivurl: 'https://arxiv.org/abs/2605.06077'
 header:
@@ -20,7 +21,6 @@ highlights:
   - "**Problem.** In diffusion models memorization and generalization are incompatible, so the supervised-learning theory of generalization does not transfer."
   - "**Approach.** Survey the three families of explanations and run controlled CIFAR-10 sweeps over dataset size, model size, batch size and learning rate."
   - "**Position.** Why models do not memorize is largely settled by early stopping and the linear scaling of memorization time; what is learned before memorization is the open question."
-blogurl: /blog/rethinking-generalization-in-diffusion-models/
 related:
   - take-a-big-step
   - optimal-stopping-ldm

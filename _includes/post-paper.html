@@ -1,0 +1,16 @@
+{% comment %}
+  Pills at the top of a blog post whose front matter names the paper it is
+  about (`paper: <slug>`): Paper, arXiv and the paper page. The paper page in
+  turn gets a "Blog post" pill (see pub-vars.html), so one line links both ways.
+{% endcomment %}
+{% include base_path %}
+{%- assign post_paper_url = "/publication/" | append: page.paper -%}
+{%- assign post = site.publications | where: "url", post_paper_url | first -%}
+{%- if post -%}
+{% include pub-vars.html %}
+<p class="pub__actions">
+  {% if pub_paperurl %}<a class="pub__pill" href="{{ pub_paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
+  {% if pub_arxivurl %}<a class="pub__pill" href="{{ pub_arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
+  <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}">Paper page</a>
+</p>
+{%- endif -%}

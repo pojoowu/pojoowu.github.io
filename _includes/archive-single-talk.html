@@ -1,11 +1,13 @@
 {% comment %}
   One talk row: date column on the left, then type/venue badges, title,
   description and button pills. Front matter used: title, date, type, venue,
-  location, slidesurl, posterurl, videourl, publication (site path of the
-  related paper page). The body text is the description.
+  location, publication (site path of the paper page), and optionally
+  slidesurl / posterurl / videourl. Without those, files named
+  files/<slug>-slides.pdf and files/<slug>-poster.pdf are picked up
+  automatically; without a body, the description names the paper.
 {% endcomment %}
 {% include base_path %}
-{% assign talk_desc = post.excerpt | strip %}
+{% include talk-vars.html %}
 <div class="list__item">
   <article class="archive__item talk" itemscope itemtype="http://schema.org/Event">
     <div class="talk__when">
@@ -21,8 +23,8 @@
       </h3>
       {% if talk_desc != '' %}<p class="talk__desc" itemprop="description">{{ talk_desc | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
       <p class="pub__actions">
-        {% if post.slidesurl %}<a class="pub__pill" href="{{ post.slidesurl }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
-        {% if post.posterurl %}<a class="pub__pill" href="{{ post.posterurl }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
+        {% if talk_slides %}<a class="pub__pill" href="{{ talk_slides }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
+        {% if talk_poster %}<a class="pub__pill" href="{{ talk_poster }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
         {% if post.videourl %}<a class="pub__pill" href="{{ post.videourl }}"><i class="fas fa-video" aria-hidden="true"></i>Video</a>{% endif %}
         {% if post.publication %}<a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.publication }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
         <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
