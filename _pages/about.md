@@ -16,13 +16,6 @@ I am a PhD student at [LPSM](https://www.lpsm.paris/), [Sorbonne University](htt
   <dd><a href="https://q-berthet.github.io/">Quentin Berthet</a> and <a href="https://www.linkedin.com/in/romuald-elie-b9bb817b/">Romuald Elie</a></dd>
 </dl>
 
-<div class="chips" aria-label="Research interests">
-  <span class="chips__label">Research interests</span>
-  <a class="chip" href="/publications/#diffusion">Diffusion models</a>
-  <a class="chip" href="/publications/#regularization">Regularization</a>
-  <a class="chip" href="/publications/#applications">ML for science</a>
-</div>
-
 ## Research focus
 
 {% comment %}

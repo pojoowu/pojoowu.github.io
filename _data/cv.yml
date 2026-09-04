@@ -1,0 +1,40 @@
+# Structured CV entries rendered by _pages/cv.md (and the PDF made from it).
+# Publications, talks and awards are not listed here: they come from the
+# _publications and _talks collections, so they never need updating twice.
+education:
+  - what: PhD in applied mathematics and machine learning
+    where: Sorbonne University (LPSM) and Google DeepMind, Paris
+    when: 2024 – 2027 (expected)
+    note: "Advisors: Gérard Biau, Claire Boyer and Pierre Marion; Quentin Berthet and Romuald Elie at Google DeepMind."
+  - what: Diploma of the École Normale Supérieure, applied mathematics
+    where: École Normale Supérieure, Paris
+    when: 2024
+  - what: MSc in statistics and machine learning
+    where: Université Paris-Saclay
+    when: 2023
+  - what: BSc in applied mathematics
+    where: Université Paris Cité
+    when: 2021
+  - what: Classe préparatoire (MPSI/MP)
+    where: Lycée Louis-le-Grand, Paris
+    when: 2020
+
+experience:
+  - what: Research intern
+    where: Owkin, Paris
+    when: Winter 2023
+    note: Federated learning and invariant risk minimization. Supervisor Ulysse Marteau-Ferey.
+  - what: Research intern
+    where: Sorbonne University (LPSM)
+    when: Summer 2023
+    note: Implicit regularization of residual networks. Supervisors Gérard Biau and Pierre Marion.
+  - what: Research intern
+    where: California Institute of Technology
+    when: Summer 2022
+    note: Extremal combinatorics and Euclidean Ramsey theory. Supervisor David Conlon.
+
+skills:
+  - label: Mathematics
+    items: probability, statistics, optimization, stochastic analysis
+  - label: Programming
+    items: Python (JAX, PyTorch, NumPy), LaTeX, Git

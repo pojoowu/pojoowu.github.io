@@ -23,7 +23,7 @@
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
       </h3>
       {% if post.authors %}
-      <p class="pub__authors">{{ post.authors | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}</p>
+      <p class="pub__authors">{% include authors.html authors=post.authors %}</p>
       {% endif %}
       {% if post.summary %}
       <p class="pub__summary" itemprop="description">{{ post.summary }}</p>

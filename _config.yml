@@ -9,10 +9,11 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "custom"
-title                    : "Yu Han Wu"
+title                    : "Yu-Han Wu"
 title_separator          : "-"
-name                     : &name "Yu Han Wu"
-description              : &description "PhD student"
+name                     : &name "Yu-Han Wu"
+description              : &description "PhD student in diffusion models and machine learning theory at Sorbonne University and Google DeepMind."
+tagline                  : "Sorbonne · Google DeepMind" # short line next to the name in the header
 url                      : https://yh-wu.com # custom domain (CNAME file at the repo root); GitHub Pages redirects pojoowu.github.io here
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "pojoowu/pojoowu.github.io"
@@ -31,7 +32,8 @@ author:
   bio              : "PhD student in diffusion models"
   affiliation      : "Sorbonne University · Google DeepMind"
   location         : "Paris, France"
-  employer         : "Google DeepMind"
+  employer         : # shown in the affiliation line already
+  cv_pdf           : "/files/yu-han-wu-cv.pdf" # rendered from /cv/ by .github/workflows/cv-pdf.yml
   uri              : # URL
   email            : "yhwu@google.com" 
 
@@ -140,7 +142,7 @@ yandex_site_verification :
 #   username               :
 #   app_id                 :
 #   publisher              :
-# og_image                 :  # Open Graph/Twitter default site image
+og_image                 : "og-card.png" # 1200x630 preview card for shared links (images/og-card.png, made by .github/scripts is not needed: static)
 # # For specifying social profiles
 # # - https://developers.google.com/structured-data/customize/social-profiles
 # social:

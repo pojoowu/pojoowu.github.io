@@ -19,7 +19,7 @@ $warning-color              : #f89406;
 $border-radius              : 10px;
 $box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
 $global-transition          : all 0.15s ease-in-out;
-$masthead-height            : 70px;
+$masthead-height            : 76px; /* header box; body offset and sticky sidebar follow it (_skin.scss) */
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $sidebar-link-max-width     : 250px;

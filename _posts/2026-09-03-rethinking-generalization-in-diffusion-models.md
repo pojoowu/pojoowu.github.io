@@ -10,6 +10,7 @@ tags:
 excerpt: "We argue that the field should pivot from explaining why the diffusion models do not memorize to investigating what the model actually learns during pre-memorization phase."
 header:
   teaser: understanding.png
+math: true
 ---
 
 <p class="post-note">A condensed version of our position paper with Pierre Marion. The text below is taken from the paper and shortened; the figures are the paper's. References and full details are in the paper.</p>

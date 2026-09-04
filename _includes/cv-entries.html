@@ -1,0 +1,16 @@
+{% comment %}
+  A list of CV entries: what / where / optional note on the left, the date on
+  the right. Usage: {% include cv-entries.html items=site.data.cv.education %}
+{% endcomment %}
+<ul class="cv__entries">
+  {%- for e in include.items %}
+  <li class="cv__entry">
+    <div class="cv__body">
+      <span class="cv__what">{{ e.what }}</span>
+      {%- if e.where %}<span class="cv__where">{{ e.where }}</span>{% endif %}
+      {%- if e.note %}<span class="cv__note">{{ e.note }}</span>{% endif %}
+    </div>
+    {%- if e.when %}<div class="cv__when">{{ e.when }}</div>{% endif %}
+  </li>
+  {%- endfor %}
+</ul>
