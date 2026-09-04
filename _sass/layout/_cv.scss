@@ -1,0 +1,325 @@
+/* ==========================================================================
+   CV page (_pages/cv.md): on screen a compact two-column entry list inside
+   the usual page card; in print (and in files/yu-han-wu-cv.pdf, rendered by
+   .github/scripts/cv-pdf.js) a plain light document with its own header.
+   ========================================================================== */
+
+.cv__head {
+  display: none; /* the sidebar already carries the identity on screen */
+}
+
+.archive .cv__download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0 0 1.5em;
+
+  .cv__hint {
+    font-size: 0.8em;
+    color: var(--global-text-color-light);
+  }
+}
+
+.cv__section {
+  margin: 0 0 1.5em;
+}
+
+.archive .cv__sub {
+  margin: 0.9em 0 0.45em;
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+}
+
+/* `.archive .cv …` outranks the theme's `.archive ul/li` rules */
+.archive .cv .cv__entries,
+.archive .cv .cv__skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  > li {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+}
+
+.archive .cv .cv__pubs {
+  margin-left: 1.35em;
+  padding-left: 0;
+}
+
+.cv__entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.2em;
+  align-items: start;
+  margin: 0 0 0.7em;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.cv__what {
+  display: block;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cv__where {
+  display: block;
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
+.cv__note {
+  display: block;
+  margin-top: 0.1em;
+  font-size: 0.86em;
+  line-height: 1.45;
+  color: var(--global-text-color-light);
+}
+
+.cv__when {
+  padding-top: 0.2em;
+  font-family: $skin-mono;
+  font-size: 0.78em;
+  white-space: nowrap;
+  color: var(--global-text-color-light);
+
+  @media screen and (max-width: 600px) {
+    padding-top: 0;
+  }
+}
+
+.archive .cv__pubs {
+  margin: 0 0 0.6em 1.35em;
+  padding: 0;
+  font-size: 0.92em;
+  line-height: 1.5;
+
+  li {
+    margin: 0 0 0.5em;
+    padding-left: 0.15em;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.cv__flag {
+  display: inline-block;
+  margin-left: 0.2em;
+  padding: 0.05em 0.5em;
+  border-radius: 999px;
+  background: var(--global-award-color);
+  color: var(--global-award-soft-color);
+  font-size: 0.74em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  vertical-align: 0.1em;
+}
+
+.archive .cv__pub-link {
+  margin-left: 0.35em;
+  font-family: $skin-mono;
+  font-size: 0.78em;
+  color: var(--global-text-color-light);
+
+  &::before {
+    content: "\2197\00a0"; /* ↗ */
+  }
+
+  &:hover {
+    color: var(--global-accent-color);
+  }
+}
+
+.archive .cv__skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0 0 0.35em;
+  }
+}
+
+.cv__skill-label {
+  display: inline-block;
+  min-width: 8em;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Print / PDF
+   -------------------------------------------------------------------------- */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 16mm 16mm;
+  }
+
+  /* always light on paper, whatever theme the browser was in */
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --global-bg-color: #fff;
+    --global-surface-color: #fff;
+    --global-surface-2-color: #f3f4f6;
+    --global-text-color: #111827;
+    --global-text-color-light: #4b5563;
+    --global-border-color: #d1d5db;
+    --global-accent-color: #111827;
+    --global-accent-2-color: #374151;
+    --global-award-color: #e6f4ee;
+    --global-award-soft-color: #065f46;
+  }
+
+  html {
+    font-size: 10pt;
+  }
+
+  body {
+    padding: 0 !important;
+    background: #fff !important;
+    color: #111827 !important;
+  }
+
+  .masthead,
+  .sidebar,
+  .theme-toggle,
+  .page__footer,
+  .page__title,
+  .cv__download,
+  .cv__pub-link {
+    display: none !important;
+  }
+
+  #main {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  #main > .page,
+  #main > .archive {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .cv__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2em;
+    margin: 0 0 1.1em;
+    padding: 0 0 0.75em;
+    border-bottom: 1.5px solid #111827;
+  }
+
+  .cv__name {
+    margin: 0 0 0.15em;
+    font-size: 2.1em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .cv__name-native {
+    margin-left: 0.35em;
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #4b5563;
+  }
+
+  .cv__tag {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.4;
+  }
+
+  .cv__tag--muted {
+    color: #4b5563;
+  }
+
+  .cv__contact {
+    flex: 0 0 auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 0.88em;
+    line-height: 1.5;
+
+    li {
+      display: block;
+    }
+  }
+
+  .archive .cv h2 {
+    margin: 1.25em 0 0.55em;
+    padding: 0 0 0.15em;
+    border-bottom: 1px solid #9ca3af;
+    font-size: 0.98em;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #111827;
+    break-after: avoid;
+
+    /* the accent bar of the screen design */
+    &::after,
+    &::before {
+      content: none !important;
+      display: none !important;
+    }
+  }
+
+  .archive .cv .cv__sub {
+    margin: 0.8em 0 0.4em;
+    color: #374151;
+  }
+
+  .cv__section {
+    margin: 0 0 1em;
+  }
+
+  .cv__entry,
+  .archive .cv__pubs li {
+    break-inside: avoid;
+  }
+
+  .cv__entry {
+    grid-template-columns: minmax(0, 1fr) auto;
+    margin: 0 0 0.55em;
+  }
+
+  .cv__when {
+    font-size: 0.82em;
+    color: #374151;
+  }
+
+  .archive .cv__pubs {
+    font-size: 0.95em;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}

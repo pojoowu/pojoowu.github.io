@@ -7,6 +7,7 @@ excerpt: ''
 date: 2025-10-10
 venue: 'ICML 2026'
 topics: [diffusion, theory, sampling]
+short: Optimal Stopping
 badges:
   - 'Oral at the PriGM workshop, EurIPS 2025'
 paperurl: '/files/2510.08409v1.pdf'

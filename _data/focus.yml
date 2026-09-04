@@ -1,0 +1,21 @@
+# Research-focus cards on the home page (_includes/focus-cards.html).
+# Each card links to /publications/ filtered on its `topics` (all must match),
+# lists the matching papers automatically (newest first, up to `max`, default 3),
+# and shows the count. `icon` is a Font Awesome class. Optional `papers: [slug]`
+# fixes the list by hand.
+- title: Generalization in diffusion models
+  text: Why diffusion models produce novel samples rather than copies of their training data, and how optimization shapes this.
+  icon: fa-wave-square
+  topics: [diffusion, theory]
+- title: Sampling and evaluation
+  text: When to stop the reverse process in latent diffusion models, and how to measure sample quality reliably.
+  icon: fa-sliders
+  topics: [diffusion, sampling]
+- title: Generative models for science and language
+  text: Generative emulators for PDE simulations, and discrete-diffusion language models.
+  icon: fa-flask
+  topics: [diffusion, applications]
+- title: Implicit regularization in deep learning
+  text: How gradient descent biases deep residual networks toward neural ODEs, and how large learning rates regularize score matching.
+  icon: fa-bezier-curve
+  topics: [regularization]

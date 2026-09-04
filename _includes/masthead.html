@@ -13,7 +13,7 @@
              so wide screens never see it flash in and out on page load. -->
         <button class="hidden" aria-label="Toggle menu"><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a>{% if site.description %}<span class="masthead__tagline">{{ site.description }}</span>{% endif %}</li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="{{ base_path }}/">{{ site.title }}</a>{% if site.tagline %}<span class="masthead__tagline">{{ site.tagline }}</span>{% endif %}</li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}

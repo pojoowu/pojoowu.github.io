@@ -1,0 +1,43 @@
+{% comment %}
+  Research-focus cards from _data/focus.yml. For each card: the papers carrying
+  all of its topics (or the `papers` slugs if given), newest first, up to `max`
+  (default 3), shown by their `short` name or the title before the colon; the
+  count in "All N papers"; links to /publications/#topic+topic.
+{% endcomment %}
+{% include base_path %}
+<div class="focus-grid">
+{%- for card in site.data.focus %}
+  {%- assign frag = card.topics | join: "+" -%}
+  {%- assign matches = "" | split: "" -%}
+  {%- if card.papers -%}
+    {%- for slug in card.papers -%}
+      {%- assign u = "/publication/" | append: slug -%}
+      {%- assign p = site.publications | where: "url", u | first -%}
+      {%- if p %}{% assign matches = matches | push: p %}{% endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- for p in site.publications reversed -%}
+      {%- assign all = true -%}
+      {%- for t in card.topics %}{% unless p.topics contains t %}{% assign all = false %}{% endunless %}{% endfor -%}
+      {%- if all %}{% assign matches = matches | push: p %}{% endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- assign n = matches | size -%}
+  {%- assign max = card.max | default: 3 -%}
+  <article class="focus-card">
+    <div class="focus-card__icon"><i class="fas {{ card.icon | default: 'fa-book-open' }}" aria-hidden="true"></i></div>
+    <h3 class="focus-card__title"><a href="{{ base_path }}/publications/#{{ frag }}">{{ card.title }}</a></h3>
+    <p class="focus-card__text">{{ card.text }}</p>
+    {%- if n > 0 %}
+    <p class="focus-card__links">
+      {%- for p in matches limit: max -%}
+        {%- assign short = p.short | default: nil -%}
+        {%- if short == nil %}{% assign short = p.title | split: ":" | first | truncatewords: 5, "…" %}{% endif -%}
+        <a href="{{ base_path }}{{ p.url }}">{{ short }}</a>{% unless forloop.last %} · {% endunless %}
+      {%- endfor -%}
+    </p>
+    {%- endif %}
+    <a class="focus-card__more" href="{{ base_path }}/publications/#{{ frag }}">All {{ n }} paper{% if n != 1 %}s{% endif %} <i class="fas fa-arrow-right-long" aria-hidden="true"></i></a>
+  </article>
+{%- endfor %}
+</div>

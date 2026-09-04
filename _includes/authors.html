@@ -1,0 +1,11 @@
+{% comment %}
+  Render an author line. Names listed in _data/people.yml (same spelling as in
+  the `authors` front matter) become links to their homepages; Yu-Han Wu is
+  bolded. Usage: {% include authors.html authors=post.authors %}
+{% endcomment %}
+{%- assign line = include.authors -%}
+{%- for person in site.data.people -%}
+  {%- capture link -%}<a class="author-link" href="{{ person.url }}">{{ person.name }}</a>{%- endcapture -%}
+  {%- assign line = line | replace: person.name, link -%}
+{%- endfor -%}
+{{ line | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}

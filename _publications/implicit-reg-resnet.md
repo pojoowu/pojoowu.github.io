@@ -7,6 +7,7 @@ excerpt: ''
 date: 2023-01-01
 venue: 'ICLR 2024'
 topics: [theory, regularization]
+short: ResNets and neural ODEs
 award: 'Spotlight'
 paperurl: '/files/2309.01213v3.pdf'
 arxivurl: 'https://arxiv.org/abs/2309.01213'

@@ -1,0 +1,30 @@
+# Content checks on every pull request and push: bin/check.py validates front
+# matter, topic ids, file paths and internal links, then the site is built once
+# so Liquid or Sass errors surface here rather than on GitHub Pages.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [master]
+
+jobs:
+  content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - run: python3 bin/check.py
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - run: JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter

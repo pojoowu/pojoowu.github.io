@@ -1,0 +1,29 @@
+# Co-authors whose names become links in author lines (see _includes/authors.html).
+# `name` must be spelled exactly as in the publications' `authors` front matter.
+# Verified 2026-09-04: each URL returned 200 and names the person.
+- name: Pierre Marion
+  url: https://pierremarion23.github.io/
+- name: Gérard Biau
+  url: https://perso.lpsm.paris/~biau/
+- name: Claire Boyer
+  url: https://www.imo.universite-paris-saclay.fr/~claire.boyer/
+- name: Quentin Berthet
+  url: https://q-berthet.github.io/
+- name: Romuald Elie
+  url: https://www.linkedin.com/in/romuald-elie-b9bb817b/
+- name: Michael E. Sander
+  url: https://michaelsdr.github.io/
+- name: Klaus Greff
+  url: https://qwlouse.github.io/
+- name: Clément Crepy
+  url: https://scholar.google.com/citations?user=UrmqI6IAAAAJ
+- name: Guillaume Couairon
+  url: https://gcouairon.github.io/
+- name: Alexis Jacq
+  url: https://research.google/people/107175/
+- name: Renu Singh
+  url: https://scholar.google.com/citations?user=XrVvDRYAAAAJ
+- name: Yana Hasson
+  url: https://hassony2.github.io/
+- name: David Conlon
+  url: https://www.its.caltech.edu/~dconlon/

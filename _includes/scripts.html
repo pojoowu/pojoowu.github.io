@@ -71,9 +71,12 @@
      active topic (intersection). Each button's count shows how many papers
      would remain if it were pressed on top of the current selection, and a
      button that would leave none is dimmed. Year sections with nothing left
-     are hidden, the selection is mirrored in the URL hash (#topics=a,b) so a
+     are hidden, the selection is mirrored in the URL hash (#a+b) so a
      filtered view can be linked, and rows re-enter with a short rise. Without
-     JavaScript the page shows every paper. */
+     JavaScript the page shows every paper. The hash deliberately contains only
+     id characters and "+": the theme's smooth-scroll plugin passes every
+     clicked link's fragment through a jQuery selector, and "=" or "," would
+     throw there. */
   (function () {
     var bar = document.getElementById('pub-filters');
     if (!bar) return;
@@ -113,7 +116,7 @@
       if (clear) clear.hidden = sel.length === 0;
       if (status) status.textContent = sel.length ? shown + ' of ' + items.length : '';
       if (fromClick) {
-        history.replaceState(null, '', sel.length ? '#topics=' + sel.join(',') : location.pathname + location.search);
+        history.replaceState(null, '', sel.length ? '#' + sel.join('+') : location.pathname + location.search);
         if (main) { main.classList.remove('is-filtering'); void main.offsetWidth; main.classList.add('is-filtering'); }
       }
     }
@@ -128,10 +131,11 @@
       apply(true);
     });
     /* read the selection from the hash: on load, and again when the hash
-       changes without a reload (a pasted #topics= link in the same tab) */
+       changes without a reload (a pasted link in the same tab). Only known
+       topic ids count, so a year anchor like #y2025 is left alone. */
     function fromHash() {
-      var m = location.hash.match(/^#topics=([\w,-]+)$/);
-      var want = m ? m[1].split(',') : [];
+      var ids = buttons.map(function (b) { return b.getAttribute('data-topic'); });
+      var want = location.hash.slice(1).split('+').filter(function (t) { return ids.indexOf(t) !== -1; });
       buttons.forEach(function (b) { b.setAttribute('aria-pressed', want.indexOf(b.getAttribute('data-topic')) !== -1 ? 'true' : 'false'); });
     }
     window.addEventListener('hashchange', function () { fromHash(); apply(false); });

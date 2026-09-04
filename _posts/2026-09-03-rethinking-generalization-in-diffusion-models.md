@@ -10,15 +10,10 @@ tags:
 excerpt: "We argue that the field should pivot from explaining why the diffusion models do not memorize to investigating what the model actually learns during pre-memorization phase."
 header:
   teaser: understanding.png
+paper: understanding-diffusion   # adds the Paper / arXiv / Paper page pills here and a "Blog post" pill on the paper page
 ---
 
 <p class="post-note">A condensed version of our position paper with Pierre Marion. The text below is taken from the paper and shortened; the figures are the paper's. References and full details are in the paper.</p>
-
-<p class="pub__actions">
-  <a class="pub__pill" href="/files/Position_paper___memorization_diffusion_arXiv.pdf"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>
-  <a class="pub__pill" href="https://arxiv.org/abs/2605.06077"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>
-  <a class="pub__pill pub__pill--ghost" href="/publication/understanding-diffusion">Publication page</a>
-</p>
 
 ## Why generative models are different
 

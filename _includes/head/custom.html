@@ -45,7 +45,9 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1116"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
-<!-- MathJax. Single dollars are accepted for inline math (kramdown leaves them
+{% if page.math or content contains "$" or content contains "\(" %}
+<!-- MathJax, only on pages that contain math (or set `math: true`).
+     Single dollars are accepted for inline math (kramdown leaves them
      untouched, MathJax picks them up); \$ escapes a literal dollar sign. -->
 <script>
   window.MathJax = {
@@ -60,6 +62,7 @@
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
 <script type="speculationrules">
 {"prerender":[{
   "where":{"and":[

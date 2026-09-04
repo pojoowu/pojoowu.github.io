@@ -43,7 +43,14 @@ layout: default
       {% endunless %}
 
       <section class="page__content" itemprop="text">
-        {{ content }}
+        {% assign post = page %}{% include talk-vars.html %}
+        {% if talk_desc != "" %}{{ talk_desc | markdownify }}{% endif %}
+        <p class="pub__actions">
+          {% if talk_slides %}<a class="pub__pill" href="{{ talk_slides }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
+          {% if talk_poster %}<a class="pub__pill" href="{{ talk_poster }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
+          {% if page.videourl %}<a class="pub__pill" href="{{ page.videourl }}"><i class="fas fa-video" aria-hidden="true"></i>Video</a>{% endif %}
+          {% if page.publication %}<a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ page.publication }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper page</a>{% endif %}
+        </p>
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 

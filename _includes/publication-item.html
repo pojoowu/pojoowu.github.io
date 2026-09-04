@@ -11,11 +11,12 @@
 {% include base_path %}
 {% assign pub_year = post.date | date: "%Y" %}
 {% assign pub_id = post.url | slugify %}
+{% include pub-vars.html %}
 <div class="list__item"{% if post.topics %} data-topics="{{ post.topics | join: ' ' }}"{% endif %}>
   <article class="archive__item pub{% if include.compact %} pub--compact{% endif %}" itemscope itemtype="http://schema.org/ScholarlyArticle">
     <div class="pub__body">
       <p class="pub__badges">
-        <span class="badge{% if post.venue contains 'arXiv' or post.venue contains 'reprint' or post.venue == nil %} badge--muted{% endif %}">{% if post.venue %}{{ post.venue }}{% else %}Preprint{% endif %}{% unless post.venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}</span>
+        <span class="badge{% if pub_venue contains 'arXiv' or pub_venue contains 'reprint' or pub_venue == nil %} badge--muted{% endif %}">{% if pub_venue %}{{ pub_venue }}{% else %}Preprint{% endif %}{% unless pub_venue contains "20" %} <span class="badge__sep">&middot;</span> {{ pub_year }}{% endunless %}</span>
         {% if post.award %}<span class="badge badge--award"><i class="fas fa-star" aria-hidden="true"></i> {{ post.award }}</span>{% endif %}
         {% if post.badges %}{% for b in post.badges %}<span class="badge badge--award"><i class="fas fa-star" aria-hidden="true"></i> {{ b }}</span>{% endfor %}{% endif %}
       </p>
@@ -23,28 +24,28 @@
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
       </h3>
       {% if post.authors %}
-      <p class="pub__authors">{{ post.authors | replace: "Yu-Han Wu", "<strong>Yu-Han Wu</strong>" }}</p>
+      <p class="pub__authors">{% include authors.html authors=post.authors %}</p>
       {% endif %}
-      {% if post.summary %}
-      <p class="pub__summary" itemprop="description">{{ post.summary }}</p>
+      {% if pub_summary %}
+      <p class="pub__summary" itemprop="description">{{ pub_summary }}</p>
       {% endif %}
       <div class="pub__actions">
-        {% if post.paperurl %}<a class="pub__pill" href="{{ post.paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
-        {% if post.arxivurl %}<a class="pub__pill" href="{{ post.arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
+        {% if pub_paperurl %}<a class="pub__pill" href="{{ pub_paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
+        {% if pub_arxivurl %}<a class="pub__pill" href="{{ pub_arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
         {% if post.codeurl %}<a class="pub__pill" href="{{ post.codeurl }}"><i class="fab fa-github" aria-hidden="true"></i>Code</a>{% endif %}
         {% if post.slidesurl %}<a class="pub__pill" href="{{ post.slidesurl }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
         {% if post.posterurl %}<a class="pub__pill" href="{{ post.posterurl }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}
         {% if post.link %}<a class="pub__pill" href="{{ post.link }}"><i class="fas fa-up-right-from-square" aria-hidden="true"></i>Link</a>{% endif %}
-        {% if post.blogurl %}<a class="pub__pill" href="{{ base_path }}{{ post.blogurl }}"><i class="fas fa-pen-nib" aria-hidden="true"></i>Blog post</a>{% endif %}
+        {% if pub_blogurl %}<a class="pub__pill" href="{{ base_path }}{{ pub_blogurl }}"><i class="fas fa-pen-nib" aria-hidden="true"></i>Blog post</a>{% endif %}
         {% if post.highlights %}
         <button type="button" class="pub__pill pub__pill--ghost pub__toggle" aria-expanded="false" aria-controls="details-{{ pub_id }}"><i class="fas fa-circle-info" aria-hidden="true"></i>Details</button>
         {% else %}
         <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}" rel="permalink">Details</a>
         {% endif %}
-        {% if post.citation and include.compact != true %}
+        {% if pub_citation and include.compact != true %}
         <button type="button" class="pub__pill pub__pill--ghost pub__toggle" aria-expanded="false" aria-controls="cite-{{ pub_id }}"><i class="fas fa-quote-left" aria-hidden="true"></i>Cite</button>
         {% endif %}
-        {% if post.bibtex and include.compact != true %}
+        {% if pub_bibtex and include.compact != true %}
         <button type="button" class="pub__pill pub__pill--ghost pub__toggle" aria-expanded="false" aria-controls="bibtex-{{ pub_id }}"><i class="fas fa-book" aria-hidden="true"></i>BibTeX</button>
         {% endif %}
       </div>
@@ -58,16 +59,16 @@
         </div>
       </div>
       {% endif %}
-      {% if post.citation and include.compact != true %}
+      {% if pub_citation and include.compact != true %}
       <div class="pub__box pub__citation" id="cite-{{ pub_id }}" hidden>
-        <div class="pub__box-inner"><p>{{ post.citation }}</p></div>
+        <div class="pub__box-inner"><p>{{ pub_citation }}</p></div>
       </div>
       {% endif %}
-      {% if post.bibtex and include.compact != true %}
+      {% if pub_bibtex and include.compact != true %}
       <div class="pub__box pub__bibtex" id="bibtex-{{ pub_id }}" hidden>
         <div class="pub__box-inner">
           <button type="button" class="pub__pill pub__pill--ghost copy-btn" data-copy-target="bibtex-src-{{ pub_id }}"><i class="fas fa-copy" aria-hidden="true"></i>Copy</button>
-          <pre class="bibtex__code"><code id="bibtex-src-{{ pub_id }}">{{ post.bibtex | strip }}</code></pre>
+          <pre class="bibtex__code"><code id="bibtex-src-{{ pub_id }}">{{ pub_bibtex | strip }}</code></pre>
         </div>
       </div>
       {% endif %}
