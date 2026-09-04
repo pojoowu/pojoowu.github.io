@@ -33,7 +33,7 @@ author:
   affiliation      : "Sorbonne University · Google DeepMind"
   location         : "Paris, France"
   employer         : # shown in the affiliation line already
-  cv_pdf           : "/files/yu-han-wu-cv.pdf" # rendered from /cv/ by .github/workflows/cv-pdf.yml
+  cv_pdf           : "/files/yu-han-wu-cv.pdf" # rendered from /cv/ at deploy time (.github/workflows/deploy.yml); not in git
   uri              : # URL
   email            : "yhwu@google.com" 
 

@@ -65,7 +65,10 @@ Write Markdown; math works as `$x$` and `$$…$$`; figures go in `images/blog/my
 
 - `python3 bin/check.py` validates all content; GitHub Actions runs it and a full build on every pull request.
 - Preview: `bundle exec jekyll serve`, then <http://localhost:4000>. A change to `_config.yml` needs a restart.
-- Merging to `master` deploys. If CV content changed, an Action re-renders `files/yu-han-wu-cv.pdf` from `/cv/` and commits it.
+- Every push to `master` runs the Deploy workflow: it builds the site, renders `/cv/` to `files/yu-han-wu-cv.pdf`
+  inside the build, and publishes the result (Settings → Pages → Source is "GitHub Actions"). The PDF is therefore
+  never committed and never conflicts; it is ignored by git. To look at it locally, serve the site and run
+  `BASE_URL=http://localhost:4000 node .github/scripts/cv-pdf.js` (needs `npm i puppeteer`).
 
 ## Things that bite
 
