@@ -52,7 +52,7 @@ Write Markdown; math works as `$x$` and `$$…$$`; figures go in `images/blog/my
 
 | To change… | Edit |
 |---|---|
-| Education, experience, skills (CV) | `_data/cv.yml` — publications, talks and distinctions are automatic |
+| Education, experience, service, skills (CV) | `_data/cv.yml` — publications, talks and distinctions are automatic |
 | Research-focus cards on the home page | `_data/focus.yml` — papers, counts and links are automatic |
 | Topic filters | `_data/topics.yml` |
 | Co-author homepage links | `_data/people.yml` (names spelled as in the author lines) |

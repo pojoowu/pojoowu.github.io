@@ -33,6 +33,14 @@ experience:
     when: Summer 2022
     note: Extremal combinatorics and Euclidean Ramsey theory. Supervisor David Conlon.
 
+service:
+  - what: Reviewer, ICML
+    when: 2026
+  - what: Reviewer, NeurIPS
+    when: 2026
+  - what: Reviewer, PriGM workshop at EurIPS
+    when: 2025 – 2026
+
 skills:
   - label: Mathematics
     items: probability, statistics, optimization, stochastic analysis

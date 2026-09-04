@@ -108,6 +108,13 @@ redirect_from:
   {% include cv-entries.html items=site.data.cv.experience %}
 </section>
 
+{% if site.data.cv.service %}
+<section class="cv__section">
+  <h2 id="service">Service</h2>
+  {% include cv-entries.html items=site.data.cv.service %}
+</section>
+{% endif %}
+
 <section class="cv__section">
   <h2 id="skills">Skills</h2>
   <ul class="cv__skills">

@@ -250,7 +250,7 @@ for frag in re.findall(r'href="/publications/#([^"]+)"', about):
 
 # cv data --------------------------------------------------------------------
 cv = load_yaml("_data/cv.yml") or {}
-for section in ("education", "experience"):
+for section in ("education", "experience", "service"):
     for i, e in enumerate(cv.get(section) or []):
         if not e.get("what") or not e.get("when"):
             err(f"_data/cv.yml {section} entry {i + 1}", "needs `what` and `when`")
