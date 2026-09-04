@@ -255,6 +255,15 @@ for section in ("education", "experience", "service"):
         if not e.get("what") or not e.get("when"):
             err(f"_data/cv.yml {section} entry {i + 1}", "needs `what` and `when`")
 
+# the CV PDF is rendered at deploy time and must never be committed ---------
+import subprocess
+try:
+    tracked = subprocess.run(["git", "ls-files", "files/yu-han-wu-cv.pdf"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    if tracked:
+        err("files/yu-han-wu-cv.pdf", "is tracked by git; it is rendered by the deploy workflow, run `git rm --cached files/yu-han-wu-cv.pdf`")
+except OSError:
+    pass
+
 # report ---------------------------------------------------------------------
 for w in warnings:
     print("warning:", w)

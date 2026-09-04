@@ -11,3 +11,5 @@ Gemfile.lock
 # Ingore files created by npm
 node_modules
 package-lock.json
+# rendered at deploy time by .github/workflows/deploy.yml (and locally by .github/scripts/cv-pdf.js); never committed
+files/yu-han-wu-cv.pdf

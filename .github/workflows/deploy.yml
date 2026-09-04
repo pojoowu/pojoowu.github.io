@@ -1,0 +1,63 @@
+# Build and publish the site with GitHub Actions (Settings → Pages → Source must
+# be "GitHub Actions"). The CV PDF is rendered from /cv/ during the build and
+# shipped inside the deployed site, so it is never committed and always matches
+# the content of master.
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Render the CV PDF from a build that uses local URLs
+        run: |
+          printf 'url: http://localhost:4000\n' > /tmp/local.yml
+          JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,/tmp/local.yml -d /tmp/site-pdf
+          npm install --no-save --no-audit --no-fund puppeteer@23
+          (cd /tmp/site-pdf && python3 -m http.server 4000 >/dev/null 2>&1 &)
+          sleep 2
+          BASE_URL=http://localhost:4000 OUT=/tmp/yu-han-wu-cv.pdf node .github/scripts/cv-pdf.js
+
+      - name: Build the site
+        run: JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
+
+      - name: Put the PDF into the build
+        run: cp /tmp/yu-han-wu-cv.pdf _site/files/yu-han-wu-cv.pdf
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
