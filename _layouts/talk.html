@@ -65,7 +65,10 @@ layout: default
         <div class="deck" data-deck{% if talk_pages.size > 1 %} tabindex="0" role="group" aria-roledescription="carousel" aria-label="{{ talk_deck_kind }}, {{ talk_pages.size }} pages"{% endif %}>
           <div class="deck__stage">
             {% for f in talk_pages %}
-            <img class="deck__page" src="{{ base_path }}{{ f.path }}" alt="{{ talk_deck_kind | downcase }} page {{ forloop.index }} of {{ talk_pages.size }}"{% unless forloop.first %} loading="lazy" hidden{% endunless %}>
+            {% comment %} the inline display is deliberate: a stale cached stylesheet
+               can still carry `.pubpage .page__content img { display: block }`, which
+               beats the [hidden] attribute and stacks the whole deck {% endcomment %}
+            <img class="deck__page" src="{{ base_path }}{{ f.path }}" alt="{{ talk_deck_kind | downcase }} page {{ forloop.index }} of {{ talk_pages.size }}"{% unless forloop.first %} loading="lazy" hidden style="display:none"{% endunless %}>
             {% endfor %}
           </div>
           {% if talk_pages.size > 1 %}

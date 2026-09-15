@@ -30,6 +30,9 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ base_path }}/assets/css/main.css">
+{% comment %} ?v= is the build time: browsers that cache assets hard (Arc keeps
+   them for minutes) would otherwise pair a new page with an old stylesheet,
+   which silently breaks anything whose markup and CSS changed together. {% endcomment %}
+<link rel="stylesheet" href="{{ base_path }}/assets/css/main.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 
 <meta http-equiv="cleartype" content="on">
