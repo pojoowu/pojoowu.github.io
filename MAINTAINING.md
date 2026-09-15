@@ -24,11 +24,18 @@ change `venue` and, if you want the official entry, paste it under `bibtex:`.
 ## Add a talk or poster
 
 ```
-python3 bin/new.py talk colt2026
+python3 bin/new.py talk colt2026        # front matter
+python3 bin/talk-deck.py colt2026       # page images of the deck
 ```
 
 Fill event, type, venue, location, date and the paper. Slides or a poster named
-`files/colt2026-slides.pdf` / `files/colt2026-poster.pdf` are picked up automatically. `news: true` adds it to the news.
+`files/colt2026-slides.pdf` / `files/colt2026-poster.pdf` are picked up automatically, and `news: true` adds it to the news.
+
+The second command renders the PDF to `images/decks/<pdf name>/01.png, 02.png, …`, which the talk page shows in its own
+viewer, one page at a time, instead of an embedded PDF reader. A poster is just a deck of one page. Two talks presenting
+the same deck share one folder, since it is named after the PDF. `bin/check.py` warns if a deck has no images yet.
+
+Any figure or slide on the site opens large when clicked; inside a deck the arrows and the arrow keys page through it.
 
 ## Add a blog post
 

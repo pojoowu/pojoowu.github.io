@@ -8,6 +8,7 @@
     pub_arxivurl    `arxivurl`, or https://arxiv.org/abs/<arxiv>
     pub_paperurl    `paperurl`, else files/<slug>.pdf if that file exists, else the arXiv PDF
     pub_figure      `figure`, else images/papers/<slug>.png if it exists
+    pub_figure_caption  `figure_caption`
     pub_blogurl     `blogurl`, else the URL of a post whose front matter says `paper: <slug>`
     pub_summary     `summary`, else the first sentence of the abstract (the body)
     pub_citation    `citation`, or "Authors (Year). Title. Venue or arXiv:id."
@@ -38,6 +39,8 @@
   {%- assign pub_fig_file = site.static_files | where: "path", pub_fig_path | first -%}
   {%- if pub_fig_file %}{% assign pub_figure = pub_fig_path %}{% endif -%}
 {%- endif -%}
+
+{%- assign pub_figure_caption = post.figure_caption -%}
 
 {%- assign pub_blogurl = post.blogurl -%}
 {%- if pub_blogurl == nil -%}

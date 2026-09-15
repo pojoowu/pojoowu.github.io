@@ -1,9 +1,15 @@
 {% comment %}
   Derived values for one talk. Expects `post` (the talk document); sets
-    talk_slug    file name = last URL segment
-    talk_slides  `slidesurl`, else /files/<slug>-slides.pdf if that file exists
-    talk_poster  `posterurl`, else /files/<slug>-poster.pdf if that file exists
-    talk_desc    the body text, else "Presentation of *Paper title*." from `publication`
+    talk_slug      file name = last URL segment
+    talk_slides    `slidesurl`, else /files/<slug>-slides.pdf if that file exists
+    talk_poster    `posterurl`, else /files/<slug>-poster.pdf if that file exists
+    talk_desc      the body text, else "Presentation of *Paper title*." from `publication`
+    talk_deck_pdf  the PDF to show (slides first, else poster)
+    talk_pages     its page images under images/decks/<pdf name>/ (made by
+                   bin/talk-deck.py) for the deck viewer on the talk page; a
+                   poster is a deck of one page, and two talks presenting the
+                   same deck share one folder
+    talk_deck_kind "Slides" or "Poster", for the heading and the alt text
 {% endcomment %}
 {%- assign talk_slug = post.url | split: "/" | last -%}
 {%- assign talk_slides = post.slidesurl -%}
@@ -17,6 +23,17 @@
   {%- assign talk_poster_path = "/files/" | append: talk_slug | append: "-poster.pdf" -%}
   {%- assign talk_poster_file = site.static_files | where: "path", talk_poster_path | first -%}
   {%- if talk_poster_file %}{% assign talk_poster = talk_poster_path %}{% endif -%}
+{%- endif -%}
+{%- if talk_slides -%}
+  {%- assign talk_deck_pdf = talk_slides -%}{%- assign talk_deck_kind = "Slides" -%}
+{%- else -%}
+  {%- assign talk_deck_pdf = talk_poster -%}{%- assign talk_deck_kind = "Poster" -%}
+{%- endif -%}
+{%- assign talk_pages = "" | split: "" -%}
+{%- if talk_deck_pdf -%}
+  {%- assign talk_deck_name = talk_deck_pdf | split: "/" | last | split: "." | first -%}
+  {%- assign talk_deck_dir = "/images/decks/" | append: talk_deck_name | append: "/" -%}
+  {%- assign talk_pages = site.static_files | where_exp: "f", "f.path contains talk_deck_dir" | sort: "path" -%}
 {%- endif -%}
 {%- assign talk_desc = post.content | strip_html | strip -%}
 {%- if talk_desc == "" and post.publication -%}
