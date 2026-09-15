@@ -22,8 +22,8 @@
         mobile header is CSS-only, the footer is CSS-only). A synchronous
         external jQuery bundle makes Chrome drop this marker, so keep `defer`. -->
 <link rel="expect" href="#page-ready" blocking="render">
-<script defer src="{{ base_path }}/assets/js/main.min.js"></script>
-<script defer src="{{ base_path }}/assets/js/theme-toggle.js"></script>
+<script defer src="{{ base_path }}/assets/js/main.min.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+<script defer src="{{ base_path }}/assets/js/theme-toggle.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
 <link rel="preload" href="{{ base_path }}/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <!-- Icon fonts too: otherwise the icons arrive one frame after the first paint
      and pop in during the transition (Font Awesome uses font-display: block). -->
@@ -32,7 +32,7 @@
 <link rel="preload" href="{{ base_path }}/assets/fonts/academicons.woff" as="font" type="font/woff" crossorigin>
 
 <!-- Transition styling (the early theme script lives in head.html, before main.css) -->
-<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/transitions.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png"/>

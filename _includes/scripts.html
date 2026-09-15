@@ -168,8 +168,12 @@
       }
       function show(i) {
         if (i < 0 || i > pages.length - 1 || i === cur) return;
+        /* inline display as well as [hidden]: an inline style beats any
+           stylesheet, including a stale cached one */
         pages[cur].hidden = true;
+        pages[cur].style.display = 'none';
         pages[i].hidden = false;
+        pages[i].style.display = 'block';
         pages[i].removeAttribute('loading');
         cur = i;
         if (label) label.textContent = i + 1;
@@ -260,8 +264,9 @@
     }
 
     function syncBar() {
-      if (!deck) { bar.hidden = true; return; }
+      if (!deck) { bar.hidden = true; bar.style.display = 'none'; return; }
       bar.hidden = false;
+      bar.style.display = 'flex';
       var pages = deck.querySelectorAll('.deck__page');
       var shown = deck.querySelector('.deck__page:not([hidden])');
       var i = Array.prototype.indexOf.call(pages, shown);
@@ -284,6 +289,7 @@
       var figcap = fig && fig.querySelector('figcaption');
       caption.textContent = figcap ? figcap.textContent.trim() : '';
       caption.hidden = !caption.textContent;
+      caption.style.display = caption.textContent ? 'block' : 'none';
     }
 
     function open(source) {
