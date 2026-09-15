@@ -189,6 +189,15 @@ for path in talk_files:
         m = re.fullmatch(r"/publication/([^/]+)/?", str(pub))
         if not m or m.group(1) not in pub_slugs:
             err(where, f"publication {pub} has no file in _publications/")
+    # the talk page shows the deck as page images, not an embedded PDF
+    deck = data.get("slidesurl") or data.get("posterurl")
+    for guess in (f"/files/{path.stem}-slides.pdf", f"/files/{path.stem}-poster.pdf"):
+        if not deck and (ROOT / guess.lstrip("/")).exists():
+            deck = guess
+    if deck:
+        images = ROOT / "images" / "decks" / pathlib.Path(str(deck)).stem
+        if not images.is_dir() or not any(images.glob("*.png")):
+            warn(where, f"no page images for {deck}; run `python3 bin/talk-deck.py {path.stem}` so the talk page can show it")
     elif not body.strip():
         warn(where, "no `publication` and no body text: the card will have no description")
 

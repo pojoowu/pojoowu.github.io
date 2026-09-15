@@ -38,15 +38,15 @@ def main(argv):
         box = [float(x) for x in argv[argv.index("--box") + 1].split(",")]
     with tempfile.TemporaryDirectory() as tmp:
         prefix = pathlib.Path(tmp) / "page"
-        subprocess.run(["pdftoppm", "-r", "220", "-f", str(page), "-l", str(page), "-png", str(pdf), str(prefix)], check=True)
+        subprocess.run(["pdftoppm", "-r", "300", "-f", str(page), "-l", str(page), "-png", str(pdf), str(prefix)], check=True)
         out_png = next(pathlib.Path(tmp).glob("page*.png"))
         img = Image.open(out_png).convert("RGB")
     if box:
         w, h = img.size
         img = img.crop((int(box[0] * w), int(box[1] * h), int(box[2] * w), int(box[3] * h)))
     img = trim(img)
-    if img.width > 1600:
-        img = img.resize((1600, int(img.height * 1600 / img.width)), Image.LANCZOS)
+    if img.width > 2200:
+        img = img.resize((2200, int(img.height * 2200 / img.width)), Image.LANCZOS)
     out = ROOT / "images" / "papers" / f"{slug}.png"
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out, optimize=True)
