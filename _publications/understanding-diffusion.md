@@ -5,7 +5,7 @@ category: manuscripts
 permalink: /publication/understanding-diffusion
 excerpt: ''
 date: 2026-05-07
-venue: 'arXiv preprint'
+venue: 'NeurIPS 2026 position track'
 topics: [diffusion, theory]
 short: Rethinking generalization
 paperurl: '/files/Position_paper___memorization_diffusion_arXiv.pdf'
