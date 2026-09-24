@@ -5,7 +5,7 @@ category: manuscripts
 permalink: /publication/mind
 excerpt: ''
 date: 2026-05-07
-venue: 'arXiv preprint'
+venue: 'NeurIPS 2026'
 topics: [diffusion, sampling]
 paperurl: '/files/2605.06797v1.pdf'
 arxivurl: 'https://arxiv.org/abs/2605.06797'
