@@ -22,6 +22,7 @@
 
 {%- assign pub_arxivurl = post.arxivurl -%}
 {%- if pub_arxivurl == nil and post.arxiv %}{% assign pub_arxivurl = "https://arxiv.org/abs/" | append: post.arxiv %}{% endif -%}
+{%- assign pub_biorxivurl = post.biorxivurl -%}
 {%- assign pub_arxiv_id = post.arxiv -%}
 {%- if pub_arxiv_id == nil and pub_arxivurl %}{% assign pub_arxiv_id = pub_arxivurl | split: "/abs/" | last %}{% endif -%}
 

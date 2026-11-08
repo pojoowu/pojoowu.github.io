@@ -2,6 +2,9 @@
 # Newest first is not required: the list is sorted by date at build time.
 # `text` is Markdown. Dates marked "approximate" were inferred; adjust freely.
 
+- date: 2026-10-05
+  text: "New preprint: [AlphaProtein Novo](/publication/alphaprotein-novo), a generative diffusion pipeline for *de novo* enzyme design on new-to-nature chemistry and non-natural substrates, with colleagues at Google DeepMind and Caltech."
+
 - date: 2026-08-05
   text: "New preprint: [Kastor](/publication/kastor), an efficient fine-tuning strategy for generative emulation of PDE simulations, with colleagues at Google DeepMind."
 

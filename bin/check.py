@@ -118,8 +118,8 @@ for path in pub_files:
         err(where, f"permalink {data['permalink']} disagrees with the file name (drop it or use /publication/{path.stem})")
     if data.get("arxiv") is not None and not ARXIV_RE.match(str(data["arxiv"])):
         err(where, f"arxiv should be an id like 2608.06107, got {data['arxiv']!r}")
-    if not (data.get("arxiv") or data.get("arxivurl") or data.get("paperurl")):
-        warn(where, "no arxiv id, arxivurl or paperurl: the row will have no Paper pill")
+    if not (data.get("arxiv") or data.get("arxivurl") or data.get("biorxivurl") or data.get("paperurl")):
+        warn(where, "no arxiv id, arxivurl, biorxivurl or paperurl: the row will have no Paper pill")
     tps = data.get("topics") or []
     if not isinstance(tps, list):
         err(where, "`topics` must be a list, e.g. [diffusion, theory]")
@@ -153,10 +153,11 @@ for path in pub_files:
     if data.get("news") not in (None, True, False) and not isinstance(data.get("news"), str):
         err(where, "`news` must be true or a text")
     author_text += " " + str(data.get("authors") or "")
-    for n in re.split(r",| and ", str(data.get("authors") or "")):
-        n = n.strip(" *")
-        if n and n != "Yu-Han Wu" and n not in people_names and "(" not in n and "Team" not in n and "DeepMind" not in n:
-            warn(where, f"no homepage link for '{n}' (add to _data/people.yml, spelled exactly like this)")
+    author_list = [n.strip(" *") for n in re.split(r",| and ", str(data.get("authors") or "")) if n.strip(" *")]
+    if len(author_list) <= 10:
+        for n in author_list:
+            if n != "Yu-Han Wu" and n not in people_names and "(" not in n and "Team" not in n and "DeepMind" not in n:
+                warn(where, f"no homepage link for '{n}' (add to _data/people.yml, spelled exactly like this)")
 
 for t in topic_ids:
     if t not in used_topics:

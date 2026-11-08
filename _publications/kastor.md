@@ -19,6 +19,7 @@ highlights:
   - "**Approach.** Adapt a deterministic physics foundation model into a generative surrogate with two-stage inference, mean-prediction regularization and spatial gradient matching."
   - "**Result.** 42.9% average reduction in forecasting error over the Walrus fine-tuning baseline on The Well, better on 8 of 10 datasets."
 related:
+  - alphaprotein-novo
   - diffusion-gemma
 bibtex: |
   @misc{couairon2026kastor,

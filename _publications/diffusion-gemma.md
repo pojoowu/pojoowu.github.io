@@ -18,6 +18,7 @@ highlights:
   - "**Approach.** Fine-tune Gemma 4 into a block-diffusion model that refines 256 tokens in parallel: supervised denoising, then reinforcement learning with sampler distillation, using under 10% of the base model's training tokens."
   - "**Result.** About 1,500 output tokens per second on a single H100, a new speed-capability Pareto frontier, while keeping thinking mode, multimodal inputs and long context."
 related:
+  - alphaprotein-novo
   - kastor
 bibtex: |
   @misc{diffusiongemma2026,

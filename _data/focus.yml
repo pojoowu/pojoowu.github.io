@@ -12,7 +12,7 @@
   icon: fa-sliders
   topics: [diffusion, sampling]
 - title: Generative models for science and language
-  text: Generative emulators for PDE simulations, and discrete-diffusion language models.
+  text: De novo enzyme design, generative emulators for PDE simulations, and discrete-diffusion language models.
   icon: fa-flask
   topics: [diffusion, applications]
 - title: Implicit regularization in deep learning

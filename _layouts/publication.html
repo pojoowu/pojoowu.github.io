@@ -33,6 +33,7 @@ layout: default
         <div class="pub__actions">
           {% if pub_paperurl %}<a class="pub__pill" href="{{ pub_paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
           {% if pub_arxivurl %}<a class="pub__pill" href="{{ pub_arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
+          {% if pub_biorxivurl %}<a class="pub__pill" href="{{ pub_biorxivurl }}"><i class="ai ai-biorxiv" aria-hidden="true"></i>bioRxiv</a>{% endif %}
           {% if page.codeurl %}<a class="pub__pill" href="{{ page.codeurl }}"><i class="fab fa-github" aria-hidden="true"></i>Code</a>{% endif %}
           {% if page.slidesurl %}<a class="pub__pill" href="{{ page.slidesurl }}"><i class="fas fa-chalkboard" aria-hidden="true"></i>Slides</a>{% endif %}
           {% if page.posterurl %}<a class="pub__pill" href="{{ page.posterurl }}"><i class="fas fa-image" aria-hidden="true"></i>Poster</a>{% endif %}

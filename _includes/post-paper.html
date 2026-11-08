@@ -11,6 +11,7 @@
 <p class="pub__actions">
   {% if pub_paperurl %}<a class="pub__pill" href="{{ pub_paperurl }}"><i class="fas fa-file-lines" aria-hidden="true"></i>Paper</a>{% endif %}
   {% if pub_arxivurl %}<a class="pub__pill" href="{{ pub_arxivurl }}"><i class="ai ai-arxiv" aria-hidden="true"></i>arXiv</a>{% endif %}
+  {% if pub_biorxivurl %}<a class="pub__pill" href="{{ pub_biorxivurl }}"><i class="ai ai-biorxiv" aria-hidden="true"></i>bioRxiv</a>{% endif %}
   <a class="pub__pill pub__pill--ghost" href="{{ base_path }}{{ post.url }}">Paper page</a>
 </p>
 {%- endif -%}
